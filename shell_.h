@@ -113,7 +113,7 @@ typedef struct pass_information
 	int cmd_buffer_type; /* CMD_type ||, &&, ; */
 	int read_f;
 	int history_count;
-} information_t;
+} info_t;
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
@@ -122,3 +122,7 @@ char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
+
+
+
+#endif

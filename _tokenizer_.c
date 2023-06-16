@@ -1,102 +1,104 @@
-#include "shell.h"
+#include "shell_.h"
 
 /**
- * **_strtow_func - split string into words and  Repeat delimiters be ignor.
+ * **strtow_func - splits a string into words Repeat delimiters are ignored.
  *
- * @c: the input string.
+ * @str: the input string.
  *
- * @copy: the delimeter string.
- *
- * Return: a pointer to  array of strings or NULL.
+ * @copy: the delimeter string
+ * Return: a pointer to an array of strings or NULL.
  *
  */
 
-char **_strtow_func(char *c, char *copy)
+char **strtow_func(char *str, char *copy)
 {
-	int x, y, a, b, word = 0;
-	char **s1;
+	int i, j, x, y, c = 0;
+	char **a;
 
-	if (c == NULL || c[0] == 0)
+	if (str == NULL || str[0] == 0)
 		return (NULL);
 	if (!copy)
 		copy = " ";
-	for (x = 0; c[x] != '\0'; x++)
-		if (!is_delim(str[x], copy) && (is_delim(str[x + 1], copy) || !c[x + 1]))
-			word++;
+	for (i = 0; str[i] != '\0'; i++)
+		if (!delim_fun(str[i], copy) && (delim_fun(str[i + 1], copy) || !str[i + 1]))
+			c++;
 
-	if (word == 0)
+	if (c == 0)
 		return (NULL);
-	s1 = malloc((1 + word) * sizeof(char *));
-	if (!s)
+	a = malloc((1 + c) * sizeof(char *));
+	if (!a)
 		return (NULL);
-	for (x = 0, y = 0; y < word; y++)
+	for (i = 0, j = 0; j < c; j++)
 	{
-		while (is_delim(str[x], copy))
+		while (delim_fun(str[i], copy))
+			i++;
+		x = 0;
+		while (!delim_fun(str[i + x], copy) && str[i + x])
 			x++;
-		a = 0;
-		while (!is_delim(str[x + a], d) && str[x + a])
-			a++;
-		s[y] = malloc((a + 1) * sizeof(char));
-		if (!s1[y])
+		a[j] = malloc((x + 1) * sizeof(char));
+		if (!a[j])
 		{
-			for (a = 0; a < y; a++)
-				free(s[a]);
-			free(s1);
+			for (x = 0; x < j; x++)
+				free(a[x]);
+			free(a);
 			return (NULL);
 		}
-		for (b = 0; b < a; b++)
-			s1[y][b] = c[x++];
-		s1[y][b] = 0;
+		for (y = 0; y < x; y++)
+			a[j][y] = str[i++];
+		a[j][y] = 0;
 	}
-	s1[y] = NULL;
-	return (s1);
+	a[j] = NULL;
+	return (a);
 }
+
 /**
  * **strtow_func2 - splits a string into words.
  *
- * c: the input string.
+ * @str: the input string.
+ *
  * @copy: the delimeter.
  *
- * Return: a pointer to an array of strings or NULL.
+ * Return: a pointer to an array of strings, or NULL.
  */
-
-char **strtow_function2(char *str, char copy)
+char **strtow_func2(char *str, char copy)
 {
-	int x, y, a, b, word = 0;
-	char **s1;
+	int i, j, x, y,  c = 0;
+	char **a;
 
-	if (c == NULL || c[0] == 0)
+	if (str == NULL || str[0] == 0)
 		return (NULL);
-	for (x = 0; c[x]!= '\0'; x++)
-		if ((c[x] != copy && x[x + 1] == copy) ||
-				    (c[x] != copy && !c[x + 1]) || x[x + 1] == copy)
-			word++;
-	if (word == 0)
+	for (i = 0; str[i] != '\0'; i++)
+		if ((str[i] != copy && str[i + 1] == copy) ||
+				    (str[i] != copy && !str[i + 1]) || str[i + 1] == copy)
+			c++;
+	if (c == 0)
 		return (NULL);
-	s1 = malloc((1 + word) * sizeof(char *));
-	if (!s1)
+	a = malloc((1 + c) * sizeof(char *));
+	if (!a)
 		return (NULL);
-	for (x = 0, y = 0; y < word; y++)
+	for (i = 0, j = 0; j < c; j++)
 	{
-		while (c[x] == copy && c[x] != copy)
+		while (str[i] == copy && str[i] != copy)
+			i++;
+		x = 0;
+		while (str[i + x] != copy && str[i + x] && str[i + x] != copy)
 			x++;
-		a = 0;
-		while (str[i + k] != d && str[i + k] && str[i + k] != d)
-			a++;
-		s1[j] = malloc((a + 1) * sizeof(char));
-		if (!s1[y])
+		a[j] = malloc((x + 1) * sizeof(char));
+		if (!a[j])
 		{
-			for (y = 0; a < y; a++)
-				free(s[a]);
-			free(s1);
+			for (x = 0; x < j; x++)
+				free(a[x]);
+			free(a);
 			return (NULL);
 		}
-		for (b = 0; b < k; b++)
-			s1[y][b] = c[x++];
-		s[y][b] = 0;
+		for (y = 0; y < x; y++)
+			a[j][y] = str[i++];
+		a[j][y] = 0;
 	}
-	s1[y] = NULL;
-	return (s1);
+	a[j] = NULL;
+	return (a);
 }
+
+
 
 

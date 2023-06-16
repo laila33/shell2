@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "shell_.h"
 
 /**
  * strcpy_func - copie string.
@@ -69,7 +69,7 @@ void puts_func(char *s)
 		return;
 	while (s[j] != '\0')
 	{
-		putchar_func(s[j]);
+		_putchar(s[j]);
 		j++;
 	}
 }
@@ -90,7 +90,7 @@ int putchar_func(char a)
 	static int j;
 	static char buffer[WRITE__SIZE];
 
-	if (a == _FLUSH || i >= WRITE__SIZE)
+	if (a == _FLUSH || j >= WRITE__SIZE)
 	{
 		write(1, buffer, j);
 		j = 0;

@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "shell_.h"
 
 
 /**
@@ -71,7 +71,7 @@ char *strcat_func(char *s1, char *s2)
 	while (*s1)
 		*s2++ = *s1++;
 	*s2 = *s1;
-	return (retsult);
+	return (result);
 }
 
 
