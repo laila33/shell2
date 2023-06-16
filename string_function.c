@@ -86,7 +86,7 @@ char *strcat_func(char *s1, char *s2)
  */
 char *start_with_func(const char *string, const char *substring)
 {
-	while (*sumstring)
+	while (*substring)
 		if (*substring++ != *string++)
 			return (NULL);
 	return ((char *)string);
