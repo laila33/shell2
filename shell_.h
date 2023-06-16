@@ -102,9 +102,9 @@ typedef struct pass_information
 	int error_num;
 	int line_counter_flag;
 	char *file_name;
-	list_t *env_list;
-	list_t *history_n;
-	list_t *alia_s;
+	my_list_t *env_list;
+	my_list_t *history_n;
+	my_list_t *alia_s;
 	char **enviro_n;
 	int env_change;
 	int status;
@@ -114,4 +114,11 @@ typedef struct pass_information
 	int read_f;
 	int history_count;
 } information_t;
-
+int _strlen(char *);
+int _strcmp(char *, char *);
+char *starts_with(const char *, const char *);
+char *_strcat(char *, char *);
+char *_strcpy(char *, char *);
+char *_strdup(const char *);
+void _puts(char *);
+int _putchar(char);
