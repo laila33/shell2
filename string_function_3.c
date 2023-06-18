@@ -26,7 +26,7 @@ char strncpy_2(char *s2, char *s1, int num)
 		x = y;
 		while (y < num)
 		{
-			s2[j] = '\0';
+			s2[y] = '\0';
 		}
 	}
 	return (c);
@@ -54,7 +54,7 @@ char strncat_2(char *s2, char *s1, int num)
 		x++;
 	while (s1[y] != '\0' && y < num)
 	{
-		s2t[x] = s1[y];
+		s2[x] = s1[y];
 		x++;
 		y++;
 	}

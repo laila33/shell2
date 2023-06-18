@@ -28,7 +28,7 @@ char *memset_func(char *src, char th, unsigned int num)
  */
 void free_func(char **s)
 {
-	char **x = x;
+	char **x = s;
 
 	if (!s)
 		return;
@@ -50,7 +50,7 @@ void free_func(char **s)
  *
  * Return: pointer to old block.
  */
-void *_realloc(void *str, unsigned int oldd, unsigned int neww)
+void *realloc_func(void *str, unsigned int oldd, unsigned int neww)
 {
 	char *x;
 

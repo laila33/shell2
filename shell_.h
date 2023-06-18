@@ -53,75 +53,31 @@ typedef struct my_list
 } my_list_t;
 
 
-/**
- * struct pass_information - contains arguements to pass into  function.
- *allowing uniform prototype for function pointer struct
- * @ar_g: a string  from getline containing arguements.
- *
- * @arg_v:an array containing values.
- *
- * @path_arg: a string pathed  for  command.
- *
- * @arg_c: number of arguments.
- *
- * @error_line_count: the error counter.
- *
- * @error_number: error code for exit()s.
- *
- * @line_counter_flag: if on count this line of input.
- *
- * @file_name: the filename.
- *
- * @env_list: linked list local copy of environment
- *
- * @enviro_n:  modified copy of environment from Linked list env_list.
- *
- * @history_n: node history.
- *
- * @alia_s:  alias node.
- *
- * @env_change: if environ be changed.
- *
- * @status: the return status of the last command.
- *
- * @cmd_buffer: address of pointer to cmd_buffer if chainging.
- *
- * @cmd_buffer__type: CMD_types ||, &&, ;.
- *
- * @read_f: the f from which, to read line input.
- *
- * @history_count: line nubmer count.
- */
-typedef struct pass_information
-{
-	char *ar_g;
-	char **arg_v;
-	char *path_arg;
-	int arg_c;
-	unsigned int error_line_count;
-	int error_num;
-	int line_counter_flag;
-	char *file_name;
-	my_list_t *env_list;
-	my_list_t *history_n;
-	my_list_t *alia_s;
-	char **enviro_n;
-	int env_change;
-	int status;
 
-	char **cmd_buffer; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buffer_type; /* CMD_type ||, &&, ; */
-	int read_f;
-	int history_count;
-} info_t;
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+int strlen_func(char *);
+int strcmp_func(char *, char *);
+char *starts_with_func(const char *, const char *);
+char *strcat_func(char *, char *);
+char *strcpy_func(char *, char *);
+char *strdup_func(const char *);
+void puts_func(char *);
+int putchar_func(char);
+char strncpy_2(char *, char *, int );
+char strncat_2(char *, char *, int );
+char strchr_2(char *, char );
+char **strtow_func(char *, char *);
+char **strtow_func2(char *, char);
+char *memset_func(char *, char , unsigned int);
+void free_func(char **);
+void *realloc_func(void *, unsigned int , unsigned int);
+int free_function(void **);
+
+
+
+
+
+
+
 
 
 
