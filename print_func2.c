@@ -80,7 +80,7 @@ int putsfd_print(char *s, int fd)
 		return (0);
 	while (*s)
 	{
-		j += putfd_print(*s++, fd);
+		j += putsfd_print(*s++, fd);
 	}
 	return (j);
 }

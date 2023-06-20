@@ -69,7 +69,7 @@ void puts_func(char *s)
 		return;
 	while (s[j] != '\0')
 	{
-		putchar_func(s[j]);
+		putchar_fun(s[j]);
 		j++;
 	}
 }
@@ -78,14 +78,14 @@ void puts_func(char *s)
 
 
 /**
- * putchar_func - write the character a to stdout.
+ * putchar_fun - write the character a to stdout.
  *
  * @a: The character to be printed.
  *
  *
  * Return: 1 or -1 or errno is set appropriately.
  */
-int putchar_func(char a)
+int putchar_fun(char a)
 {
 	static int j;
 	static char buffer[WRITE__SIZE];
