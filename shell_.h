@@ -52,6 +52,27 @@ typedef struct my_list
 	struct my_list *next;
 } my_list_t;
 
+/**
+ *struct pass_information - contains pseudo-arguements to pass into a function,
+ *		allowing uniform prototype for function pointer struct
+ *@line_count: the error count.
+ *@fname: the program filename.
+ *@argv: an array of strings generated from arg.
+ */
+typedef struct pass_information
+{
+	char **argv;
+	unsigned int line_count;
+	char *fname;
+} info_t;
+
+
+
+
+
+
+
+
 
 
 int strlen_func(char *);

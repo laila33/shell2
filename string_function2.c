@@ -69,7 +69,7 @@ void puts_func(char *s)
 		return;
 	while (s[j] != '\0')
 	{
-		_putchar(s[j]);
+		putchar_func(s[j]);
 		j++;
 	}
 }
