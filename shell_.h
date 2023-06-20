@@ -82,7 +82,7 @@ char *strcat_func(char *, char *);
 char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
-int putchar_func(char);
+int _putchar(char);
 char strncpy_2(char *, char *, int );
 char strncat_2(char *, char *, int );
 char strchr_2(char *, char );
@@ -97,7 +97,10 @@ void error_1(info_t *, char *);
 int print_func(int, int);
 char *convert_3(long int, int, int);
 void remove_comments_message(char *);
-
+void eputs_func(char *);
+int eputchar(char);
+int putfd_func(char c, int fd);
+int putsfd_print(char *str, int fd);
 
 
 

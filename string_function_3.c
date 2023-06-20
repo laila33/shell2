@@ -10,10 +10,11 @@
  *
  *Return: string after concatenated.
  */
-char strncpy_2(char *s2, char *s1, int num)
+char *strncpy_2(char *s2, char *s1, int num)
 {
-	int x = 0, y;
+	int x, y = 0;
 	char *c = s2;
+	x = 0;
 
 	while (s1[x] != '\0' && x < num - 1)
 	{
@@ -27,6 +28,7 @@ char strncpy_2(char *s2, char *s1, int num)
 		while (y < num)
 		{
 			s2[y] = '\0';
+			y++;
 		}
 	}
 	return (c);
@@ -44,7 +46,7 @@ char strncpy_2(char *s2, char *s1, int num)
  *
  *Return: concatenated string.
  */
-char strncat_2(char *s2, char *s1, int num)
+char *strncat_2(char *s2, char *s1, int num)
 {
 	int x = 0, y = 0;
 	char *c = s2;
@@ -76,7 +78,7 @@ char strncat_2(char *s2, char *s1, int num)
  *
  *Return:  pointer to the memory area s1.
  */
-char strchr_2(char *s1, char charr)
+char *strchr_2(char *s1, char charr)
 {
 	do {
 		if (*s1 == charr)

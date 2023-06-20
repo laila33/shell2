@@ -1,5 +1,4 @@
-#include "shell_.h"
-
+#include"shell_.h"
 /**
  * strcpy_func - copie string.
  *
@@ -69,7 +68,7 @@ void puts_func(char *s)
 		return;
 	while (s[j] != '\0')
 	{
-		putchar_func(s[j]);
+		_putchar(s[j]);
 		j++;
 	}
 }
@@ -78,14 +77,14 @@ void puts_func(char *s)
 
 
 /**
- * putchar_func - write the character a to stdout.
+ * putchar - write the character a to stdout.
  *
  * @a: The character to be printed.
  *
  *
  * Return: 1 or -1 or errno is set appropriately.
  */
-int putchar_func(char a)
+int _putchar(char a)
 {
 	static int j;
 	static char buffer[WRITE__SIZE];
