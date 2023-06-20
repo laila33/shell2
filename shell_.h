@@ -92,7 +92,11 @@ char *memset_func(char *, char , unsigned int);
 void free_func(char **);
 void *realloc_func(void *, unsigned int , unsigned int);
 int free_function(void **);
-
+int convarte_(char *);
+void error_1(info_t *, char *);
+int print_func(int, int);
+char *convert_3(long int, int, int);
+void remove_comments_message(char *);
 
 
 
