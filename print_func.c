@@ -20,7 +20,7 @@ int convarte_(char *s1)
 		if (s1[j] >= '0' && s1[j] <= '9')
 		{
 			res *= 10;
-			res += (s1[0j] - '0');
+			res += (s1[j] - '0');
 			if (res > INT_MAX)
 				return (-1);
 		}
@@ -68,12 +68,12 @@ void error_1(info_t *detailes, char *str)
  */
 int print_func(int input_num, int f_d)
 {
-	int (*__putchar)(char) = putchar_func;
+	int (*__putchar)(char) = _putchar;
 	int j, cntr = 0;
 	unsigned int res, now;
 
 	if (f_d == STDERR_FILENO)
-		__putchar = eputchar_func;
+		__putchar = eputchar;
 	if (input_num < 0)
 	{
 		res = -input_num;

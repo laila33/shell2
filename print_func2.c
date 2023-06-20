@@ -15,18 +15,18 @@ void eputs_func(char *s)
 		return;
 	while (s[j] != '\0')
 	{
-		eputchar_func(s[j]);
+		eputchar(s[j]);
 		j++;
 	}
 }
 
 /**
- * eputchar_func - write the char ch to stderr.
+ * eputchar_ - write the char ch to stderr.
  * @ch: The character to print.
  *
  * Return: 1 or -1.
  */
-int eputchar_func(char ch)
+int eputchar(char ch)
 {
 	static int j;
 	static char buffer[WRITE__SIZE];
@@ -80,7 +80,7 @@ int putsfd_print(char *s, int fd)
 		return (0);
 	while (*s)
 	{
-		j += putsfd_print(*s++, fd);
+		j += putfd_func(*s++, fd);
 	}
 	return (j);
 }
