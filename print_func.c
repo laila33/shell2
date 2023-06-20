@@ -20,7 +20,7 @@ int convarte_(char *s1)
 		if (s1[j] >= '0' && s1[j] <= '9')
 		{
 			res *= 10;
-			res += (s1[j] - '0');
+			res += (s1[0j] - '0');
 			if (res > INT_MAX)
 				return (-1);
 		}
@@ -130,7 +130,7 @@ char *convert_3(long int num, int base, int ch)
 	*str = '\0';
 
 	do	{
-		*--str = [n % base];
+		*--str = v[n % base];
 		n /= base;
 	} while (n != 0);
 
