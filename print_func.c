@@ -20,7 +20,7 @@ int convarte_(char *s1)
 		if (s1[j] >= '0' && s1[j] <= '9')
 		{
 			res *= 10;
-			res += (s1[i] - '0');
+			res += (s1[j] - '0');
 			if (res > INT_MAX)
 				return (-1);
 		}
