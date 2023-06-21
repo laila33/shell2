@@ -73,7 +73,7 @@ int print_func(int input_num, int f_d)
 	unsigned int res, now;
 
 	if (f_d == STDERR_FILENO)
-		__putchar = eputchar;
+		__putchar = Eput;
 	if (input_num < 0)
 	{
 		res = -input_num;

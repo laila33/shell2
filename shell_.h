@@ -41,14 +41,14 @@ extern char **environment;
  * struct my_list - sing linked list.
  *
  * @number: the number of  field.
- * @s: string.
+ * @str: string.
  *
  * @next: pointer to point to the next node.
  */
 typedef struct my_list
 {
 	int number;
-	char *s;
+	char *str;
 	struct my_list *next;
 } my_list_t;
 
@@ -98,10 +98,14 @@ int print_func(int, int);
 char *convert_3(long int, int, int);
 void remove_comments_message(char *);
 void eputs_func(char *);
-int eputchar(char);
+int Eput(char);
 int putfd_func(char c, int fd);
 int putsfd_print(char *str, int fd);
-
+my_list_t *add_new_node(my_list_t **, const char *, int);
+my_list_t *add_end_node(my_list_t **, const char *, int);
+size_t print_str(const my_list_t *);
+int remove_node(my_list_t **, unsigned int);
+void freee_func(my_list_t **);
 
 
 

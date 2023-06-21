@@ -15,18 +15,18 @@ void eputs_func(char *s)
 		return;
 	while (s[j] != '\0')
 	{
-		eputchar(s[j]);
+		Eput(s[j]);
 		j++;
 	}
 }
 
 /**
- * eputchar_ - write the char ch to stderr.
+ * Eput - write the char ch to stderr.
  * @ch: The character to print.
  *
  * Return: 1 or -1.
  */
-int eputchar(char ch)
+int Eput(char ch)
 {
 	static int j;
 	static char buffer[WRITE__SIZE];
