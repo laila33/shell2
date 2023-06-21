@@ -45,11 +45,11 @@ extern char **environment;
  *
  * @next: pointer to point to the next node.
  */
-typedef struct my_list
+typedef struct my_liststr
 {
 	int number;
 	char *str;
-	struct my_list *next;
+	struct my_liststr *next;
 } my_list_t;
 
 /**

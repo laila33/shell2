@@ -124,7 +124,7 @@ void freee_func(my_list_t **ptr)
 	c_node = head_node;
 	while (c_node)
 	{
-		next_node = node->next;
+		next_node = c_node->next;
 		free(c_node->str);
 		free(c_node);
 		c_node = next_node;
@@ -135,9 +135,9 @@ void freee_func(my_list_t **ptr)
 /**
  * remove_node - delete node at specfic index.
  *
- * @head: address of pointer to first node.
+ * @head: address of pointer to  node.
  *
- * @i: index of node.
+ * @i: index of c_node.
  *
  * Return: 1 or 0.
  */
@@ -146,7 +146,7 @@ void freee_func(my_list_t **ptr)
 
 int remove_node(my_list_t **head, unsigned int i)
 {
-	my_list_t *c_node, *p_node;
+	my_list_t *node, *p_node;
 	unsigned int j = 0;
 
 	if (!head || !*head)
@@ -154,25 +154,25 @@ int remove_node(my_list_t **head, unsigned int i)
 
 	if (!i)
 	{
-		c_node = *head;
+		node = *head;
 		*head = (*head)->next;
-		free(c_node->str);
-		free(c_node);
+		free(node->str);
+		free(node);
 		return (1);
 	}
-	C_node = *head;
-	while (c_node)
+	node = *head;
+	while (node)
 	{
 		if (j == i)
 		{
-			p_node->next = c_node->next;
-			free(c_node->str);
-			free(c_node);
+			p_node->next = node->next;
+			free(node->str);
+			free(node);
 			return (1);
 		}
 		j++;
-		p_node = c_node;
-		c_node = c_node->next;
+		p_node = node;
+		node = node->next;
 	}
 	return (0);
 }
