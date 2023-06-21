@@ -5,13 +5,13 @@
  *
  * @head: address of pointer to head node.
  *
- * @str: s field of node.
+ * @s: s field of node.
  *
  * @number: node index.
  *
  * Return: length of list.
  */
-my_list_t *add_new_node(my_list_t **head, const char *str, int number)
+my_list_t *add_new_node(my_list_t **head, const char *s, int number)
 {
 	my_list_t *new;
 
@@ -22,10 +22,10 @@ my_list_t *add_new_node(my_list_t **head, const char *str, int number)
 		return (NULL);
 	memset_func((void *)new, 0, sizeof(my_list_t));
 	new->number = number;
-	if (str)
+	if (s)
 	{
-		new->str = strdup_func(str);
-		if (!new->str)
+		new->s = strdup_func(s);
+		if (!new->s)
 		{
 			free(new);
 			return (NULL);
@@ -43,13 +43,13 @@ my_list_t *add_new_node(my_list_t **head, const char *str, int number)
  *
  * @head: address of pointer to head node.
  *
- * @str: str field of node.
+ * @s: s field of node.
  *
  * @number: node index.
  *
  * Return: size of list
  */
-my_list_t *add_end_node(my_list_t **head, const char *str, int number)
+my_list_t *add_end_node(my_list_t **head, const char *s, int number)
 {
 	my_list_t *new, *end_node;
 
@@ -62,10 +62,10 @@ my_list_t *add_end_node(my_list_t **head, const char *str, int number)
 		return (NULL);
 	memset_func((void *)new, 0, sizeof(my_list_t));
 	new->number = number;
-	if (str)
+	if (s)
 	{
-		new->str = strdup_func(str);
-		if (!new->str)
+		new->s = strdup_func(s);
+		if (!new->s)
 		{
 			free(new);
 			return (NULL);
@@ -96,7 +96,7 @@ size_t print_str(const my_list_t *p)
 
 	while (p)
 	{
-		puts_func(p->str ? p->str : "(nil)");
+		puts_func(p->s ? p->s : "(nil)");
 		puts_func("\n");
 		p = p->next;
 		j++;
@@ -125,7 +125,7 @@ void freee_func(my_list_t **ptr)
 	while (c_node)
 	{
 		next_node = c_node->next;
-		free(c_node->str);
+		free(c_node->s);
 		free(c_node);
 		c_node = next_node;
 	}
@@ -156,7 +156,7 @@ int remove_node(my_list_t **head, unsigned int i)
 	{
 		node = *head;
 		*head = (*head)->next;
-		free(node->str);
+		free(node->s);
 		free(node);
 		return (1);
 	}
@@ -166,7 +166,7 @@ int remove_node(my_list_t **head, unsigned int i)
 		if (j == i)
 		{
 			p_node->next = node->next;
-			free(node->str);
+			free(node->s);
 			free(node);
 			return (1);
 		}
