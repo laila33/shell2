@@ -50,14 +50,14 @@ ss = malloc(sizeof(char *) * (x + 1));
 		}
 
 	s = strcpy_func(s, c_node->s);
-	strs[x] = str;
+	ss[x] = str;
 	}
 ss[x] = NULL;
 return (ss);
 }
 
 /**
- * node's_index - find index of  node.
+ * nodes_index - find index of  node.
  *
  * @h: pointer to list first node.
  *
@@ -65,7 +65,7 @@ return (ss);
  *
  * Return: index of node or -1.
  */
-ssize_t node's_index(my_list_t *h,my_list_t *c_node)
+ssize_t nodes_index(my_list_t *h,my_list_t *c_node)
 {
 	size_t j = 0;
 
@@ -119,7 +119,7 @@ size_t print_l(const my_list_t *h)
 	while (h)
 	{
 	puts_func(convert_3(h->number, 10, 0));
-	putchar_func(' : ');
+	_putchar(':');
 	putchar_func(' ');
 	puts_func(h->s ? h->s : "(nil)");
 	puts_func("\n");
