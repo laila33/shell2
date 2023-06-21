@@ -50,7 +50,7 @@ ss = malloc(sizeof(char *) * (x + 1));
 		}
 
 	s = strcpy_func(s, c_node->s);
-	ss[x] = str;
+	ss[x] = s;
 	}
 ss[x] = NULL;
 return (ss);
