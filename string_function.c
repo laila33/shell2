@@ -26,27 +26,27 @@ int strlen_func(char *stringg)
 
 
 /**
- * strcmp_func -return comparison of two strangs.
- * @string1: first string.
+ * strcmp_func -find lexicogarphic comparison of two strings.
+ * @s: first string.
  *
- * @string2: second string.
+ * @ss: second string.
  *
- * return negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
+ * Return: negative if s < ss, positive if s > ss, zero if s == ss
  */
 
-int strcmp_func(char *string1, char *string2)
+int strcmp_func(char *s, char *ss)
 {
-	while (*string1 && *string2)
+	while (*s && *ss)
 	{
-		if (*string1 != *string2)
-			return (*string1 - *string2);
-		string1++;
-		string2++;
+		if (*s != *ss)
+			return (*s - *ss);
+		s++;
+		ss2++;
 	}
-	if (*string1 == *string2)
+	if (*s == *ss)
 		return (0);
 	else
-		return (*string1 < *string2 ? -1 : 1);
+		return (*s < *ss ? -1 : 1);
 }
 
 

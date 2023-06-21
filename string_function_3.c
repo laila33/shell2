@@ -14,6 +14,7 @@ char *strncpy_2(char *s2, char *s1, int num)
 {
 	int x, y = 0;
 	char *c = s2;
+
 	x = 0;
 
 	while (s1[x] != '\0' && x < num - 1)

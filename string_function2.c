@@ -77,7 +77,7 @@ void puts_func(char *s)
 
 
 /**
- * putchar - write the character a to stdout.
+ * _putchar - write the character a to stdout.
  *
  * @a: The character to be printed.
  *
