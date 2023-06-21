@@ -41,7 +41,7 @@ int strcmp_func(char *s, char *ss)
 		if (*s != *ss)
 			return (*s - *ss);
 		s++;
-		ss2++;
+		ss++;
 	}
 	if (*s == *ss)
 		return (0);
