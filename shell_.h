@@ -56,6 +56,7 @@ typedef struct my_liststr
  *@argv: an array of strings generated from arg.
  *@input: a string path for the current command.
  *@history: history node.
+ *@historycount: history line number count.
  */
 typedef struct pass_information
 {

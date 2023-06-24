@@ -92,7 +92,7 @@ int history_r(info_t *info)
 	if (rlen <= 0)
 		return (free(buffer), 0);
 	close(f_d);
-	for (j = 0; j < fsize; j++)
+	for (j = 0; j < sizee; j++)
 		if (buffer[j] == '\n')
 		{
 			buffer[j] = 0;
