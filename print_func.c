@@ -43,7 +43,7 @@ int convarte_(char *s1)
  * Return: 0 or-1 .
  *
  */
-void error_1(ino_t *detailes, char *str)
+void error_1(info_t *detailes, char *str)
 {
 	eputs_func(detailes->fname);
 	eputs_func(": ");

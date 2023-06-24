@@ -61,7 +61,7 @@ typedef struct pass_information
 	unsigned int line_count;
 	char *fname;
 	char *input;
-} ino_t;
+} info_t;
 
 
 
@@ -103,7 +103,9 @@ my_list_t *add_end_node(my_list_t **, const char *, int);
 size_t print_str(const my_list_t *);
 int remove_node(my_list_t **, unsigned int);
 void freee_func(my_list_t **);
-
+int if_cmd(info_t *, char *);
+char *d_char(char *, int, int);
+char *f_path(info_t *, char *, char *);
 
 
 
