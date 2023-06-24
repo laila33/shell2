@@ -95,7 +95,7 @@ my_list_t *start_with(my_list_t *c_node, char *prefix, char ch)
 
 	while (c_node)
 	{
-	x = start_with_func(c_node->s, prefix);
+	x = starts_with_func(c_node->s, prefix);
 	if (x && ((ch == -1) || (*x == ch)))
 		return (c_node);
 	c_node = c_node->next;
@@ -120,7 +120,7 @@ size_t print_l(const my_list_t *h)
 	{
 	puts_func(convert_3(h->number, 10, 0));
 	_putchar(':');
-	putchar_func(' ');
+	_putchar(' ');
 	puts_func(h->s ? h->s : "(nil)");
 	puts_func("\n");
 	h = h->next;

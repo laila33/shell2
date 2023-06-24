@@ -28,7 +28,8 @@
 #define CONVERT_UNSIGNED	2
 
 
-
+#define HIST_FILE	"__simple_shell_history"
+#define HIST_MAX	4096
 extern char **environment;
 
 
@@ -54,6 +55,7 @@ typedef struct my_liststr
  *@fname: the program filename.
  *@argv: an array of strings generated from arg.
  *@input: a string path for the current command.
+ *@history: history node.
  */
 typedef struct pass_information
 {
@@ -61,6 +63,8 @@ typedef struct pass_information
 	unsigned int line_count;
 	char *fname;
 	char *input;
+	my_list_t *history;
+	int historycount;
 } info_t;
 
 
@@ -106,6 +110,11 @@ void freee_func(my_list_t **);
 int if_cmd(info_t *, char *);
 char *d_char(char *, int, int);
 char *f_path(info_t *, char *, char *);
+char *find_history_file(info_t *info);
+int history_w(info_t *info);
+int history_r(info_t *info);
+int history_l(info_t *info, char *buf, int linecount);
+int history_rm(info_t *info);
 
 
 

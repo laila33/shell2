@@ -11,13 +11,13 @@
  */
 int if_cmd(info_t *info, char *input)
 {
-	struct stat sa;
+	struct stat st;
 
 	(void)info;
-	if (!input || sta(input, &sa))
+	if (!input || stat(input, &st))
 		return (0);
 
-	if (sa.sa_mode & S_IFREG)
+	if (st.st_mode & S_IFREG)
 	{
 		return (1);
 	}
@@ -67,12 +67,12 @@ char *d_char(char *inputs, int f_point, int e_point)
 
 char *f_path(info_t *info, char *inputs, char *cmd)
 {
-	int j = 0, curr_pos = 0;
+	int j = 0, cc = 0;
 	char *input;
 
 	if (!inputs)
 		return (NULL);
-	if ((strlen_func(cmd) > 2) && start_with_func(cmd, "./"))
+	if ((strlen_func(cmd) > 2) && starts_with_func(cmd, "./"))
 	{
 		if (if_cmd(info, cmd))
 			return (cmd);
