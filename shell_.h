@@ -64,7 +64,7 @@ typedef struct pass_information
 	char **argv;
 	unsigned int line_count;
 	char *fname;
-} info_t;
+} ino_t;
 
 
 
