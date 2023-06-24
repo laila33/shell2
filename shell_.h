@@ -18,21 +18,16 @@
 #define _FLUSH -1
 
 
-#define _ CMD_NORM	(0)
-#define _CMD_OR		1
-#define _CMD_AND	2
-#define _CMD_CHAIN	3
+#define CMD_NORM	(0)
+#define CMD_OR		1
+#define CMD_AND	        2
+#define CMD_CHAIN	3
 
 
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
 
-#define GET_LINE 0
-#define START_OK 0
-
-#define HISTORY_FILE	"_simple_shell_history"
-#define HISTORY_MAX	4096
 
 extern char **environment;
 
@@ -58,12 +53,14 @@ typedef struct my_liststr
  *@line_count: the error count.
  *@fname: the program filename.
  *@argv: an array of strings generated from arg.
+ *@input: a string path for the current command.
  */
 typedef struct pass_information
 {
 	char **argv;
 	unsigned int line_count;
 	char *fname;
+	char *input;
 } ino_t;
 
 
