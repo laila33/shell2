@@ -125,7 +125,7 @@ int history_rm(info_t *info)
 
 	while (c_node)
 	{
-		c_node->num = j++;
+		c_node->number = j++;
 		c_node = c_node->next;
 	}
 	return (info->historycount = j);
