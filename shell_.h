@@ -210,7 +210,8 @@ int alpha_fun(int);
 int atoi_fun(char *);
 int mshell(info_t *, char **);
 int findbuilt_fun(info_t *);
-
+void git_cmd(info_t *);
+void f_cmd(info_t *);
 
 
 
