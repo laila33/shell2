@@ -2,9 +2,9 @@
 
 /**
  **strncpy_2 - copy the  string.
- *@s2: destination string to copy.
+ *@s2: Destination string.
  *
- *@s1: the source string.
+ *@s1: Source string.
  *
  *@num: the number  of characters to copy.
  *

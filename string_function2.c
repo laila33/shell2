@@ -2,11 +2,11 @@
 /**
  * strcpy_func - copie string.
  *
- * @s2: the destination.
+ * @s2: destination.
  *
- * @s1: the source.
+ * @s1:  source.
  *
- * Return: pointer to destination.
+ * Return: Pointer to destination.
  */
 char *strcpy_func(char *s2, char *s1)
 {
@@ -26,12 +26,12 @@ char *strcpy_func(char *s2, char *s1)
 
 
 /**
- * strdup_func - duplicates  string.
+ * strdup_func - duplicate string.
  *
  * @s1:  string to duplicate.
  *
  *
- * Return: pointer to the duplicated string.
+ * Return: Pointer to the duplicated string.
  */
 
 char *strdup_func(const char *s1)
@@ -54,9 +54,9 @@ char *strdup_func(const char *s1)
 
 
 /**
- * puts_func - prints  input string.
+ * puts_func - print input string.
  *
- * @s: the string to print.
+ * @s:string to print.
  *
  * Return: Nothing.
  */

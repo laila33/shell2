@@ -2,9 +2,9 @@
 
 
 /**
- * strlen_func - returns the length of  string.
+ * strlen_func - Return length of string.
  *
- * @stringg: the string to find it length.
+ * @stringg:  string to find it length.
  *
  *
  * Return: length of string.
@@ -26,12 +26,12 @@ int strlen_func(char *stringg)
 
 
 /**
- * strcmp_func -find lexicogarphic comparison of two strings.
- * @s: first string.
+ * strcmp_func - Find lexicogarphic comparison of two strings.
+ * @s: First string.
  *
- * @ss: second string.
+ * @ss: Second string.
  *
- * Return: negative if s < ss, positive if s > ss, zero if s == ss
+ * Return: Negative if s < ss, Positive if s > ss, Zero if s == ss
  */
 
 int strcmp_func(char *s, char *ss)
@@ -52,13 +52,13 @@ int strcmp_func(char *s, char *ss)
 
 
 /**
- * strcat_func - concatenates two strings.
+ * strcat_func - concatenate two strings.
  *
- * @s2:  destination buffer.
+ * @s2: THE destination buffer.
  *
- * @s1:  source buffer.
+ * @s1:  THE source buffer.
  *
- * Return: pointer to destination.
+ * Return: Pointer to destination.
  *
  *
  */
@@ -78,11 +78,11 @@ char *strcat_func(char *s1, char *s2)
 /**
  * start_with_func - define if string start with substring.
  *
- * @string: string to search.
+ * @string: String to search.
  *
  * @substring: the substring to find.
  *
- * Return: address of next char of stringg or NULL
+ * Return: Address of next char of stringg , NULL
  */
 char *start_with_func(const char *string, const char *substring)
 {
