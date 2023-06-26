@@ -37,7 +37,7 @@ extern char **environment;
  * struct my_list - sing linked list.
  *
  * @number: the number of  field.
- * @str: string.
+ * @s: string.
  *
  * @next: pointer to point to the next node.
  */
@@ -58,6 +58,7 @@ typedef struct my_liststr
  *@history: history node.
  *@historycount: history line number count.
  *@lcount_ch: if on count this line of input.
+ *@status: return status of  last command.
  */
 typedef struct pass_information
 {
@@ -68,6 +69,7 @@ typedef struct pass_information
 	my_list_t *history;
 	int historycount;
 	int lcount_ch;
+	int status;
 } info_t;
 
 
@@ -87,9 +89,9 @@ char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
 int _putchar(char);
-char strncpy_2(char *, char *, int );
-char strncat_2(char *, char *, int );
-char strchr_2(char *, char );
+char *strncpy_2(char *, char *, int );
+char *strncat_2(char *, char *, int );
+char *strchr_2(char *, char );
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char , unsigned int);

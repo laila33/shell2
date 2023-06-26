@@ -47,7 +47,7 @@ void error_1(info_t *detailes, char *str)
 {
 	eputs_func(detailes->fname);
 	eputs_func(": ");
-	print_func(detailes->line_count, STDERR_FILENO);
+	print_func(detailes->l_count, STDERR_FILENO);
 	eputs_func(": ");
 	eputs_func(detailes->argv[0]);
 	eputs_func(": ");

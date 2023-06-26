@@ -54,7 +54,7 @@ int history_w(info_t *info)
 		putsfd_print(c_node->s, f_d);
 		putfd_func('\n', f_d);
 	}
-	putfd_func(BUF_FLUSH, f_d);
+	putfd_func(_FLUSH, f_d);
 	close(f_d);
 	return (1);
 }
