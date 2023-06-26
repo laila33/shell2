@@ -15,7 +15,7 @@
 
 #define READ__SIZE 1024
 #define WRITE__SIZE 1024
-#define _FLUSH -1
+#define BUF_FLUSH -1
 
 
 #define CMD_NORM	(0)
@@ -27,17 +27,22 @@
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
+#define USE_GETLINE 0
+
 
 #define HIST_FILE	"__simple_shell_history"
 #define HIST_MAX	4096
+#define INFO_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+		0, 0, 0}
 extern char **environment;
 
 
 /**
- * struct my_list - sing linked list.
+ * struct my_liststr - sing linked list.
  *
  * @number: the number of  field.
- * @str: string.
+ * @s: string.
  *
  * @next: pointer to point to the next node.
  */
@@ -56,17 +61,52 @@ typedef struct my_liststr
  *@argv: an array of strings generated from arg.
  *@input: a string path for the current command.
  *@history: history node.
- *@historycount: history line number count.
- */
+ *@historycount: history line number count
+ * @arg: string generated from getline
+ * @argc: arg count
+ * @err_num: error code
+ * @env: linked list of environ
+ * @environ: custom modified copy of environ
+ * @alias: alias node
+ * @env_changed: environ changed
+ * @status: return status
+ * @cmd_buf: address
+ * @cmd_buf_type: CMD_type
+ * @readfd: fd from read line input
+*/
 typedef struct pass_information
 {
 	char **argv;
 	unsigned int line_count;
+	char *arg;
+	int argc;
+	int err_num;
+	my_list_t *env;
+	my_list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
+	char **cmd_buf;
+	int cmd_buf_type;
+	int readfd;
 	char *fname;
 	char *input;
 	my_list_t *history;
 	int historycount;
 } info_t;
+
+/**
+ * struct builtt - contains builtt string
+ *
+ * @type: flag
+ * @fun: function
+*/
+
+typedef struct builtt
+{
+	char *type;
+	int (*fun)(info_t *);
+} builttable;
 
 
 
@@ -85,14 +125,14 @@ char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
 int _putchar(char);
-char strncpy_2(char *, char *, int );
-char strncat_2(char *, char *, int );
-char strchr_2(char *, char );
+char strncpy_2(char *, char *, int);
+char strncat_2(char *, char *, int);
+char strchr_2(char *, char);
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
-char *memset_func(char *, char , unsigned int);
+char *memset_func(char *, char, unsigned int);
 void free_func(char **);
-void *realloc_func(void *, unsigned int , unsigned int);
+void *realloc_func(void *, unsigned int, unsigned int);
 int free_function(void **);
 int convarte_(char *);
 void error_1(info_t *, char *);
@@ -116,6 +156,41 @@ int history_w(info_t *info);
 int history_r(info_t *info);
 int history_l(info_t *info, char *buf, int linecount);
 int history_rm(info_t *info);
+int ischain_fun(info_t *, char *, size_t *);
+void checkchain_fun(info_t *, char *, size_t *, size_t, size_t);
+int repalias_fun(info_t *);
+int repvars_fun(info_t *);
+int repstring_fun(char **, char *);
+char **getenv_fun(info_t *);
+int unsetenv_fun(info_t *, char *);
+int setenv_fun(info_t *, char *, char *);
+char *getenv_fun(info_t *, const char *);
+int env_fun(info_t *);
+int setenv_fun(info_t *);
+int unsetenv_fun(info_t *);
+int penv_list(info_t *);
+void clearinfo_fun(info_t *);
+void setinfo_fun(info_t *, char **);
+void freeinfo_fun(info_t *, int);
+ssize_t getinput_fun(info_t *);
+int getline_fun(info_t *, char **, size_t *);
+void sigintandler_fun(int);
+ssize_t inputbuf_fun(info_t *, char **, size_t *);
+ssize_t readbuf_fun(info_t *, char *, size_t *);
+int history_fun(info_t *);
+int alias_fun(info_t *);
+int printalias_fun(list_t *);
+int setalias_fun(info_t *, char *);
+int unsetalias_fun(info_t *, char *);
+int exit_fun(info_t *);
+int cd_fun(info_t *);
+int help_fun(info_t *);
+int interactive_fun(info_t *);
+int delim_fun(char, char *);
+int alpha_fun(int);
+int atoi_fun(char *);
+int mshell(info_t *, char **);
+int findbuilt_fun(info_t *);
 
 
 
