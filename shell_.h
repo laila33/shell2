@@ -56,11 +56,12 @@ typedef struct my_liststr
 /**
  *struct pass_information - contains pseudo-arguements to pass into a function,
  *		allowing uniform prototype for function pointer struct
- *@line_count: the error count.
+ *@l_count: the error count.
  *@fname: the program filename.
  *@argv: an array of strings generated from arg.
  *@input: a string path for the current command.
  *@history: history node.
+<<<<<<< HEAD
  *@historycount: history line number count
  * @arg: string generated from getline
  * @argc: arg count
@@ -89,10 +90,20 @@ typedef struct pass_information
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
+=======
+ *@historycount: history line number count.
+ *@lcount_ch: if on count this line of input.
+ */
+typedef struct pass_information
+{
+	char **argv;
+	unsigned int l_count;
+>>>>>>> 247ba16679ecf5bfd0bbf108cfe26f37e3c10ba2
 	char *fname;
 	char *input;
 	my_list_t *history;
 	int historycount;
+	int lcount_ch;
 } info_t;
 
 /**

@@ -80,3 +80,94 @@ int findbuilt_fun(info_t *info)
 	return (br);
 }
 
+
+
+
+
+/**
+ * git_cmd - find  command from  PATH.
+ *
+ * @info: the parameter and  return info struct.
+ *
+ * Return: (void)
+ */
+void git_cmd(info_t *info)
+{
+	char *input = NULL;
+	int i, j;
+
+	info->input = info->argv[0];
+	if (info->lcount_ch == 1)
+	{
+		info->l_count++;
+		info->lcount_ch = 0;
+	}
+	for (i = 0, j = 0; info->arg[i]; i++)
+		if (!is_delim(info->arg[i], " \t\n"))
+			j++;
+	if (!j)
+		return;
+
+	input = f_path(info, getenv_func(info, "PATH="), info->argv[0]);
+	if (input)
+	{
+		info->input = input;
+		f_cmd(info);
+	}
+	else
+	{
+		if ((interactive_fun(info) || getenv_fun(info, "PATH=")
+			|| info->argv[0][0] == '/') && if_cmd(info, info->argv[0]))
+			f_cmd(info);
+		else if (*(info->arg) != '\n')
+		{
+			info->status = 127;
+			error_1(info, "not found\n");
+		}
+	}
+}
+
+
+
+
+
+
+/**
+ * f_cmd - fork a an exec command to run cmd.
+ *
+ * @info:  parameter and return info struct.
+ *
+ * Return: void
+ */
+void f_cmd(info_t *info)
+{
+	pid_t newpid;
+
+	newpid = fork();
+	if (newpid == -1)
+	{
+		perror("Error:");
+		return;
+	}
+	if (newpid == 0)
+	{
+		if (execve(info->path, info->argv, getenv_fun(info)) == -1)
+		{
+			free_info(info, 1);
+			if (errno == EACCES)
+				exit(126);
+			exit(1);
+		}
+		
+	}
+	else
+	{
+		wait(&(info->status));
+		if (WIFEXITED(info->status))
+		{
+			info->status = WEXITSTATUS(info->status);
+			if (info->status == 126)
+				error_1(info, "Permission denied\n");
+		}
+	}
+}
