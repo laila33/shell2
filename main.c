@@ -28,11 +28,11 @@ int main(int ao, char **a)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				_eputs(a[0]);
-				_eputs(": 0: Can't open ");
-				_eputs(a[1]);
-				_eputchar('\n');
-				_eputchar(BUF_FLUSH);
+				eputs_func(a[0]);
+				eputs_func(": 0: Can't open ");
+				eputs_func(a[1]);
+				Eput('\n');
+				Eput(BUF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);
