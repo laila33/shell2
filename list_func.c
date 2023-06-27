@@ -39,7 +39,7 @@ my_list_t *add_new_node(my_list_t **head, const char *s, int number)
 
 
 /**
- * add_end_node - add new  node at the end of the linked list.
+ * add_end_node - Add new node at the end of the linked list.
  *
  * @head: address of pointer to head node.
  *
@@ -47,7 +47,7 @@ my_list_t *add_new_node(my_list_t **head, const char *s, int number)
  *
  * @number: node index.
  *
- * Return: size of list
+ * Return: Size of list
  */
 my_list_t *add_end_node(my_list_t **head, const char *s, int number)
 {
@@ -110,7 +110,7 @@ size_t print_str(const my_list_t *p)
 /**
  * freee_func - free all nodes.
  *
- * @ptr: pointer address of head node.
+ * @ptr: Pointer address of head node.
  *
  * Return: void
  */

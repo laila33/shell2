@@ -61,7 +61,6 @@ typedef struct my_liststr
  *@argv: an array of strings generated from arg.
  *@input: a string path for the current command.
  *@history: history node.
-<<<<<<< HEAD
  *@historycount: history line number count
  * @arg: string generated from getline
  * @argc: arg count
@@ -74,11 +73,14 @@ typedef struct my_liststr
  * @cmd_buf: address
  * @cmd_buf_type: CMD_type
  * @readfd: fd from read line input
+ * @historycount: history line number count.
+ * @lcount_ch: If count this line of input.
+ * @status: return status of  last command.
 */
 typedef struct pass_information
 {
 	char **argv;
-	unsigned int line_count;
+	unsigned int l_count;
 	char *arg;
 	int argc;
 	int err_num;
@@ -86,20 +88,10 @@ typedef struct pass_information
 	my_list_t *alias;
 	char **environ;
 	int env_changed;
-	int status;
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
-=======
- *@historycount: history line number count.
- *@lcount_ch: if on count this line of input.
- *@status: return status of  last command.
- */
-typedef struct pass_information
-{
-	char **argv;
-	unsigned int l_count;
->>>>>>> 247ba16679ecf5bfd0bbf108cfe26f37e3c10ba2
+//>>>>>>> 247ba16679ecf5bfd0bbf108cfe26
 	char *fname;
 	char *input;
 	my_list_t *history;
@@ -138,15 +130,12 @@ char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
 int _putchar(char);
-<<<<<<< HEAD
 char *strncpy_2(char *, char *, int );
 char *strncat_2(char *, char *, int );
 char *strchr_2(char *, char );
-=======
-char strncpy_2(char *, char *, int);
-char strncat_2(char *, char *, int);
-char strchr_2(char *, char);
->>>>>>> 13f5da507f71900000d3de4e1c0bdc7bbf3679f1
+//char strncpy_2(char *, char *, int);
+//char strncat_2(char *, char *, int);
+//char strchr_2(char *, char);
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char, unsigned int);
