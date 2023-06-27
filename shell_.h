@@ -120,5 +120,8 @@ int isdelim_fun(char, char *);
 int isalpha_fun(int);
 int atoi_fun(char *);
 
+int exit_fun(info_tt *);
+int cd_fun(info_tt *);
+int help_fun(info_tt *);
 
 #endif
