@@ -43,7 +43,7 @@ extern char **environ;
  * @s: a string
  * @next: point to next node.
  */
-typedef struct my_liststr
+typedef struct my_lists_t
 {
 	int number;
 	char *s;
@@ -67,8 +67,8 @@ typedef struct my_liststr
  *@alias: the alias node
  *@env_ch: on if environ was changed
  *@statuss: Return status of the last executed command.
- *@cmd_buf: address of pointer to cmd_buf, on if chaining
- *@cmd_buf_type: CMD_type ||, &&, ;
+ *@cmd_buff: address of pointer to cmd_buf, on if chaining
+ *@cmd_type: CMD_type ||, &&, ;
  *@readf: the fd from which to read line input
  *@historycount: line number counter.
  */
@@ -86,7 +86,7 @@ typedef struct passinfo
 	my_list_t *the_history;
 	my_list_t *alias;
 	char **environ;
-	int env_ch;   
+	int env_ch;
 	int statuss;
 
 	char **cmd_buff; /* pointer to cmd ; chain buffer, for memory mangement */
@@ -115,10 +115,10 @@ int eputchar_func(char);
 int putfd_func(char c, int fd);
 int putsfd_d(char *str, int fd);
 
-int strlen_func(char *);
-int strcmp_func(char *, char *);
-char *starts_with_func(const char *, const char *);
-char *strcat_func(char *, char *);
+int interactive_fun(info_tt *);
+int isdelim_fun(char, char *);
+int isalpha_fun(int);
+int atoi_fun(char *);
 
 char *strcpy_func1(char *, char *);
 char *strdup_func1(const char *);
@@ -128,5 +128,3 @@ int _putcharr(char);
 
 
 #endif
-
-
