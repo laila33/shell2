@@ -174,8 +174,6 @@ char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 
 
-<<<<<<< HEAD
-=======
 size_t l_l(const my_list_t *);
 char **l_to_s(my_list_t *);
 size_t put_list(const my_list_t *);
@@ -214,13 +212,4 @@ void delete_message(char *);
 
 
 
-
-
-<<<<<<< HEAD
-=======
->>>>>>> 52353a15c071aea723301d82c06c28dcf20688b0
->>>>>>> 039b4e9580a6219ae73c713fd579b7a7ffe881d8
->>>>>>> d1b9a69a78bdfe6b3368f743ff9f240405d03590
-
->>>>>>> c39aeb534f8d3af11ee8c667603cf0b7158b2aba
 #endif
