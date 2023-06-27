@@ -43,7 +43,7 @@ extern char **environ;
  * @s: a string
  * @next: point to next node.
  */
-typedef struct my_liststr
+typedef struct my_lists_t
 {
 	int number;
 	char *s;
@@ -67,8 +67,8 @@ typedef struct my_liststr
  *@alias: the alias node
  *@env_ch: on if environ was changed
  *@statuss: Return status of the last executed command.
- *@cmd_buf: address of pointer to cmd_buf, on if chaining
- *@cmd_buf_type: CMD_type ||, &&, ;
+ *@cmd_buff: address of pointer to cmd_buf, on if chaining
+ *@cmd_type: CMD_type ||, &&, ;
  *@readf: the fd from which to read line input
  *@historycount: line number counter.
  */
@@ -86,7 +86,7 @@ typedef struct passinfo
 	my_list_t *the_history;
 	my_list_t *alias;
 	char **environ;
-	int env_ch;   
+	int env_ch;
 	int statuss;
 
 	char **cmd_buff; /* pointer to cmd ; chain buffer, for memory mangement */
@@ -115,103 +115,10 @@ int eputchar_func(char);
 int putfd_func(char c, int fd);
 int putsfd_d(char *str, int fd);
 
-int strlen_func(char *);
-int strcmp_func(char *, char *);
-char *starts_with_func(const char *, const char *);
-char *strcat_func(char *, char *);
-<<<<<<< HEAD
-char *strcpy_func(char *, char *);
-char *strdup_func(const char *);
-void puts_func(char *);
-int _putchar(char);
-/** str*/
-
-char *strncpy_2(char *, char *, int);
-char *strncat_2(char *, char *, int);
-char *strchr_2(char *, char);
-
-//char strncpy_2(char *, char *, int);
-//char strncat_2(char *, char *, int);
-//char strchr_2(char *, char);
-/** str*/
-char *strncpy_2(char *, char *, int );
-char *strncat_2(char *, char *, int );
-char *strchr_2(char *, char );
-/*char strncpy_2(char *, char *, int);
-//char strncat_2(char *, char *, int);
-<<<<<<< HEAD
-//char strchr_2(char *, char);*/
-
-//char strchr_2(char *, char
-//
-char **strtow_func(char *, char *);
-char **strtow_func2(char *, char);
-char *memset_func(char *, char, unsigned int);
-void free_func(char **);
-void *realloc_func(void *, unsigned int, unsigned int);
-int free_function(void **);
-int convarte_(char *);
-void error_1(info_t *, char *);
-int print_func(int, int);
-char *convert_3(long int, int, int);
-void remove_comments_message(char *);
-void eputs_func(char *);
-int Eput(char);
-int putfd_func(char c, int fd);
-int putsfd_print(char *str, int fd);
-my_list_t *add_new_node(my_list_t **, const char *, int);
-my_list_t *add_end_node(my_list_t **, const char *, int);
-size_t print_str(const my_list_t *);
-int remove_node(my_list_t **, unsigned int);
-void freee_func(my_list_t **);
-int if_cmd(info_t *, char *);
-char *d_char(char *, int, int);
-char *f_path(info_t *, char *, char *);
-char *find_history_file(info_t *info);
-int history_w(info_t *info);
-int history_r(info_t *info);
-int history_l(info_t *info, char *buf, int linecount);
-int history_rm(info_t *info);
-int ischain_fun(info_t *, char *, size_t *);
-void checkchain_fun(info_t *, char *, size_t *, size_t, size_t);
-int repalias_fun(info_t *);
-int repvars_fun(info_t *);
-int repstring_fun(char **, char *);
-char **getenv_f(info_t *);
-int unsetenv_fun(info_t *, char *);
-int setenv_fun(info_t *, char *, char *);
-char *getenv_fun(info_t *, const char *);
-int env_fun(info_t *);
-int setenv_f(info_t *);
-int unsetenv_f(info_t *);
-int penv_list(info_t *);
-void clearinfo_fun(info_t *);
-void setinfo_fun(info_t *, char **);
-void freeinfo_fun(info_t *, int);
-ssize_t getinput_fun(info_t *);
-int getline_fun(info_t *, char **, size_t *);
-void sigintandler_fun(int);
-ssize_t inputbuf_fun(info_t *, char **, size_t *);
-ssize_t readbuf_fun(info_t *, char *, size_t *);
-int history_fun(info_t *);
-int alias_fun(info_t *);
-int printalias_fun(my_list_t *);
-int setalias_fun(info_t *, char *);
-int unsetalias_fun(info_t *, char *);
-int exit_fun(info_t *);
-int cd_fun(info_t *);
-int help_fun(info_t *);
-int interactive_fun(info_t *);
-int delim_fun(char, char *);
-int alpha_fun(int);
+int interactive_fun(info_tt *);
+int isdelim_fun(char, char *);
+int isalpha_fun(int);
 int atoi_fun(char *);
-int mshell(info_t *, char **);
-int findbuilt_fun(info_t *);
-void git_cmd(info_t *);
-void f_cmd(info_t *);
-
 
 
 #endif
-
-
