@@ -8,7 +8,7 @@
  * Return: allocated string containg history file.
  */
 
-char *find_history_file(info_t *info)
+char *find_history_file(info_tt *info)
 {
 	char *buffer, *x;
 
@@ -19,7 +19,7 @@ char *find_history_file(info_t *info)
 	if (!buffer)
 		return (NULL);
 	buffer[0] = 0;
-	strcpy_func(buffer, x);
+	strcpy_func1(buffer, x);
 	strcat_func(buffer, "/");
 	strcat_func(buffer, HIST_FILE);
 	return (buffer);
@@ -36,7 +36,7 @@ char *find_history_file(info_t *info)
  */
 
 
-int history_w(info_t *info)
+int history_w(info_tt *info)
 {
 	ssize_t f_d;
 	char *name = find_history_file(info);
@@ -49,10 +49,10 @@ int history_w(info_t *info)
 	free(name);
 	if (f_d == -1)
 		return (-1);
-	for (c_node = info->history; c_node; c_node = c_node->next)
+	for (c_node = info->the_history; c_node; c_node = c_node->next)
 	{
 		putsfd_print(c_node->s, f_d);
-		putfd_func('\n', f_d);
+		putfd_func('\n', fd);
 	}
 	putfd_func(BUF_FLUSH, f_d);
 	close(f_d);
@@ -66,18 +66,18 @@ int history_w(info_t *info)
  *
  * Return: histcount on success, or 0.
  */
-int history_r(info_t *info)
+int history_r(info_tt *info)
 {
 	int j, end = 0, l_count = 0;
 	ssize_t f_d, rlen, sizee = 0;
 	struct stat st;
-	char *buffer = NULL, *fname = find_history_file(info);
+	char *buffer = NULL, *filename = find_history_file(info);
 
-	if (!fname)
+	if (!filename)
 		return (0);
 
-	f_d = open(fname, O_RDONLY);
-	free(fname);
+	f_d = open(filename, O_RDONLY);
+	free(filename);
 	if (f_d == -1)
 		return (0);
 	if (!fstat(f_d, &st))
@@ -104,7 +104,7 @@ int history_r(info_t *info)
 	free(buffer);
 	info->historycount = l_count;
 	while (info->historycount-- >= HIST_MAX)
-		remove_node(&(info->history), 0);
+		remove_node(&(info->the_history), 0);
 	history_rm(info);
 	return (info->historycount);
 }
@@ -118,9 +118,9 @@ int history_r(info_t *info)
  *
  * Return:  histcount.
  */
-int history_rm(info_t *info)
+int history_rm(info_tt *info)
 {
-	my_list_t *c_node = info->history;
+	my_list_t *c_node = info->the_history;
 	int j = 0;
 
 	while (c_node)
@@ -143,15 +143,15 @@ int history_rm(info_t *info)
  *
  * Return: 0.
  */
-int history_l(info_t *info, char *buf, int l_count)
+int history_l(info_tt *info, char *buf, int l_count)
 {
 	my_list_t *c_node = NULL;
 
-	if (info->history)
-		c_node = info->history;
+	if (info->the_history)
+		c_node = info->the_history;
 	add_end_node(&c_node, buf, l_count);
 
-	if (!info->history)
-		info->history = c_node;
+	if (!info->the_history)
+		info->the_history = c_node;
 	return (0);
 }
