@@ -4,43 +4,43 @@
  * main - entry point
  *
  * @ao: arg count
- * @a: arg vector
+ * @ar: arg vector
  *
  * Return: 0 success else 1
 */
 
-int main(int ao, char **a)
+int main(int ao, char **ar)
 {
-	info_t info[] = { INFO_INIT };
-	int fd = 2;
+	info_tt info[1] = { INFO__INIT };
+	int f = 2;
 
 	asm ("mov %1, %0\n\t"
 			"add $3, %0"
-			: "=r" (fd)
-			: "r" (fd));
+			: "=r" (f)
+			: "r" (f));
 
 	if (ao == 2)
 	{
-		fd = open(a[1], O_RDONLY);
-		if (fd == -1)
+		f = open(ar[1], O_RDONLY);
+		if (f == -1)
 		{
 			if (errno == EACCES)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				eputs_func(a[0]);
+				eputs_func(ar[0]);
 				eputs_func(": 0: Can't open ");
-				eputs_func(a[1]);
+				eputs_func(ar[1]);
 				Eput('\n');
 				Eput(BUF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);
 		}
-		info->readfd = fd;
+		info->readf = f;
 	}
-	penv_list(info);
-	history_r(info);
-	mshell(info, a);
+	popenv_list(&info[0]);
+	history_r(*info);
+	mshell(*info, ar);
 	return (EXIT_SUCCESS);
 }
