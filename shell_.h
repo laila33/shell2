@@ -129,7 +129,6 @@ char *strdup_func1(const char *);
 void puts_func(char *);
 int _putcharr(char);
 
-<<<<<<< HEAD
 char *getenv_fun(info_tt *, const char *);
 int env_fun(info_tt *);
 int setenv_fun(info_tt *);
@@ -141,7 +140,7 @@ int unsetenv(info_tt *, char *);
 int setenv(info_tt *, char *, char *);
 
 void clearinfo_fun(info_tt *);
-void setinfo_info(info_tt *, char **);
+void setinfo_fun(info_tt *, char **);
 void freeinfo_fun(info_tt *, int);
 
 ssize_t getinput_fun(info_tt *);
@@ -161,7 +160,7 @@ void checkchain_fun(info_tt *, char *, size_t *, size_t, size_t);
 int repalias_fun(info_tt *);
 int repvars_fun(info_tt *);
 int repstring_fun(char **, char *);
-=======
+
 int strlen_func(char *);
 int strcmp_func(char *, char *);
 char *starts_with_func(const char *, const char *);
@@ -172,9 +171,5 @@ char *strncat_func2(char *, char *, int);
 char *strchr_func2(char *, char);
 
 
-
-
->>>>>>> 52353a15c071aea723301d82c06c28dcf20688b0
->>>>>>> 039b4e9580a6219ae73c713fd579b7a7ffe881d8
 
 #endif

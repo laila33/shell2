@@ -6,43 +6,43 @@
  * @info: struct
 */
 
-void clearinfo_fun(info_t *info)
+void clearinfo_fun(info_tt *info)
 {
-	info->path = NULL;
+	info->input = NULL;
+	info->arg_v = NULL;
 	info->arg = NULL;
-	info->arg = NULL;
-	info->argc = 0;
+	info->arg_c = 0;
 }
 
 /**
  * setinfo_fun - initializes info_t
  *
  * @info: struct
- * @a: arg vector
+ * @at: arg vector
 */
 
-void setinfo_fun(info_t *info, char **a)
+void setinfo_fun(info_tt *info, char **at)
 {
 	int n = 0;
 
-	info->fname = a[0];
+	info->filename = at[0];
 	if (info->arg)
 	{
-		info->argv = strtow_func(info->arg, "\t");
-		if (!info->argv)
+		info->arg_v = strtow_func(info->arg, "\t");
+		if (!info->arg_v)
 		{
-			info->argv = malloc(sizeof(char *) * 2);
-			if (info->argv)
+			info->arg_v = malloc(sizeof(char *) * 2);
+			if (info->arg_v)
 			{
-				info->argv[0] = *strdup_func(info->arg);
-				info->argv[1] = NULL;
+				info->arg_v[0] = strdup_func1(info->arg);
+				info->arg_v[1] = NULL;
 			}
 		}
-		for (n = 0; info->argv && info->argv[n]; n++)
+		for (n = 0; info->arg_v && info->arg_v[n]; n++)
 			;
-		info->argc = n;
-		replace_alias(info);
-		replace_vars(info);
+		info->arg_c = n;
+		repalias(info);
+		repvars(info);
 	}
 }
 
@@ -50,25 +50,30 @@ void setinfo_fun(info_t *info, char **a)
  * freeinfo_fun - free info_t
  *
  * @info: struct
- * @a: free all fields
+ * @f: free all fields
 */
 
-void freeinfo_fun(info_t *info, int a)
+void freeinfo_fun(info_tt *info, int f)
 {
-	free(info->argv);
-	info->path = NULL;
-	info->argv = NULL;
+	free(info->arg_v);
+	info->input = NULL;
+	info->arg_v = NULL;
 
-	if (a)
+	if (f)
 	{
-		if (!info->cmd_buf)
+		if (!info->cmd_buff)
 			free(info->arg);
-		if (info->history)
-			free_list(&(info->history));
+		if (info->the_history)
+			free_linked(&(info->the_history));
 		if (info->env)
-			free_list(&(info->env));
+			free_linked(&(info->env));
 		if (info->alias)
-			free_list(&(info->alias));
-		free(info->environ);
+			free_linked(&(info->alias));
+		free_str(info->environ);
 		info->environ = NULL;
-
+		free_function((void **)info->cmd_buff);
+		if (info->readf > 2)
+			close(info->readf);
+		_putcharr(BUF_FLUSH);
+	}
+}
