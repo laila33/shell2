@@ -120,17 +120,43 @@ int isdelim_fun(char, char *);
 int isalpha_fun(int);
 int atoi_fun(char *);
 
-<<<<<<< HEAD
 int exit_fun(info_tt *);
 int cd_fun(info_tt *);
 int help_fun(info_tt *);
-=======
+
 char *strcpy_func1(char *, char *);
 char *strdup_func1(const char *);
 void puts_func(char *);
 int _putcharr(char);
 
+char *getenv_fun(info_tt *, const char *);
+int env_fun(info_tt *);
+int setenv_fun(info_tt *);
+int unsetenv_fun(info_tt *);
+int popenv_list(info_tt *);
 
->>>>>>> 52353a15c071aea723301d82c06c28dcf20688b0
+char **getenviron_fun(info_tt *);
+int unsetenv(info_tt *, char *);
+int setenv(info_tt *, char *, char *);
+
+void clearinfo_fun(info_tt *);
+void setinfo_info(info_tt *, char **);
+void freeinfo_fun(info_tt *, int);
+
+ssize_t getinput_fun(info_tt *);
+int getline_fun(info_tt *, char **, size_t *);
+void siginthandler_fun(int);
+
+int history_fun(info_tt *);
+int alias_fun(info_tt *);
+int unsetalias_fun(info_tt *info, char *s);
+int setalias_fun(info_tt *info, char *s);
+int printalias_fun(my_list_t *node);
+
+int ischain_fun(info_tt *, char *, size_t *);
+void checkchain_fun(info_tt *, char *, size_t *, size_t, size_t);
+int repalias_fun(info_tt *);
+int repvars_fun(info_tt *);
+int repstring_fun(char **, char *);
 
 #endif

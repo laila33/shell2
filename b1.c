@@ -8,9 +8,9 @@
  * Return: 0
 */
 
-int history_fun(info_t *info)
+int history_fun(info_tt *info)
 {
-	print_str(info->history);
+	put_list(info->the_history);
 	return (0);
 }
 
@@ -23,19 +23,19 @@ int history_fun(info_t *info)
  * Return: 0 success 1 if fail
 */
 
-int unsetalias_fun(info_t *info, char *s)
+int unsetalias_fun(info_tt *info, char *s)
 {
-	char *a, b;
+	char *p, b;
 	int r;
 
-	a = *strchr_2(s, '=');
-	if (!a)
+	p = strchr_func2(s, '=');
+	if (!p)
 		return (1);
-	b = *a;
-	*a = 0;
-	r = remove_node(&(info->alias),
-			nodes_index(info->alias, starts_with_func(info->alias, s, -1)));
-	*a = b;
+	b = *p;
+	*p = 0;
+	r = delete_node(&(info->alias),
+			find_node_index(info->alias, starts_node(info->alias, s, -1)));
+	*p = b;
 	return (r);
 }
 
@@ -48,18 +48,18 @@ int unsetalias_fun(info_t *info, char *s)
  * Return: 0 success 1 if fail
 */
 
-int setalias_fun(info_t *info, char *s)
+int setalias_fun(info_tt *info, char *s)
 {
-	char *a;
+	char *p;
 
-	a = *strchr_2(s, '=');
-	if (!a)
+	p = strchr_func2(s, '=');
+	if (!p)
 		return (1);
-	if (!*++a)
+	if (!*++p)
 		return (unsetalias_fun(info, s));
 
 	unsetalias_fun(info, s);
-	return (*add_end_node(&(info->alias), s, 0) == NULL);
+	return (insert_end_node(&(info->alias), s, 0) == NULL);
 }
 
 /**
@@ -72,16 +72,16 @@ int setalias_fun(info_t *info, char *s)
 
 int printalias_fun(my_list_t *node)
 {
-	char *a = NULL, *l = NULL;
+	char *p = NULL, *l = NULL;
 
 	if (node)
 	{
-		a = *strchr_2(node->s, '=');
-		for (l = node->s; l <= a; l++)
-			_putchar(*l);
-		_putchar('\'');
-		_puts(a + 1);
-		_puts("'\n");
+		p = strchr_func2(node->s, '=');
+		for (l = node->s; l <= p; l++)
+			_putcharr(*l);
+		_putcharr('\'');
+		puts_func(p + 1);
+		puts_func("'\n");
 		return (0);
 	}
 	return (1);
@@ -95,13 +95,13 @@ int printalias_fun(my_list_t *node)
  * Return: 0
 */
 
-int alias_fun(info_t *info)
+int alias_fun(info_tt *info)
 {
 	int n = 0;
-	char *a = NULL;
+	char *p = NULL;
 	my_list_t *node = NULL;
 
-	if (info->argc == 1)
+	if (info->arg_c == 1)
 	{
 		node = info->alias;
 		while (node)
@@ -111,13 +111,13 @@ int alias_fun(info_t *info)
 		}
 		return (0);
 	}
-	for (n = 1; info->argv[n]; n++)
+	for (n = 1; info->arg_v[n]; n++)
 	{
-		a = *strchr_2(info->argv[n], '=');
-		if (a)
-			setalias_fun(info, info->argv[n]);
+		p = strchr_func2(info->arg_v[n], '=');
+		if (p)
+			setalias_fun(info, info->arg_v[n]);
 		else
-			printalias_fun(starts_with_func(info->alias, info->argv[n], '='));
+			printalias_fun(start_node(info->alias, info->arg_v[n], '='));
 	}
 	return (0);
 }
