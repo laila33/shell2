@@ -91,16 +91,26 @@ typedef struct pass_information
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
+<<<<<<< HEAD
+	unsigned int l_count;
+        char *fname;
+        char *input;
+        my_list_t *history;
+        int historycount;
+        int lcount_ch;
+
+=======
 	char *fname;
 	char *input;
 	my_list_t *history;
 	int historycount;
 	int lcount_ch;
 	int status;
+>>>>>>> 17302941f1fe2ffe64385147b392966afa7945b0
 } info_t;
 
 /**
- * struct builtt - contains builtt string
+ * struct builtt - contains builtt string and function.
  *
  * @type: flag
  * @fun: function
@@ -129,12 +139,28 @@ char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
 int _putchar(char);
+<<<<<<< HEAD
+
+char *strncpy_2(char *, char *, int);
+char *strncat_2(char *, char *, int);
+char *strchr_2(char *, char);
+
+char strncpy_2(char *, char *, int);
+char strncat_2(char *, char *, int);
+char strchr_2(char *, char);
+
+=======
 char *strncpy_2(char *, char *, int );
 char *strncat_2(char *, char *, int );
 char *strchr_2(char *, char );
 /*char strncpy_2(char *, char *, int);
 //char strncat_2(char *, char *, int);
+<<<<<<< HEAD
 //char strchr_2(char *, char);*/
+=======
+//char strchr_2(char *, char);
+>>>>>>> 17302941f1fe2ffe64385147b392966afa7945b0
+>>>>>>> 057e139dc4ab5f2fbcafedde4e901a7b947dc6bf
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char, unsigned int);
@@ -168,13 +194,13 @@ void checkchain_fun(info_t *, char *, size_t *, size_t, size_t);
 int repalias_fun(info_t *);
 int repvars_fun(info_t *);
 int repstring_fun(char **, char *);
-char **getenv_fun(info_t *);
+char **getenv_f(info_t *);
 int unsetenv_fun(info_t *, char *);
 int setenv_fun(info_t *, char *, char *);
 char *getenv_fun(info_t *, const char *);
 int env_fun(info_t *);
-int setenv_fun(info_t *);
-int unsetenv_fun(info_t *);
+int setenv_f(info_t *);
+int unsetenv_f(info_t *);
 int penv_list(info_t *);
 void clearinfo_fun(info_t *);
 void setinfo_fun(info_t *, char **);

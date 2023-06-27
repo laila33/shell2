@@ -1,14 +1,14 @@
 #include "shell_.h"
 
 /**
- * getenv_fun - returns string arr copy of our environ
+ * getenv_f - returns string arr copy of our environ
  *
  * @info: struct
  *
  * Return: 0
 */
 
-char **getenv_fun(info_t *info)
+char **getenv_f(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
@@ -29,7 +29,7 @@ char **getenv_fun(info_t *info)
 
 int unsetenv_fun(info_t *info, char *v)
 {
-	list_t *node = info->env;
+	my_list_t *node = info->env;
 	size_t n = 0;
 	char *p;
 
@@ -66,7 +66,7 @@ int setenv_fun(info_t *info, char *v, char *u)
 {
 	char *p;
 	char *buf = NULL;
-	list_t *node;
+	my_list_t *node;
 
 	if (!v || !u)
 		return (0);

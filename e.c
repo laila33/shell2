@@ -25,7 +25,7 @@ int env_fun(info_t *info)
 
 char *getenv_fun(info_t *info, const char *n)
 {
-	list_t *node = info->env;
+	my_list_t *node = info->env;
 	char *a;
 
 	while (node)
@@ -39,14 +39,14 @@ char *getenv_fun(info_t *info, const char *n)
 }
 
 /**
- * setenv_fun - new env variable
+ * setenv_f - new env variable
  *
  * @info: struct
  *
  * Return: 0
 */
 
-int setenv_fun(info_t *info)
+int setenv_f(info_t *info)
 {
 	if (info->argc != 3)
 	{
@@ -59,14 +59,14 @@ int setenv_fun(info_t *info)
 }
 
 /**
- * unsetenv_fun - remove env variable
+ * unsetenv_f - remove env variable
  *
  * @info: struct
  *
  * Return: 0
 */
 
-int unsetenv_fun(info_t *info)
+int unsetenv_f(info_t *info)
 {
 	int l;
 
@@ -91,7 +91,7 @@ int unsetenv_fun(info_t *info)
 
 int penv_list(info_t *info)
 {
-	list_t *node = NULL;
+	my_list_t *node = NULL;
 	size_t l;
 
 	for (l = 0; env[l]; l++)
