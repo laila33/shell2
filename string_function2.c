@@ -1,13 +1,13 @@
 #include "shell_.h"
 
 /**
- * strcpy_func1 - Copies string.
+ * *strcpy_func1 - Copies string.
  * @s2: Destination string
  * @s1: Source
  *
  * Return: pointer to Destination
  */
-char *Strcpy_func1(char *s2, char *s1)
+char *strcpy_func1(char *s2, char *s1)
 {
 	int j = 0;
 
@@ -69,20 +69,20 @@ int _putchar(char ch)
 
 
 /**
- *puts_func - print string.
- *@s: the string to be printed
+ * puts_func - print string.
+ * @s: the string to be printed
  *
  * Return: None
- */
+*/
 void puts_func(char *s)
 {
-        int j = 0;
+	int j = 0;
 
-        if (!s)
-                return;
-        while (s[j] != '\0')
-        {
-                _putchar(s[j]);
-                j++;
-        }
+	if (!s)
+		return;
+	while (s[j] != '\0')
+	{
+		_putchar(s[j]);
+		j++;
+	}
 }

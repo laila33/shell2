@@ -20,7 +20,8 @@ char **strtow_func(char *str, char *copy)
 	if (!copy)
 		copy = " ";
 	for (i = 0; str[i] != '\0'; i++)
-		if (!isdelim_fun(str[i], copy) && (isdelim_fun(str[i + 1], copy) || !str[i + 1]))
+		if (!isdelim_fun(str[i], copy) &&
+				(isdelim_fun(str[i + 1], copy) || !str[i + 1]))
 			c++;
 
 	if (c == 0)
