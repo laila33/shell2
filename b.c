@@ -12,7 +12,7 @@ int help_fun(info_tt *info)
 {
 	char **arg_arr = info->arg_v;
 
-	_puts("The help command is recognized,
+	_puts(" The help command is recognized,
 			but the functionality is not yet available.\n");
 
 	if (0)
