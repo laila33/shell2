@@ -10,7 +10,7 @@
  * Return: 1 if chain delimeter else 0
 */
 
-int ischain_fun(info_t *info, char *buf, size_t *p)
+int ischain_fun(info_tt *info, char *buf, size_t *p)
 {
 	size_t n = *p;
 
@@ -18,18 +18,18 @@ int ischain_fun(info_t *info, char *buf, size_t *p)
 	{
 		buf[n] = 0;
 		n++;
-		info->cmd_buf_type = CMD_OR;
+		info->cmd_type = CMD__OR;
 	}
 	else if (buf[n] == '&' && buf[n + 1] == '&')
 	{
 		buf[n] = 0;
 		n++;
-		info->cmd_buf_type = CMD_AND;
+		info->cmd_type = CMD__AND;
 	}
 	else if (buf[n] == ';')
 	{
 		buf[n] = 0;
-		info->cmd_buf_type = CMD_CHAIN;
+		info->cmd_type = CMD__CHAIN;
 	}
 	else
 		return (0);
@@ -49,21 +49,21 @@ int ischain_fun(info_t *info, char *buf, size_t *p)
  * Return: void
 */
 
-void checkchain_fun(info_t *info, char *buf, size_t *p, size_t s, size_t l)
+void checkchain_fun(info_tt *info, char *buf, size_t *p, size_t s, size_t l)
 {
 	size_t n = *p;
 
-	if (info->cmd_buf_type == CMD_AND)
+	if (info->cmd_type == CMD__AND)
 	{
-		if (info->status)
+		if (info->statuss)
 		{
 			buf[s] = 0;
 			n = l;
 		}
 	}
-	if (info->cmd_buf_type == CMD_OR)
+	if (info->cmd_type == CMD__OR)
 	{
-		if (!info->status)
+		if (!info->statuss)
 		{
 			buf[s] = 0;
 			n = l;
@@ -80,7 +80,7 @@ void checkchain_fun(info_t *info, char *buf, size_t *p, size_t s, size_t l)
  * Return: 1 if replaced else 0
 */
 
-int repalias_fun(info_t *info)
+int repalias_fun(info_tt *info)
 {
 	int x;
 	my_list_t *node;
@@ -88,17 +88,17 @@ int repalias_fun(info_t *info)
 
 	for (x = 0; x < 10; x++)
 	{
-		node = node_starts_with(info->alias, info->argv[0], '=');
+		node = start_node(info->alias, info->arg_v[0], '=');
 		if (!node)
 			return (0);
-		free(info->argv[0]);
-		p = strchr_2(node->s, '=');
+		free(info->arg_v[0]);
+		p = strchr_func2(node->s, '=');
 		if (!p)
 			return (0);
-		p = *strdup_func(p + 1);
+		p = strdup_func1(p + 1);
 		if (!p)
 			return (0);
-		info->argv[0] = p;
+		info->arg_v[0] = p;
 	}
 	return (1);
 }
@@ -127,36 +127,36 @@ int repstring_fun(char **oldd, char *neww)
  * Return: 1 if replaced else 0
 */
 
-int repvars_fun(info_t *info)
+int repvars_fun(info_tt *info)
 {
 	int n = 0;
 	my_list_t *node;
 
-	for (n = 0; info->argv[n]; n++)
+	for (n = 0; info->arg_v[n]; n++)
 	{
-		if (info->argv[n][0] != '$' || !info->argv[n][1])
+		if (info->arg_v[n][0] != '$' || !info->arg_v[n][1])
 			continue;
 
-		if (!strcmp_func(info->argv[n], "$?"))
+		if (!strcmp_func(info->arg_v[n], "$?"))
 		{
-			repstring_fun(&(info->argv[n]),
-					*strdup_func(convert_3(info->status, 10, 0)));
+			repstring_fun(&(info->arg_v[n]),
+					strdup_func1(convert_d(info->statuss, 10, 0)));
 			continue;
 		}
-		if (!strcmp_func(info->argv[n], "$$"))
+		if (!strcmp_func(info->arg_v[n], "$$"))
 		{
-			repstring_fun(&(info->argv[n]),
-					*strdup_func(convert_3(getpid(), 10, 0)));
+			repstring_fun(&(info->arg_v[n]),
+					strdup_func1(convert_d(getpid(), 10, 0)));
 			continue;
 		}
-		node = node_starts_with(info->env, &info->[n][1], '=');
+		node = start_node(info->env, &info->[n][1], '=');
 		if (node)
 		{
-			repstring_fun(&(info->argv[n]),
-					*strdup_func(strchr_2(node->s, '=') + 1));
+			repstring_fun(&(info->arg_v[n]),
+					strdup_func1(strchr_func2(node->s, '=') + 1));
 			continue;
 		}
-		repstring_fun(&info->argv[n], *strdup_func(""));
+		repstring_fun(&info->arg_v[n], strdup_func1(""));
 	}
 	return (0);
 }
