@@ -129,7 +129,6 @@ char *strdup_func1(const char *);
 void puts_func(char *);
 int _putchar(char);
 
-<<<<<<< HEAD
 char *getenv_fun(info_tt *, const char *);
 int env_fun(info_tt *);
 int setenv_fun(info_tt *);
@@ -137,11 +136,11 @@ int unsetenv_fun(info_tt *);
 int popenv_list(info_tt *);
 
 char **getenviron_fun(info_tt *);
-int unsetenv(info_tt *, char *);
-int setenv(info_tt *, char *, char *);
+int __unsetenv(info_tt *, char *);
+int __setenv(info_tt *, char *, char *);
 
 void clearinfo_fun(info_tt *);
-void setinfo_info(info_tt *, char **);
+void setinfo_fun(info_tt *, char **);
 void freeinfo_fun(info_tt *, int);
 
 ssize_t getinput_fun(info_tt *);
@@ -161,7 +160,7 @@ void checkchain_fun(info_tt *, char *, size_t *, size_t, size_t);
 int repalias_fun(info_tt *);
 int repvars_fun(info_tt *);
 int repstring_fun(char **, char *);
-=======
+
 int strlen_func(char *);
 int strcmp_func(char *, char *);
 char *starts_with_func(const char *, const char *);
@@ -175,6 +174,8 @@ char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 
 
+<<<<<<< HEAD
+=======
 size_t l_l(const my_list_t *);
 char **l_to_s(my_list_t *);
 size_t put_list(const my_list_t *);
@@ -221,4 +222,5 @@ void delete_message(char *);
 >>>>>>> 039b4e9580a6219ae73c713fd579b7a7ffe881d8
 >>>>>>> d1b9a69a78bdfe6b3368f743ff9f240405d03590
 
+>>>>>>> c39aeb534f8d3af11ee8c667603cf0b7158b2aba
 #endif
