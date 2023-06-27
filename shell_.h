@@ -128,7 +128,7 @@ int help_fun(info_tt *);
 char *strcpy_func1(char *, char *);
 char *strdup_func1(const char *);
 void puts_func(char *);
-int _putcharr(char);
+int _putchar(char);
 
 int strlen_func(char *);
 int strcmp_func(char *, char *);
@@ -139,9 +139,36 @@ char *strncpy_func2(char *, char *, int);
 char *strncat_func2(char *, char *, int);
 char *strchr_func2(char *, char);
 
+char **strtow_func(char *, char *);
+char **strtow_func2(char *, char);
+
+
+size_t l_l(const my_list_t *);
+char **l_to_s(my_list_t *);
+size_t put_list(const my_list_t *);
+my_list_t *start_node(my_list_t *, char *, char );
+ssize_t find_node_index(my_list_t *, my_list_t *);
+
+char *memset_func(char *, char , unsigned int );
+void free_str(char **);
+void *find_str(void *, unsigned int , unsigned int );
+
+
+my_list_t *insert_node(my_list_t **, const char *, int);
+my_list_t *add_node_end(my_list_t **, const char *, int);
+size_t put_list(const my_list_t *);
+int delete_index(my_list_t **, unsigned int);
+void free_linked(my_list_t **);
 
 
 
->>>>>>> 52353a15c071aea723301d82c06c28dcf20688b0
+
+
+
+
+
+
+
+
 
 #endif

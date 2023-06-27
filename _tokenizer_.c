@@ -20,7 +20,7 @@ char **strtow_func(char *str, char *copy)
 	if (!copy)
 		copy = " ";
 	for (i = 0; str[i] != '\0'; i++)
-		if (!delim_fun(str[i], copy) && (delim_fun(str[i + 1], copy) || !str[i + 1]))
+		if (!isdelim_fun(str[i], copy) && (isdelim_fun(str[i + 1], copy) || !str[i + 1]))
 			c++;
 
 	if (c == 0)
@@ -30,10 +30,10 @@ char **strtow_func(char *str, char *copy)
 		return (NULL);
 	for (i = 0, j = 0; j < c; j++)
 	{
-		while (delim_fun(str[i], copy))
+		while (isdelim_fun(str[i], copy))
 			i++;
 		x = 0;
-		while (!delim_fun(str[i + x], copy) && str[i + x])
+		while (!isdelim_fun(str[i + x], copy) && str[i + x])
 			x++;
 		a[j] = malloc((x + 1) * sizeof(char));
 		if (!a[j])
@@ -99,7 +99,5 @@ char **strtow_func2(char *str, char copy)
 	a[j] = NULL;
 	return (a);
 }
-
-
 
 

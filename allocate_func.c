@@ -1,75 +1,62 @@
 #include "shell_.h"
 
 /**
- * memset_func - fill memory with a constant thing.
- *
- * @src:  pointer to the specfic area.
- *
- * @th: byte to fill string src with.
- *
- * @num: the amount of bytes to filled.
- *
- * Return:  pointer to the memory area in string src.
- *
+ **memset_func - fill memory with a number of bytes.
+ *@m: Pointer to the area in memory.
+ *@num: ByteS to PUT *m with.
+ *@am: NUMBER  of bytes to be filled.
+ *Return: (m)Pointer to the memory m.
  */
-char *memset_func(char *src, char th, unsigned int num)
+char *memset_func(char *m, char num, unsigned int am)
 {
 	unsigned int j;
 
-	for (j = 0; j < num; j++)
-		src[j] = th;
-	return (src);
+	for (j = 0; j < am; j++)
+		m[j] = num;
+	return (m);
 }
 
 /**
- * free_func - free  string of strings.
- *
- * @s: string of strings.
+ * free_str - free of strings
+ * @x: String of (strings).
  */
-void free_func(char **s)
+void free_str(char **x)
 {
-	char **x = s;
+	char **m = x;
 
-	if (!s)
+	if (!x)
 		return;
-	while (*s)
-		free(*s++);
-	free(x);
+	while (*x)
+		free(*x++);
+	free(m);
 }
 
-
-
 /**
- * realloc_func - reallocates a space of memory.
+ * find_str - reallocates a sizee of memory
+ * @x: pointer to previous malloc'ated block
+ * @oldd: size of byte of previous block.
+ * @neww: size of byte of a new block.
  *
- * @str: pointer to previous mallocated block.
- *
- * @oldd: size of previous block.
- *
- * @neww:  size of new block
- *
- * Return: pointer to old block.
+ * Return: Pointer to BLOCJ IN MEMORY.
  */
-void *realloc_func(void *str, unsigned int oldd, unsigned int neww)
+void *find_str(void *x, unsigned int oldd, unsigned int neww)
 {
-	char *x;
+	char *a;
 
-	if (!str)
+	if (!x)
 		return (malloc(neww));
 	if (!neww)
-		return (free(str), NULL);
+		return (free(x), NULL);
 	if (neww == oldd)
-		return (str);
+		return (x);
 
-	x = malloc(neww);
-	if (!x)
+	a = malloc(neww);
+	if (!a)
 		return (NULL);
 
 	oldd = oldd < neww ? oldd : neww;
 	while (oldd--)
-		x[oldd] = ((char *)str)[oldd];
-	free(str);
-	return (x);
+		a[oldd] = ((char *)x)[oldd];
+	free(x);
+	return (a);
 }
-
-

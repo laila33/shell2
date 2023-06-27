@@ -47,12 +47,12 @@ char *strdup_func1(const char *s)
 
 
 /**
- * _putcharr_func - write the character ch to stdout.
+ * putchar - write the character ch to stdout.
  * @ch: The char to print.
  *
  * Return: 1 or -1.
  */
-int _putcharr_func(char ch)
+int _putchar(char ch)
 {
 	static int j;
 	static char buffer[WRITE__SIZE];
@@ -82,7 +82,7 @@ void puts_func(char *s)
                 return;
         while (s[j] != '\0')
         {
-                _putcharr_func(s[j]);
+                putchar(s[j]);
                 j++;
         }
 }
