@@ -8,9 +8,9 @@
  * Return: 0
 */
 
-int env_fun(info_t *info)
+int env_fun(info_tt *info)
 {
-	print_list_str(info->env);
+	put_liststr(info->env);
 	return (0);
 }
 
@@ -23,79 +23,79 @@ int env_fun(info_t *info)
  * Return: value
 */
 
-char *getenv_fun(info_t *info, const char *n)
+char *getenv_fun(info_tt *info, const char *n)
 {
 	my_list_t *node = info->env;
-	char *a;
+	char *p;
 
 	while (node)
 	{
-		a = starts_with_func(node->s, n);
-		if (a && *a)
-			return (a);
+		p = starts_with_func(node->s, n);
+		if (p && *p)
+			return (p);
 		node = node->next;
 	}
 	return (NULL);
 }
 
 /**
- * setenv_f - new env variable
+ * setenv_fun - new env variable
  *
  * @info: struct
  *
  * Return: 0
 */
 
-int setenv_f(info_t *info)
+int setenv_fun(info_tt *info)
 {
-	if (info->argc != 3)
+	if (info->arg_c != 3)
 	{
-		_eputs("Invaild num of arguments\n");
+		eputs_func("Invaild num of arguments\n");
 		return (1);
 	}
-	if (setenv(info, info->argv[1], info->argv[2]))
+	if (setenv(info, info->arg_v[1], info->arg_v[2]))
 		return (0);
 	return (1);
 }
 
 /**
- * unsetenv_f - remove env variable
+ * unsetenv_fun - remove env variable
  *
  * @info: struct
  *
  * Return: 0
 */
 
-int unsetenv_f(info_t *info)
+int unsetenv_fun(info_tt *info)
 {
 	int l;
 
-	if (info->argc == 1)
+	if (info->arg_c == 1)
 	{
-		_eputs("Too arguments.\n");
+		eputs_func("Too arguments.\n");
 		return (1);
 	}
-	for (l = 1; l <= info->argc; l++)
-		unsetenv(info, info->argv[l]);
+	for (l = 1; l <= info->arg_c; l++)
+		unsetenv(info, info->arg_v[l]);
 
 	return (0);
 }
 
 /**
- * penv_list - populates env list
+ * popenv_list - populates env list
  *
  * @info: struct
  *
  * Return: 0
 */
 
-int penv_list(info_t *info)
+int popenv_list(info_tt *info)
 {
 	my_list_t *node = NULL;
 	size_t l;
 
 	for (l = 0; env[l]; l++)
-		add_node_end(&node, env[l], 0);
+		insert_end_node(&node, env[l], 0);
 	info->env = node;
 	return (0);
 }
