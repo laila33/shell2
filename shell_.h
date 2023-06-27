@@ -177,12 +177,12 @@ char **strtow_func2(char *, char);
 size_t l_l(const my_list_t *);
 char **l_to_s(my_list_t *);
 size_t put_list(const my_list_t *);
-my_list_t *start_node(my_list_t *, char *, char );
+my_list_t *start_node(my_list_t *, char *, char);
 ssize_t find_node_index(my_list_t *, my_list_t *);
 
-char *memset_func(char *, char , unsigned int );
+char *memset_func(char *, char, unsigned int);
 void free_str(char **);
-void *find_str(void *, unsigned int , unsigned int );
+void *find_str(void *, unsigned int, unsigned int);
 
 
 my_list_t *insert_node(my_list_t **, const char *, int);
@@ -193,11 +193,14 @@ void free_linked(my_list_t **);
 int free_function(void **);
 int convert_func(char *);
 void put_error(info_tt *, char *);
-int _putt(int , int );
-char *convert_d(long int , int , int );
+int _putt(int, int);
+char *convert_d(long int, int, int);
 void delete_message(char *);
 
-
+int mshell(info_tt *, char **);
+int findbuilt_fun(info_tt *);
+void git_cmd(info_tt *);
+void f_cmd(info_tt *);
 
 
 
