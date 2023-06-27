@@ -132,9 +132,9 @@ int _putchar(char);
 char *strncpy_2(char *, char *, int );
 char *strncat_2(char *, char *, int );
 char *strchr_2(char *, char );
-//char strncpy_2(char *, char *, int);
+/*char strncpy_2(char *, char *, int);
 //char strncat_2(char *, char *, int);
-//char strchr_2(char *, char);
+//char strchr_2(char *, char);*/
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char, unsigned int);
