@@ -56,12 +56,12 @@ char **l_to_s(my_list_t *top)
 
 
 /**
- * put_list - print element of a my_list_ list.
+ * put_liststr - print element of a my_list_ list.
  * @top: Pointer to HEAD node
  *
  * Return: LENGTH of list
  */
-size_t put_list(const my_list_t *top)
+size_t put_liststr(const my_list_t *top)
 {
 	size_t x = 0;
 

@@ -9,7 +9,11 @@
  * Return: 0 success else 1
 */
 
+<<<<<<< HEAD
+int mshell(info_tt *info, char **a)
+=======
 int mshell(info_tt *info, char **ar)
+>>>>>>> 8eaf88e474df28ccb929a9920a9e2e65e1868298
 {
 	ssize_t n = 0;
 	int br = 0;
@@ -18,7 +22,11 @@ int mshell(info_tt *info, char **ar)
 	{
 		clearinfo_fun(info);
 		if (interactive_fun(info))
+<<<<<<< HEAD
+			_puts("$ ");
+=======
 			puts_func("$ ");
+>>>>>>> 8eaf88e474df28ccb929a9920a9e2e65e1868298
 		eputchar_func(BUF_FLUSH);
 		n = getinput_fun(info);
 		if (n != -1)
@@ -100,7 +108,11 @@ void git_cmd(info_tt *info)
 		info->lcount_ch = 0;
 	}
 	for (i = 0, j = 0; info->arg[i]; i++)
+<<<<<<< HEAD
+		if (!isdelim_func(info->arg[i], " \t\n"))
+=======
 		if (!isdelim_fun(info->arg[i], " \t\n"))
+>>>>>>> 8eaf88e474df28ccb929a9920a9e2e65e1868298
 			j++;
 	if (!j)
 		return;
@@ -131,8 +143,12 @@ void git_cmd(info_tt *info)
  * @info:  parameter and return info struct.
  *
  * Return: void
+<<<<<<< HEAD
+ */
+=======
 */
 
+>>>>>>> 8eaf88e474df28ccb929a9920a9e2e65e1868298
 void f_cmd(info_tt *info)
 {
 	pid_t newpid;
