@@ -15,7 +15,7 @@
 
 #define READ__SIZE 1024
 #define WRITE__SIZE 1024
-#define BUF_FLUSH -1
+#define _FLUSH -1
 
 
 #define CMD_NORM	(0)
