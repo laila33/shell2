@@ -41,6 +41,6 @@ int main(int ao, char **ar)
 	}
 	popenv_list(&info[0]);
 	history_r(*info);
-	mshell(*info, ar);
+	mshell(&info, ar);
 	return (EXIT_SUCCESS);
 }

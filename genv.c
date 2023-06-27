@@ -89,7 +89,7 @@ int __setenv(info_tt *info, char *v, char *u)
 		}
 		node = node->next;
 	}
-	insert_end_node(&(info->env), buf, 0);
+	insert_node(&(info->env), buf, 0);
 	free(buf);
 	info->env_ch = 1;
 	return (0);

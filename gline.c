@@ -101,8 +101,8 @@ ssize_t getinput_fun(info_tt *info)
 
 void siginthandler_fun(__attribute__((unused))int snum)
 {
-	_puts("\n");
-	_puts("$ ");
+	puts_func("\n");
+	puts_func("$ ");
 	_putchar(BUF_FLUSH);
 }
 

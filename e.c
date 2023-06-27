@@ -95,7 +95,7 @@ int popenv_list(info_tt *info)
 	size_t l;
 
 	for (l = 0; env[l]; l++)
-		insert_end_node(&node, env[l], 0);
+		insert_node(&node, env[l], 0);
 	info->env = node;
 	return (0);
 }
