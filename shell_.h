@@ -125,6 +125,17 @@ char *strdup_func1(const char *);
 void puts_func(char *);
 int _putcharr(char);
 
+int strlen_func(char *);
+int strcmp_func(char *, char *);
+char *starts_with_func(const char *, const char *);
+char *strcat_func(char *, char *);
+
+char *strncpy_func2(char *, char *, int);
+char *strncat_func2(char *, char *, int);
+char *strchr_func2(char *, char);
+
+
+
 
 
 #endif
