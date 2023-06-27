@@ -61,7 +61,6 @@ typedef struct my_liststr
  *@argv: an array of strings generated from arg.
  *@input: a string path for the current command.
  *@history: history node.
-<<<<<<< HEAD
  *@historycount: history line number count
  * @arg: string generated from getline
  * @argc: arg count
@@ -90,26 +89,17 @@ typedef struct pass_information
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
-=======
- *@historycount: history line number count.
- *@lcount_ch: if on count this line of input.
- *@status: return status of  last command.
- */
-typedef struct pass_information
-{
-	char **argv;
 	unsigned int l_count;
->>>>>>> 247ba16679ecf5bfd0bbf108cfe26f37e3c10ba2
-	char *fname;
-	char *input;
-	my_list_t *history;
-	int historycount;
-	int lcount_ch;
-	int status;
+        char *fname;
+        char *input;
+        my_list_t *history;
+        int historycount;
+        int lcount_ch;
+
 } info_t;
 
 /**
- * struct builtt - contains builtt string
+ * struct builtt - contains builtt string and function.
  *
  * @type: flag
  * @fun: function
@@ -138,15 +128,15 @@ char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
 int _putchar(char);
-<<<<<<< HEAD
-char *strncpy_2(char *, char *, int );
-char *strncat_2(char *, char *, int );
-char *strchr_2(char *, char );
-=======
+
+char *strncpy_2(char *, char *, int);
+char *strncat_2(char *, char *, int);
+char *strchr_2(char *, char);
+
 char strncpy_2(char *, char *, int);
 char strncat_2(char *, char *, int);
 char strchr_2(char *, char);
->>>>>>> 13f5da507f71900000d3de4e1c0bdc7bbf3679f1
+
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char, unsigned int);
@@ -180,13 +170,13 @@ void checkchain_fun(info_t *, char *, size_t *, size_t, size_t);
 int repalias_fun(info_t *);
 int repvars_fun(info_t *);
 int repstring_fun(char **, char *);
-char **getenv_fun(info_t *);
+char **getenv_f(info_t *);
 int unsetenv_fun(info_t *, char *);
 int setenv_fun(info_t *, char *, char *);
 char *getenv_fun(info_t *, const char *);
 int env_fun(info_t *);
-int setenv_fun(info_t *);
-int unsetenv_fun(info_t *);
+int setenv_f(info_t *);
+int unsetenv_f(info_t *);
 int penv_list(info_t *);
 void clearinfo_fun(info_t *);
 void setinfo_fun(info_t *, char **);
@@ -198,7 +188,7 @@ ssize_t inputbuf_fun(info_t *, char **, size_t *);
 ssize_t readbuf_fun(info_t *, char *, size_t *);
 int history_fun(info_t *);
 int alias_fun(info_t *);
-int printalias_fun(list_t *);
+int printalias_fun(my_list_t *);
 int setalias_fun(info_t *, char *);
 int unsetalias_fun(info_t *, char *);
 int exit_fun(info_t *);
