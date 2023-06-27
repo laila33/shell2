@@ -12,8 +12,7 @@ int help_fun(info_tt *info)
 {
 	char **arg_arr = info->arg_v;
 
-	_puts(" The help command is recognized,
-			but the functionality is not yet available.\n");
+	_puts("The help command is not yet available.\n");
 
 	if (0)
 		_puts(*arg_arr);
@@ -31,7 +30,7 @@ int help_fun(info_tt *info)
 int exit_fun(info_tt *info)
 {
 	int exitcheck;
-i
+
 	if (info->arg_v[1])
 	{
 		exitcheck = convert_func(info->arg_v[1]);
@@ -98,8 +97,8 @@ int cd_fun(info_tt *info)
 	}
 	else
 	{
-		setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
-		setenv(info, "PWD", getcwd(buffer, 1024));
+		__setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
+		__setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
