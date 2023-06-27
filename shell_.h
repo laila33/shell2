@@ -91,22 +91,14 @@ typedef struct pass_information
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
-<<<<<<< HEAD
-	unsigned int l_count;
+
         char *fname;
         char *input;
         my_list_t *history;
         int historycount;
         int lcount_ch;
-
-=======
-	char *fname;
-	char *input;
-	my_list_t *history;
-	int historycount;
-	int lcount_ch;
 	int status;
->>>>>>> 17302941f1fe2ffe64385147b392966afa7945b0
+
 } info_t;
 
 /**
@@ -139,24 +131,23 @@ char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
 int _putchar(char);
-<<<<<<< HEAD
+/** str*/
 
 char *strncpy_2(char *, char *, int);
 char *strncat_2(char *, char *, int);
 char *strchr_2(char *, char);
 
-char strncpy_2(char *, char *, int);
-char strncat_2(char *, char *, int);
-char strchr_2(char *, char);
-
-=======
+//char strncpy_2(char *, char *, int);
+//char strncat_2(char *, char *, int);
+//char strchr_2(char *, char);
+/** str*/
 char *strncpy_2(char *, char *, int );
 char *strncat_2(char *, char *, int );
 char *strchr_2(char *, char );
 //char strncpy_2(char *, char *, int);
 //char strncat_2(char *, char *, int);
 //char strchr_2(char *, char);
->>>>>>> 17302941f1fe2ffe64385147b392966afa7945b0
+
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char, unsigned int);
