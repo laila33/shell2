@@ -47,7 +47,7 @@ char *strdup_func1(const char *s)
 
 
 /**
- * putchar - write the character ch to stdout.
+ * _putchar - write the character ch to stdout.
  * @ch: The char to print.
  *
  * Return: 1 or -1.
@@ -82,7 +82,7 @@ void puts_func(char *s)
                 return;
         while (s[j] != '\0')
         {
-                putchar(s[j]);
+                _putchar(s[j]);
                 j++;
         }
 }

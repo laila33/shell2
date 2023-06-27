@@ -190,6 +190,19 @@ my_list_t *add_node_end(my_list_t **, const char *, int);
 size_t put_list(const my_list_t *);
 int delete_index(my_list_t **, unsigned int);
 void free_linked(my_list_t **);
+int free_function(void **);
+int convert_func(char *);
+void put_error(info_tt *, char *);
+int _putt(int , int );
+char *convert_d(long int , int , int );
+void delete_message(char *);
+
+
+
+
+
+
+
 
 
 
