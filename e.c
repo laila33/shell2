@@ -53,7 +53,7 @@ int setenv_fun(info_tt *info)
 		eputs_func("Invaild num of arguments\n");
 		return (1);
 	}
-	if (setenv(info, info->arg_v[1], info->arg_v[2]))
+	if (__setenv(info, info->arg_v[1], info->arg_v[2]))
 		return (0);
 	return (1);
 }
@@ -76,7 +76,7 @@ int unsetenv_fun(info_tt *info)
 		return (1);
 	}
 	for (l = 1; l <= info->arg_c; l++)
-		unsetenv(info, info->arg_v[l]);
+		__unsetenv(info, info->arg_v[l]);
 
 	return (0);
 }

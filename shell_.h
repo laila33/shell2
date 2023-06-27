@@ -136,8 +136,8 @@ int unsetenv_fun(info_tt *);
 int popenv_list(info_tt *);
 
 char **getenviron_fun(info_tt *);
-int unsetenv(info_tt *, char *);
-int setenv(info_tt *, char *, char *);
+int __unsetenv(info_tt *, char *);
+int __setenv(info_tt *, char *, char *);
 
 void clearinfo_fun(info_tt *);
 void setinfo_fun(info_tt *, char **);
