@@ -145,14 +145,16 @@ void setinfo_info(info_tt *, char **);
 void freeinfo_fun(info_tt *, int);
 
 ssize_t getinput_fun(info_tt *);
+ssize_t readbuf_fun(info_tt *, char *, size_t *);
+ssize_t inputbuf_fun(info_tt *, char **, size_t *);
 int getline_fun(info_tt *, char **, size_t *);
 void siginthandler_fun(int);
 
 int history_fun(info_tt *);
 int alias_fun(info_tt *);
-int unsetalias_fun(info_tt *info, char *s);
-int setalias_fun(info_tt *info, char *s);
-int printalias_fun(my_list_t *node);
+int unsetalias_fun(info_tt *, char *);
+int setalias_fun(info_tt *, char *);
+int printalias_fun(my_list_t *);
 
 int ischain_fun(info_tt *, char *, size_t *);
 void checkchain_fun(info_tt *, char *, size_t *, size_t, size_t);

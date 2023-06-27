@@ -10,7 +10,7 @@
  * Return: bytes
 */
 
-ssize_t inputbuf_fun(info_t *info, char **buf, size_t *l)
+ssize_t inputbuf_fun(info_tt *info, char **buf, size_t *l)
 {
 	ssize_t i = 0;
 	size_t len = 0;
@@ -23,7 +23,7 @@ ssize_t inputbuf_fun(info_t *info, char **buf, size_t *l)
 #if USE_GETLINE
 		i = getline(buf, &len, stdin);
 #else
-		i = _getline(info, buf, &len);
+		i = getline_fun(info, buf, &len);
 #endif
 		if (i > 0)
 		{
@@ -32,12 +32,12 @@ ssize_t inputbuf_fun(info_t *info, char **buf, size_t *l)
 				(*buf)[i - 1] = '\0';
 				i--;
 			}
-			info->linecount_flag = 1;
-			remove_comments_message(*buf);
-			buildhistory_list(info, *buf, info->histcount++);
+			info->lcount_ch = 1;
+			delete_message(*buf);
+			bhistory_list(info, *buf, info->historycount++);
 			{
 				*l = i;
-				info->cmd_buf = buf;
+				info->cmd_buff = buf;
 			}
 		}
 	}
@@ -52,26 +52,26 @@ ssize_t inputbuf_fun(info_t *info, char **buf, size_t *l)
  * Return: byte
 */
 
-ssize_t getinput_fun(info_t *info)
+ssize_t getinput_fun(info_tt *info)
 {
 	static char *buf;
 	static size_t r, n, l;
 	ssize_t i = 0;
-	char **buf_c = &(info->arg), *c;
+	char **buf_c = &(info->arg), *p;
 
 	_putchar(BUF_FLUSH);
-	i = input_buf(info, &buf, &l);
+	i = inputbuf_fun(info, &buf, &l);
 	if (i == -1)
 		return (-1);
 	if (l)
 	{
 		n = r;
-		c = buf + r;
+		p = buf + r;
 
-		check_chain(info, buf, &n, r, l);
+		checkchain_fun(info, buf, &n, r, l);
 		while (n < l)
 		{
-			if (is_chain(info, buf, &n))
+			if (ischain_fun(info, buf, &n))
 				break;
 			n++;
 		}
@@ -80,11 +80,11 @@ ssize_t getinput_fun(info_t *info)
 		if (r >= l)
 		{
 			r = l = 0;
-			info->cmd_buf_type = CMD_NORM;
+			info->cmd_type = CMD__NORM;
 		}
 
-		*buf_c = c;
-		return (_strlen(c));
+		*buf_c = p;
+		return (strlen_func(p));
 	}
 
 	*buf_c = buf;
@@ -116,13 +116,13 @@ void siginthandler_fun(__attribute__((unused))int snum)
  * Return: x
 */
 
-ssize_t readbuf_fun(info_t *info, char *buf, size_t *s)
+ssize_t readbuf_fun(info_tt *info, char *buf, size_t *s)
 {
 	ssize_t x = 0;
 
 	if (*s)
 		return (0);
-	x = read(info->readfd, buf, READ_BUF_SIZE);
+	x = read(info->readf, buf, READ__SIZE);
 	if (x >= 0)
 		*s = x;
 	return (x);
@@ -138,9 +138,9 @@ ssize_t readbuf_fun(info_t *info, char *buf, size_t *s)
  * Return: z
 */
 
-int getline_fun(info_t *info, char **ptr, size_t *length)
+int getline_fun(info_tt *info, char **ptr, size_t *length)
 {
-	static char buf[READ_BUF_SIZE];
+	static char buf[READ__SIZE];
 	static size_t j, len;
 	size_t x;
 	ssize_t i = 0, z = 0;
@@ -156,16 +156,16 @@ int getline_fun(info_t *info, char **ptr, size_t *length)
 	if (i == -1 || (i == 0 && len == 0))
 		return (-1);
 
-	n = _strchr(buf + j, '\n');
+	n = strchr_func2(buf + j, '\n');
 	x = n ? 1 + (unsigned int)(n - buf) : len;
-	newp = _realloc(p, z, z ? z + x : x + 1);
+	newp = find_str(p, z, z ? z + x : x + 1);
 	if (!newp)
 		return (p ? free(p), -1 : -1);
 
 	if (z)
-		_strncat(newp, buf + j, x - j);
+		strncat_func2(newp, buf + j, x - j);
 	else
-		_strncpy(newp, buf + j, x - j + 1);
+		strncpy_func2(newp, buf + j, x - j + 1);
 
 	z += x - j;
 	j = x;
