@@ -148,14 +148,9 @@ char *strchr_2(char *, char );
 //char strncat_2(char *, char *, int);
 <<<<<<< HEAD
 //char strchr_2(char *, char);*/
-=======
-//char strchr_2(char *, char);
-<<<<<<< HEAD
 
-=======
->>>>>>> 17302941f1fe2ffe64385147b392966afa7945b0
->>>>>>> 057e139dc4ab5f2fbcafedde4e901a7b947dc6bf
->>>>>>> 6d8fcbcbb678df9a3ea3119a993277e08fa28289
+//char strchr_2(char *, char
+//
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char, unsigned int);
