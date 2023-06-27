@@ -31,12 +31,13 @@ int Eput(char ch)
 	static int j;
 	static char buffer[WRITE__SIZE];
 
-	if (ch == _FLUSH || j >= WRITE__SIZE)
+	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
 		write(2, buffer, j);
 		j = 0;
 	}
-	if (ch != _FLUSH)
+
+	if (ch !=BUF_FLUSH)
 		buffer[j++] = ch;
 	return (1);
 }
@@ -55,12 +56,12 @@ int putfd_func(char ch, int fd)
 	static int j;
 	static char buffer[WRITE__SIZE];
 
-	if (ch == _FLUSH || j >= WRITE__SIZE)
+	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
 		write(fd, buffer, j);
 		j = 0;
 	}
-	if (ch != _FLUSH)
+	if (ch != BUF_FLUSH)
 		buffer[j++] = ch;
 	return (1);
 }

@@ -15,7 +15,7 @@
 
 #define READ__SIZE 1024
 #define WRITE__SIZE 1024
-#define _FLUSH -1
+#define BUF _FLUSH -1
 
 
 #define CMD_NORM	(0)
@@ -91,7 +91,6 @@ typedef struct pass_information
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
-//>>>>>>> 247ba16679ecf5bfd0bbf108cfe26
 	char *fname;
 	char *input;
 	my_list_t *history;
@@ -187,7 +186,7 @@ ssize_t inputbuf_fun(info_t *, char **, size_t *);
 ssize_t readbuf_fun(info_t *, char *, size_t *);
 int history_fun(info_t *);
 int alias_fun(info_t *);
-int printalias_fun(list_t *);
+int printalias_fun(my_list_t *);
 int setalias_fun(info_t *, char *);
 int unsetalias_fun(info_t *, char *);
 int exit_fun(info_t *);
