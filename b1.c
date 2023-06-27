@@ -33,8 +33,8 @@ int unsetalias_fun(info_tt *info, char *s)
 		return (1);
 	b = *p;
 	*p = 0;
-	r = delete_node(&(info->alias),
-			find_node_index(info->alias, starts_node(info->alias, s, -1)));
+	r = delete_index(&(info->alias),
+			find_node_index(info->alias, start_node(info->alias, s, -1)));
 	*p = b;
 	return (r);
 }
@@ -59,7 +59,7 @@ int setalias_fun(info_tt *info, char *s)
 		return (unsetalias_fun(info, s));
 
 	unsetalias_fun(info, s);
-	return (insert_end_node(&(info->alias), s, 0) == NULL);
+	return (insert_node(&(info->alias), s, 0) == NULL);
 }
 
 /**
@@ -78,8 +78,8 @@ int printalias_fun(my_list_t *node)
 	{
 		p = strchr_func2(node->s, '=');
 		for (l = node->s; l <= p; l++)
-			_putcharr(*l);
-		_putcharr('\'');
+			_putchar(*l);
+		_putchar('\'');
 		puts_func(p + 1);
 		puts_func("'\n");
 		return (0);
