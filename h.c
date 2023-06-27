@@ -8,11 +8,11 @@
  * Return: allocated string containg history file.
  */
 
-char find_history_file(info_t *info)
+char *find_history_file(info_t *info)
 {
 	char *buffer, *x;
 
-	x = getenv_func(info, "HOME=");
+	x = getenv_fun(info, "HOME=");
 	if (!x)
 		return (NULL);
 	buffer = malloc(sizeof(char) * (strlen_func(x) + strlen_func(HIST_FILE) + 2));
@@ -40,7 +40,7 @@ int history_w(info_t *info)
 {
 	ssize_t f_d;
 	char *name = find_history_file(info);
-	list_t *c_node = NULL;
+	my_list_t *c_node = NULL;
 
 	if (!name)
 		return (-1);
@@ -54,7 +54,7 @@ int history_w(info_t *info)
 		putsfd_print(c_node->s, f_d);
 		putfd_func('\n', f_d);
 	}
-	putfd_func(_FLUSH, f_d);
+	putfd_func(BUF_FLUSH, f_d);
 	close(f_d);
 	return (1);
 }
@@ -68,7 +68,7 @@ int history_w(info_t *info)
  */
 int history_r(info_t *info)
 {
-	int j, end = 0, lcount = 0;
+	int j, end = 0, l_count = 0;
 	ssize_t f_d, rlen, sizee = 0;
 	struct stat st;
 	char *buffer = NULL, *fname = find_history_file(info);
@@ -96,13 +96,13 @@ int history_r(info_t *info)
 		if (buffer[j] == '\n')
 		{
 			buffer[j] = 0;
-			history_l(info, buffer + end, lcount++);
+			history_l(info, buffer + end, l_count++);
 			end = j + 1;
 		}
 	if (end != j)
-		history_l(info, buffer + end, lcount++);
+		history_l(info, buffer + end, l_count++);
 	free(buffer);
-	info->historycount = lcount;
+	info->historycount = l_count;
 	while (info->historycount-- >= HIST_MAX)
 		remove_node(&(info->history), 0);
 	history_rm(info);
@@ -139,17 +139,17 @@ int history_rm(info_t *info)
  * @info: Structure containing potential arguments.
  * @buf:the buffer.
  *
- * @lcount:history  number of line count .
+ * @l_count:history  number of line count .
  *
  * Return: 0.
  */
-int history_l(info_t *info, char *buf, int lcount)
+int history_l(info_t *info, char *buf, int l_count)
 {
 	my_list_t *c_node = NULL;
 
 	if (info->history)
 		c_node = info->history;
-	add_end_node(&c_node, buf, lcount);
+	add_end_node(&c_node, buf, l_count);
 
 	if (!info->history)
 		info->history = c_node;

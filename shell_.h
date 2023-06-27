@@ -1,5 +1,5 @@
-#ifndef SHELL__H_
-#define SHELL__H_
+#ifndef _SHELL_H_
+#define _SHELL_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,118 +15,111 @@
 
 #define READ__SIZE 1024
 #define WRITE__SIZE 1024
-#define BUF _FLUSH -1
+#define BUF_FLUSH -1
 
 
-#define CMD_NORM	(0)
-#define CMD_OR		1
-#define CMD_AND	        2
-#define CMD_CHAIN	3
+#define CMD__NORM	0
+#define CMD__OR		1
+#define CMD__AND		2
+#define CMD__CHAIN	3
 
 
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
+
 #define USE_GETLINE 0
+#define USE_STRTOK 0
 
-
-#define HIST_FILE	"__simple_shell_history"
+#define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
-#define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-		0, 0, 0}
-extern char **environment;
+
+extern char **environ;
 
 
 /**
- * struct my_liststr - sing linked list.
- *
- * @number: the number of  field.
- * @s: string.
- *
- * @next: pointer to point to the next node.
+ * struct my_lists_t - singly linked list
+ * @number:  number of field.
+ * @s: a string
+ * @next: point to next node.
  */
 typedef struct my_liststr
 {
 	int number;
 	char *s;
-	struct my_liststr *next;
+	struct my_lists_t *next;
 } my_list_t;
 
 /**
- *struct pass_information - contains pseudo-arguements to pass into a function,
+ *struct passinfo - contains pseudo-arguements to pass into a function,
  *		allowing uniform prototype for function pointer struct
- *@l_count: the error count.
- *@fname: the program filename.
- *@argv: an array of strings generated from arg.
- *@input: a string path for the current command.
- *@history: history node.
- *@historycount: history line number count
- * @arg: string generated from getline
- * @argc: arg count
- * @err_num: error code
- * @env: linked list of environ
- * @environ: custom modified copy of environ
- * @alias: alias node
- * @env_changed: environ changed
- * @status: return status
- * @cmd_buf: address
- * @cmd_buf_type: CMD_type
- * @readfd: fd from read line input
- * @historycount: history line number count.
- * @lcount_ch: If count this line of input.
- * @status: return status of  last command.
-*/
-typedef struct pass_information
+ *@arg: a string generated from getline containing arguements
+ *@arg_v: array of strings generated from arg
+ *@input: String input for the current command.
+ *@arg_c: Argument count.
+ *@l_count: error countER
+ *@err_num: the error code for exit()s
+ *@lcount_ch: If count this line of input.
+ *@filename:  the filename.
+ *@env: linked list local copy of environ
+ *@environ: custom modified copy of environ from LL env
+ *@the_history:  History node.
+ *@alias: the alias node
+ *@env_ch: on if environ was changed
+ *@statuss: Return status of the last executed command.
+ *@cmd_buf: address of pointer to cmd_buf, on if chaining
+ *@cmd_buf_type: CMD_type ||, &&, ;
+ *@readf: the fd from which to read line input
+ *@historycount: line number counter.
+ */
+typedef struct passinfo
 {
-	char **argv;
-	unsigned int l_count;
 	char *arg;
-	int argc;
+	char **arg_v;
+	char *input;
+	int arg_c;
+	unsigned int l_count;
 	int err_num;
+	int lcount_ch;
+	char *filename;
 	my_list_t *env;
+	my_list_t *the_history;
 	my_list_t *alias;
 	char **environ;
-	int env_changed;
-	char **cmd_buf;
-	int cmd_buf_type;
-	int readfd;
+	int env_ch;   
+	int statuss;
 
-        char *fname;
-        char *input;
-        my_list_t *history;
-        int historycount;
-        int lcount_ch;
-	int status;
+	char **cmd_buff; /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmd_type; /* CMD_type ||, &&, ; */
+	int readf;
+	int historycount;
+} info_tt;
 
-} info_t;
+#define INFO__INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0}
 
 /**
- * struct builtt - contains builtt string and function.
- *
- * @type: flag
- * @fun: function
-*/
-
-typedef struct builtt
+ *struct builtinn - builtin string and function
+ *@type: the builtin command flag
+ *@fun: the function
+ */
+typedef struct builtinn
 {
 	char *type;
-	int (*fun)(info_t *);
-} builttable;
+	int (*fun)(info_tt *);
+} builtintable;
 
-
-
-
-
-
-
-
-
+void eputs_func(char *);
+int eputchar_func(char);
+int putfd_func(char c, int fd);
+int putsfd_d(char *str, int fd);
 
 int strlen_func(char *);
 int strcmp_func(char *, char *);
 char *starts_with_func(const char *, const char *);
 char *strcat_func(char *, char *);
+<<<<<<< HEAD
 char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
@@ -219,6 +212,6 @@ void f_cmd(info_t *);
 
 
 
-
-
 #endif
+
+

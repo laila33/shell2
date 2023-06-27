@@ -2,63 +2,37 @@
 
 /**
  *eputs_func - print input string.
+ * @str: the string to print.
  *
- *@s: the string to  print.
- *
- * Return: Nothing
+ * Return: (Nothing)
  */
-void eputs_func(char *s)
+void eputs_func(char *str)
 {
 	int j = 0;
 
-	if (!s)
+	if (!str)
 		return;
-	while (s[j] != '\0')
+	while (str[j] != '\0')
 	{
-		Eput(s[j]);
+		eputchar_func(str[j]);
 		j++;
 	}
 }
 
 /**
- * Eput - write the char ch to stderr.
- * @ch: The character to print.
+ * eputchar_func - write the character ch to stderr.
+ * @ch:character to print it.
  *
- * Return: 1 or -1.
+ * Return: 1 or-1.
  */
-int Eput(char ch)
+int eputchar_func(char ch)
 {
 	static int j;
 	static char buffer[WRITE__SIZE];
 
 	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
-		write(2, buffer, j);
-		j = 0;
-	}
-
-	if (ch !=BUF_FLUSH)
-		buffer[j++] = ch;
-	return (1);
-}
-
-
-
-/**
- * putfd_func - write the char ch to given fd.
- * @ch: The character to print
- * @fd: The file descriptor to write to
- *
- * Return: 1 or -1
- */
-int putfd_func(char ch, int fd)
-{
-	static int j;
-	static char buffer[WRITE__SIZE];
-
-	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
-	{
-		write(fd, buffer, j);
+		write(2, buffer, i);
 		j = 0;
 	}
 	if (ch != BUF_FLUSH)
@@ -67,13 +41,35 @@ int putfd_func(char ch, int fd)
 }
 
 /**
- *putsfd_print - prints an input string.
- * @s: the string to  print.
- * @fd: the filedescriptor to write .
+ * putfd_func - write the character ch to given filed.
+ * @ch:character to print it.
+ * @filed:filedescriptor to write to.
  *
- * Return: the number of chars put.
+ * Return: 1 or -1.
  */
-int putsfd_print(char *s, int fd)
+int putfd_func(char ch, int filed)
+{
+	static int j;
+	static char buffer[WRITE__SIZE];
+
+	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
+	{
+		write(filed, buffer, i);
+		j = 0;
+	}
+	if (ch != BUF_FLUSH)
+		buffer[j++] = ch;
+	return (1);
+}
+
+/**
+ *putsfd_d - print input string.
+ * @s:string to print it.
+ * @filed:filedescriptor to write to.
+ *
+ * Return: number of chars.
+ */
+int putsfd_d(char *s, int filed)
 {
 	int j = 0;
 
@@ -81,7 +77,8 @@ int putsfd_print(char *s, int fd)
 		return (0);
 	while (*s)
 	{
-		j += putfd_func(*s++, fd);
+		j += putfd_func(*s++, filed);
 	}
 	return (j);
 }
+

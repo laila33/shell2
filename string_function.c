@@ -1,95 +1,77 @@
 #include "shell_.h"
 
-
 /**
- * strlen_func - Return length of string.
+ * strlen_func - return size of string.
+ * @ss:string it's length to fund.
  *
- * @stringg:  string to find it length.
- *
- *
- * Return: length of string.
- *
+ * Return: Size of string
  */
-int strlen_func(char *stringg)
+int strlen_func(char *ss)
 {
 	int j = 0;
 
-	if (!stringg)
+	if (!ss)
 		return (0);
 
-	while (*stringg++)
+	while (*ss++)
 		j++;
 	return (j);
 }
 
-
-
-
 /**
- * strcmp_func - Find lexicogarphic comparison of two strings.
- * @s: First string.
+ * strcmp_func -lexicogarphic comparison of two strings.
+ * @src:first string
+ * @dest:second strang
  *
- * @ss: Second string.
- *
- * Return: Negative if s < ss, Positive if s > ss, Zero if s == ss
+ * Return: Negative if s1 < s2, Positive if s1 > s2 OR Zero if s1 == s2
  */
-
-int strcmp_func(char *s, char *ss)
+int strcmp_func(char *src, char *dest)
 {
-	while (*s && *ss)
+	while (*src && *dest)
 	{
-		if (*s != *ss)
-			return (*s - *ss);
-		s++;
-		ss++;
+		if (*src != *dest)
+			return (*src - *dest);
+		src++;
+		dest++;
 	}
-	if (*s == *ss)
+	if (*src == *dest)
 		return (0);
 	else
-		return (*s < *ss ? -1 : 1);
+		return (*src < *dest ? -1 : 1);
 }
 
-
+/**
+ * starts_with_func - Check if S2 start with S1.
+ * @s1: String to search
+ * @s2: Substring to find
+ *
+ * Return: Address of next CGARACHTER of s1 or NULL
+ */
+char *starts_with_func(const char *s1, const char *s2)
+{
+	while (*s2)
+		if (*s2++ != *s1++)
+			return (NULL);
+	return ((char *)s1);
+}
 
 /**
  * strcat_func - concatenate two strings.
+ * @ss:Destination buffer
+ * @s: Source buffer
  *
- * @s2: THE destination buffer.
- *
- * @s1:  THE source buffer.
- *
- * Return: Pointer to destination.
- *
- *
+ * Return: Pointer to Destination buffer.
  */
-char *strcat_func(char *s1, char *s2)
+char *strcat_func(char *ss, char *s)
 {
-	char *result = s2;
+	char *result = ss;
 
-	while (*s2)
-		s2++;
-	while (*s1)
-		*s2++ = *s1++;
-	*s2 = *s1;
+	while (*ss)
+		ss++;
+	while (*s)
+		*ss++ = *s++;
+	*ss = *s;
 	return (result);
-}
-
-
-/**
- * start_with_func - define if string start with substring.
- *
- * @string: String to search.
- *
- * @substring: the substring to find.
- *
- * Return: Address of next char of stringg , NULL
- */
-char *start_with_func(const char *string, const char *substring)
-{
-	while (*substring)
-		if (*substring++ != *string++)
-			return (NULL);
-	return ((char *)string);
 }
 
 
