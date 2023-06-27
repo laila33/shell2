@@ -187,7 +187,7 @@ void *find_str(void *, unsigned int, unsigned int);
 
 my_list_t *insert_node(my_list_t **, const char *, int);
 my_list_t *add_node_end(my_list_t **, const char *, int);
-size_t put_listtrconst my_list_t *);
+size_t put_listtrconst(my_list_t *);
 int delete_index(my_list_t **, unsigned int);
 void free_linked(my_list_t **);
 int free_function(void **);
