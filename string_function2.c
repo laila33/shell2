@@ -1,14 +1,13 @@
-#include"shell_.h"
+#include "shell_.h"
+
 /**
- * strcpy_func - copie string.
+ * strcpy_func1 - Copies string.
+ * @s2: Destination string
+ * @s1: Source
  *
- * @s2: destination.
- *
- * @s1:  source.
- *
- * Return: Pointer to destination.
+ * Return: pointer to Destination
  */
-char *strcpy_func(char *s2, char *s1)
+char *Strcpy_func1(char *s2, char *s1)
 {
 	int j = 0;
 
@@ -23,82 +22,67 @@ char *strcpy_func(char *s2, char *s1)
 	return (s2);
 }
 
-
-
 /**
- * strdup_func - duplicate string.
+ * strdup_func1 - duplicate string.
+ * @s: the string  duplicate it.
  *
- * @s1:  string to duplicate.
- *
- *
- * Return: Pointer to the duplicated string.
+ * Return: Pointer to the duplicated string
  */
-
-char *strdup_func(const char *s1)
+char *strdup_func1(const char *s)
 {
-	int len = 0;
-	char *s2;
+	int size = 0;
+	char *result;
 
-	if (s1 == NULL)
+	if (s == NULL)
 		return (NULL);
-	while (*s1++)
-		len++;
-	s2 = malloc(sizeof(char) * (len + 1));
-	if (!s2)
+	while (*s++)
+		size++;
+	result = malloc(sizeof(char) * (size + 1));
+	if (!result)
 		return (NULL);
-	for (len++; len--;)
-		s2[len] = *--s1;
-	return (s2);
+	for (size++; size--;)
+		result[size] = *--s;
+	return (result);
 }
 
 
-
 /**
- * puts_func - print input string.
+ * _putcharr_func - write the character ch to stdout.
+ * @ch: The char to print.
  *
- * @s:string to print.
- *
- * Return: Nothing.
+ * Return: 1 or -1.
  */
-void puts_func(char *s)
-{
-	int j = 0;
-
-	if (!s)
-		return;
-	while (s[j] != '\0')
-	{
-		_putchar(s[j]);
-		j++;
-	}
-}
-
-
-
-
-/**
- * _putchar - write the character a to stdout.
- *
- * @a: The character to be printed.
- *
- *
- * Return: 1 or -1 or errno is set appropriately.
- */
-int _putchar(char a)
+int _putcharr_func(char ch)
 {
 	static int j;
 	static char buffer[WRITE__SIZE];
 
-	if (a == _FLUSH || j >= WRITE__SIZE)
+	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
 		write(1, buffer, j);
 		j = 0;
 	}
-	if (a != _FLUSH)
-		buffer[j++] = a;
+	if (ch != BUF_FLUSH)
+		buffer[j++] = ch;
 	return (1);
 }
 
 
+/**
+ *puts_func - print string.
+ *@s: the string to be printed
+ *
+ * Return: None
+ */
+void puts_func(char *s)
+{
+        int j = 0;
 
-
+        if (!s)
+                return;
+        while (s[j] != '\0')
+        {
+                _putcharr_func(s[j]);
+                j++;
+        }
+}

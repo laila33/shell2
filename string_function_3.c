@@ -1,90 +1,74 @@
 #include "shell_.h"
 
 /**
- **strncpy_2 - copy the  string.
- *@s2: Destination string.
- *
- *@s1: Source string.
- *
- *@num: the number  of characters to copy.
- *
- *Return: string after concatenated.
+ **strncpy_func2 - copies a string
+ *@s2: Destination string to be copied IN.
+ *@s1:Source string
+ *@num: Numberof chars to copy.
+ *Return: Concatenated string.
  */
-char *strncpy_2(char *s2, char *s1, int num)
+char *strncpy_func2(char *s2, char *s1, int num)
 {
-	int x, y = 0;
-	char *c = s2;
+	int x, y;
+	char *a = s2;
 
 	x = 0;
-
 	while (s1[x] != '\0' && x < num - 1)
 	{
-		s2[x] = s1[x];
+		s2[y] = s1[y];
 		x++;
 	}
-
 	if (x < num)
 	{
-		x = y;
+		y = x;
 		while (y < num)
 		{
 			s2[y] = '\0';
 			y++;
 		}
 	}
-	return (c);
+	return (a);
 }
 
-
 /**
- **strncat_2 - concatenate two strings.
- *
- *
- *@s2: first string.
- *
- *@s1: the second string.
- *@num: the number of bytes to  use.
- *
- *Return: concatenated string.
+ **strncat_func2 - Concatenate two strings.
+ *@s2: First string
+ *@s1: Second string
+ *@num: numbr of bytes to be maximally used.
+ *Return: Concatenated string
  */
-char *strncat_2(char *s2, char *s1, int num)
+char *strncat_func2(char *s2, char *s1, int num)
 {
-	int x = 0, y = 0;
-	char *c = s2;
+	int x, y;
+	char *a = s2;
 
-
+	x = 0;
+	y = 0;
 	while (s2[x] != '\0')
 		x++;
 	while (s1[y] != '\0' && y < num)
 	{
-		s2[x] = s1[y];
+		s2[y] = s1[y];
 		x++;
 		y++;
 	}
 	if (y < num)
 		s2[x] = '\0';
-	return (c);
+	return (a);
 }
 
-
-
-
-
 /**
- **strchr_2 - find  character in  string.
- *
- *@s1: the string to search in.
- *
- *@charr: character to find.
- *
- *Return:  pointer to the memory area s1.
+ **strchr_func2 - find char in string.
+ *@a:String to be parsed
+ *@ch: char to find
+ *Return: a is pointer to  memory area a
  */
-char *strchr_2(char *s1, char charr)
+char *strchr_func2(char *a, char ch)
 {
 	do {
-		if (*s1 == charr)
-			return (s1);
-	} while (*s1++ != '\0');
+		if (*a == ch)
+			return (a);
+	} while (*a++ != '\0');
 
 	return (NULL);
 }
