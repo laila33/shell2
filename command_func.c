@@ -9,7 +9,7 @@
  *
  * Return: 1 or 0.
  */
-int if_cmd(info_t *info, char *input)
+int if_cmd(info_tt *info, char *input)
 {
 	struct stat st;
 
@@ -65,7 +65,7 @@ char *d_char(char *inputs, int f_point, int e_point)
  *
  */
 
-char *f_path(info_t *info, char *inputs, char *cmd)
+char *f_path(info_tt *info, char *inputs, char *cmd)
 {
 	int j = 0, cc = 0;
 	char *input;
