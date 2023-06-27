@@ -9,7 +9,7 @@
  * Return: 0 success else 1
 */
 
-int mshell(info_t *info, char **a)
+int mshell(info_tt *info, char **a)
 {
 	ssize_t n = 0;
 	int br = 0;
@@ -19,7 +19,7 @@ int mshell(info_t *info, char **a)
 		clearinfo_fun(info);
 		if (interactive_fun(info))
 			_puts("$ ");
-		_eputchar(BUF_FLUSH);
+		eputchar_func(BUF_FLUSH);
 		n = getinput_fun(info);
 		if (n != -1)
 		{
@@ -55,7 +55,7 @@ int mshell(info_t *info, char **a)
  * Return: -1 not found, 0 success, 1 not success, 2 exit
 */
 
-int findbuilt_fun(info_t *info)
+int findbuilt_fun(info_tt *info)
 {
 	int n, br = -1;
 	builttable builtt[] = {
@@ -103,7 +103,7 @@ void git_cmd(info_t *info)
 		info->lcount_ch = 0;
 	}
 	for (i = 0, j = 0; info->arg[i]; i++)
-		if (!is_delim(info->arg[i], " \t\n"))
+		if (!isdelim_func(info->arg[i], " \t\n"))
 			j++;
 	if (!j)
 		return;
@@ -139,7 +139,7 @@ void git_cmd(info_t *info)
  *
  * Return: void
  */
-void f_cmd(info_t *info)
+void f_cmd(info_tt *info)
 {
 	pid_t newpid;
 
