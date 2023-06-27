@@ -120,8 +120,17 @@ int isdelim_fun(char, char *);
 int isalpha_fun(int);
 int atoi_fun(char *);
 
+<<<<<<< HEAD
 int exit_fun(info_tt *);
 int cd_fun(info_tt *);
 int help_fun(info_tt *);
+=======
+char *strcpy_func1(char *, char *);
+char *strdup_func1(const char *);
+void puts_func(char *);
+int _putcharr(char);
+
+
+>>>>>>> 52353a15c071aea723301d82c06c28dcf20688b0
 
 #endif
