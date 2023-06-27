@@ -8,11 +8,13 @@
  * Return: 0
 */
 
-int help_fun(info_t *info)
+int help_fun(info_tt *info)
 {
-	char **arg_arr = info->argv;
+	char **arg_arr = info->arg_v;
 
-	_puts("The help command is recognized, but the functionality is not yet available.\n");
+	_puts("The help command is recognized,
+			but the functionality is not yet available.\n");
+
 	if (0)
 		_puts(*arg_arr);
 	return (0);
@@ -26,22 +28,24 @@ int help_fun(info_t *info)
  * Return: exit with status 0
 */
 
-int exit_fun(info_t *info)
+int exit_fun(info_tt *info)
 {
 	int exitcheck;
-
-	if (info->argv[1])
+i
+	if (info->arg_v[1])
 	{
-		exitcheck = _erratoi(info->argv[1]);
+		exitcheck = convert_func(info->arg_v[1]);
+
 		if (exitcheck == -1)
 		{
-			info->status = 2;
-			print_error(info, "Illegal number: ");
-			_eputs(info->argv[1]);
-			_eputchar('\n');
+			info->statuss = 2;
+			put_error(info, "Illegal number: ");
+			eputs_func(info->arg_v[1]);
+			eputchar_func('\n');
+
 			return (1);
 		}
-		info->err_num = _erratoi(info->argv[1]);
+		info->err_num = convert_func(info->arg_v[1]);
 		return (-2);
 	}
 	info->err_num = -1;
@@ -56,51 +60,46 @@ int exit_fun(info_t *info)
  * Return: 0
 */
 
-int cd_fun(info_t *info)
+int cd_fun(info_tt *info)
 {
-	char *dir, buffer[1024];
-	int chdr;
+	char *s, *dir, buffer[1024];
+	int chdir_ret;
 
-	char *current_dir = getcwd(buffer, 1024);
-
-	if (!current_dir)
+	s = getcwd(buffer, 1024);
+	if (!s)
+		_puts("Error: Unable to retrieve current directory.\n");
+	if (!info->arg_v[1])
 	{
-		printf("Error: Unable to retrieve current directory.\n");
-		return (1);
-	}
-
-	if (!info->argv[1])
-	{
-		dir = getenv("HOME");
+		dir = getenv_fun(info, "HOME=");
 		if (!dir)
-			dir = getenv("PWD");
-		chdr = chdir(dir ? dir : "/");
+			chdir_ret =
+				chdir((dir = getenv_fun(info, "PWD=")) ? dir : "/");
+		else
+			chdir_ret = chdir(dir);
 	}
-	else if (strcmp(info->argv[1], "-") == 0)
+	else if (strcmp_func(info->arg_v[1], "-") == 0)
 	{
-		dir = getenv("OLDPWD");
-		if (!dir)
+		if (!getenv_fun(info, "OLDPWD="))
 		{
-			printf("%s\n", current_dir);
+			_puts(s);
+			_putchar('\n');
 			return (1);
 		}
-		printf("%s\n", dir);
-		chdr = chdir(dir ? dir : "/");
+		_puts(getenv_fun(info, "OLDPWD=")), _putchar('\n');
+		chdir_ret =
+			chdir((dir = getenv_fun(info, "OLDPWD=")) ? dir : "/");
+	}
+	else
+		chdir_ret = chdir(info->arg_v[1]);
+	if (chdir_ret == -1)
+	{
+		put_error(info, "Error: Failed to change directory to %s\n");
+		eputs_func(info->arg_v[1]), eputchar_func('\n');
 	}
 	else
 	{
-		chdr = chdir(info->argv[1]);
+		setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
+		setenv(info, "PWD", getcwd(buffer, 1024));
 	}
-
-	if (chdr == -1)
-	{
-		printf("Error: Failed to change directory to %s\n", info->argv[1]);
-	}
-	else
-	{
-		setenv("OLDPWD", current_dir, 1);
-		setenv("PWD", getcwd(buffer, 1024), 1);
-	}
-
 	return (0);
 }
