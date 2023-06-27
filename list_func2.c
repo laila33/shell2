@@ -5,7 +5,7 @@
  *
  * @h: pointer to first node
  *
- * Return: length of list
+ * Return: Length of list
  */
 size_t len_l(const my_list_t *h)
 {
@@ -61,11 +61,11 @@ return (ss);
  *
  * @h: pointer to list first node.
  *
- * @c_node: pointer to the node.
+ * @c_node: Pointer to the node.
  *
- * Return: index of node or -1.
+ * Return: node index, -1.
  */
-ssize_t nodes_index(my_list_t *h,my_list_t *c_node)
+ssize_t nodes_index(my_list_t *h, my_list_t *c_node)
 {
 	size_t j = 0;
 
@@ -81,13 +81,13 @@ return (-1);
 
 
 /**
- * start_with - returns node whose string starts with prefix.
+ * start_with - Rturn node whose string start with prefix.
  *
- * @c_node: pointer to list head.
+ * @c_node: Pointer to head.
  * @prefix: string to match.
  * @ch: the next character after prefix.
  *
- * Return: match node or null
+ * Return: matched node , null
  */
 my_list_t *start_with(my_list_t *c_node, char *prefix, char ch)
 {

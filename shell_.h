@@ -15,7 +15,7 @@
 
 #define READ__SIZE 1024
 #define WRITE__SIZE 1024
-#define BUF_FLUSH -1
+#define BUF _FLUSH -1
 
 
 #define CMD_NORM	(0)
@@ -73,11 +73,14 @@ typedef struct my_liststr
  * @cmd_buf: address
  * @cmd_buf_type: CMD_type
  * @readfd: fd from read line input
+ * @historycount: history line number count.
+ * @lcount_ch: If count this line of input.
+ * @status: return status of  last command.
 */
 typedef struct pass_information
 {
 	char **argv;
-	unsigned int line_count;
+	unsigned int l_count;
 	char *arg;
 	int argc;
 	int err_num;
@@ -85,10 +88,10 @@ typedef struct pass_information
 	my_list_t *alias;
 	char **environ;
 	int env_changed;
-	int status;
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
+<<<<<<< HEAD
 	unsigned int l_count;
         char *fname;
         char *input;
@@ -96,6 +99,14 @@ typedef struct pass_information
         int historycount;
         int lcount_ch;
 
+=======
+	char *fname;
+	char *input;
+	my_list_t *history;
+	int historycount;
+	int lcount_ch;
+	int status;
+>>>>>>> 17302941f1fe2ffe64385147b392966afa7945b0
 } info_t;
 
 /**
@@ -128,6 +139,7 @@ char *strcpy_func(char *, char *);
 char *strdup_func(const char *);
 void puts_func(char *);
 int _putchar(char);
+<<<<<<< HEAD
 
 char *strncpy_2(char *, char *, int);
 char *strncat_2(char *, char *, int);
@@ -137,6 +149,14 @@ char strncpy_2(char *, char *, int);
 char strncat_2(char *, char *, int);
 char strchr_2(char *, char);
 
+=======
+char *strncpy_2(char *, char *, int );
+char *strncat_2(char *, char *, int );
+char *strchr_2(char *, char );
+//char strncpy_2(char *, char *, int);
+//char strncat_2(char *, char *, int);
+//char strchr_2(char *, char);
+>>>>>>> 17302941f1fe2ffe64385147b392966afa7945b0
 char **strtow_func(char *, char *);
 char **strtow_func2(char *, char);
 char *memset_func(char *, char, unsigned int);
