@@ -3,16 +3,16 @@
 /**
  * free_function - free pointer and let address equel null.
  *
- * @p: pointer address.
+ * @ptr: pointer address.
  *
  * Return: 1 or 0.
  */
-int free_function(void **p)
+int free_function(void **ptr)
 {
-	if (p && *p)
+	if (ptr && *ptr)
 	{
-		free(*p);
-		*p = NULL;
+		free(*ptr);
+		*ptr = NULL;
 		return (1);
 	}
 	return (0);

@@ -18,19 +18,19 @@ int env_fun(info_tt *info)
  * getenv_fun - get value of env
  *
  * @info: struct
- * @n: env name
+ * @nv: env name
  *
  * Return: value
 */
 
-char *getenv_fun(info_tt *info, const char *n)
+char *getenv_fun(info_tt *info, const char *nv)
 {
-	my_list_t *node = (my_list_t *)info->environ;
+	my_list_t *node = info->env;
 	char *p;
 
 	while (node)
 	{
-		p = starts_with_func(node->s, n);
+		p = starts_with_func(node->s, nv);
 		if (p && *p)
 			return (p);
 		node = node->next;
@@ -68,15 +68,15 @@ int setenv_fun(info_tt *info)
 
 int unsetenv_fun(info_tt *info)
 {
-	int l;
+	int m;
 
 	if (info->arg_c == 1)
 	{
 		eputs_func("Too arguments.\n");
 		return (1);
 	}
-	for (l = 1; l <= info->arg_c; l++)
-		__unsetenv(info, info->arg_v[l]);
+	for (m = 1; m <= info->arg_c; m++)
+		__unsetenv(info, info->arg_v[m]);
 
 	return (0);
 }
@@ -92,10 +92,10 @@ int unsetenv_fun(info_tt *info)
 int popenv_list(info_tt *info)
 {
 	my_list_t *node = NULL;
-	size_t l;
+	size_t m;
 
-	for (l = 0; environ[l]; l++)
-	insert_node(&node, environ[l], 0);
+	for (m = 0; environ[m]; m++)
+	insert_node(&node, environ[m], 0);
 	info->env = node;
 	return (0);
 }

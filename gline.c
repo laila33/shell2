@@ -111,20 +111,20 @@ void siginthandler_fun(__attribute__((unused))int snum)
  *
  * @info: struct
  * @buf: buffer
- * @s: size
+ * @sz: size
  *
  * Return: x
 */
 
-ssize_t readbuf_fun(info_tt *info, char *buf, size_t *s)
+ssize_t readbuf_fun(info_tt *info, char *buf, size_t *sz)
 {
 	ssize_t x = 0;
 
-	if (*s)
+	if (*sz)
 		return (0);
 	x = read(info->readf, buf, READ__SIZE);
 	if (x >= 0)
-		*s = x;
+		*sz = x;
 	return (x);
 }
 

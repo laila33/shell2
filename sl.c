@@ -90,10 +90,10 @@ int findbuilt_fun(info_tt *info)
 
 void git_cmd(info_tt *info)
 {
-	char *input = NULL;
+	char *path = NULL;
 	int i, j;
 
-	info->input = info->arg_v[0];
+	info->path = info->arg_v[0];
 	if (info->lcount_ch == 1)
 	{
 		info->l_count++;
@@ -106,10 +106,10 @@ void git_cmd(info_tt *info)
 	if (!j)
 		return;
 
-	input = f_path(info, getenv_fun(info, "PATH="), info->arg_v[0]);
-	if (input)
+	path = f_path(info, getenv_fun(info, "PATH="), info->arg_v[0]);
+	if (path)
 	{
-		info->input = input;
+		info->path = path;
 		f_cmd(info);
 	}
 	else
@@ -146,7 +146,7 @@ void f_cmd(info_tt *info)
 	}
 	if (newpid == 0)
 	{
-		if (execve(info->input, info->arg_v, getenviron_fun(info)) == -1)
+		if (execve(info->path, info->arg_v, getenviron_fun(info)) == -1)
 		{
 			freeinfo_fun(info, 1);
 			if (errno == EACCES)

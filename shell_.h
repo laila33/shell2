@@ -76,7 +76,7 @@ typedef struct passinfo
 {
 	char *arg;
 	char **arg_v;
-	char *input;
+	char *path;
 	int arg_c;
 	unsigned int l_count;
 	int err_num;
