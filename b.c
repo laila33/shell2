@@ -61,11 +61,11 @@ int exit_fun(info_tt *info)
 
 int cd_fun(info_tt *info)
 {
-	char *s, *dr, buf[1024];
+	char *sg, *dr, buf[1024];
 	int chdir_ret;
 
-	s = getcwd(buf, 1024);
-	if (!s)
+	sg = getcwd(buf, 1024);
+	if (!sg)
 		puts_func("Error: Unable to retrieve current directory.\n");
 	if (!info->arg_v[1])
 	{
@@ -80,7 +80,7 @@ int cd_fun(info_tt *info)
 	{
 		if (!getenv_fun(info, "OLDPWD="))
 		{
-			puts_func(s);
+			puts_func(sg);
 			_putchar('\n');
 			return (1);
 		}

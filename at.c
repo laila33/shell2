@@ -49,26 +49,26 @@ int isalpha_fun(int h)
 /**
  * atoi_fun - convert string to int
  *
- * @s: string to convert
+ * @sg: string to convert
  *
  * Return: 0
 */
 
-int atoi_fun(char *s)
+int atoi_fun(char *sg)
 {
 	int n, sign = 1, f = 0, out;
 	unsigned int res = 0;
 
-	for (n = 0;  s[n] != '\0' && f != 2; n++)
+	for (n = 0;  sg[n] != '\0' && f != 2; n++)
 	{
-		if (s[n] == '-')
+		if (sg[n] == '-')
 			sign *= -1;
 
-		if (s[n] >= '0' && s[n] <= '9')
+		if (sg[n] >= '0' && sg[n] <= '9')
 		{
 			f = 1;
 			res *= 10;
-			res += (s[n] - '0');
+			res += (sg[n] - '0');
 		}
 		else if (f == 1)
 			f = 2;
