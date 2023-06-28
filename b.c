@@ -12,10 +12,10 @@ int help_fun(info_tt *info)
 {
 	char **arg_arr = info->arg_v;
 
-	_puts("The help command is not yet available.\n");
+	puts_func("The help command is not yet available.\n");
 
 	if (0)
-		_puts(*arg_arr);
+		puts_func(*arg_arr);
 	return (0);
 }
 
@@ -66,7 +66,7 @@ int cd_fun(info_tt *info)
 
 	s = getcwd(buffer, 1024);
 	if (!s)
-		_puts("Error: Unable to retrieve current directory.\n");
+		puts_func("Error: Unable to retrieve current directory.\n");
 	if (!info->arg_v[1])
 	{
 		dir = getenv_fun(info, "HOME=");
@@ -80,11 +80,11 @@ int cd_fun(info_tt *info)
 	{
 		if (!getenv_fun(info, "OLDPWD="))
 		{
-			_puts(s);
+			puts_func(s);
 			_putchar('\n');
 			return (1);
 		}
-		_puts(getenv_fun(info, "OLDPWD=")), _putchar('\n');
+		puts_func(getenv_fun(info, "OLDPWD=")), _putchar('\n');
 		chdir_ret =
 			chdir((dir = getenv_fun(info, "OLDPWD=")) ? dir : "/");
 	}

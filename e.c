@@ -25,7 +25,7 @@ int env_fun(info_tt *info)
 
 char *getenv_fun(info_tt *info, const char *n)
 {
-	my_list_t *node = info->environ;
+	my_list_t *node = (my_list_t *)info->environ;
 	char *p;
 
 	while (node)
@@ -94,11 +94,8 @@ int popenv_list(info_tt *info)
 	my_list_t *node = NULL;
 	size_t l;
 
-	for (l = 0; env[l]; l++)
-
-	insert_node(&node, env[l], 0);
-	info->env = node;
+	for (l = 0; environ[l]; l++)
 	insert_node(&node, environ[l], 0);
-	info->environ = node;
+	info->env = node;
 	return (0);
 }

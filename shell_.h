@@ -203,7 +203,7 @@ int findbuilt_fun(info_tt *);
 void git_cmd(info_tt *);
 void f_cmd(info_tt *);
 
-
+size_t put_liststr(char **);
 
 
 
