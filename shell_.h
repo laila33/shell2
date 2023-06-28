@@ -20,7 +20,7 @@
 
 #define CMD__NORM	0
 #define CMD__OR		1
-#define CMD__AND		2
+#define CMD__AND	2
 #define CMD__CHAIN	3
 
 
@@ -35,7 +35,6 @@
 #define HIST_MAX	4096
 
 extern char **environ;
-extern char **env;
 
 
 /**
