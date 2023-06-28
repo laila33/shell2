@@ -55,7 +55,7 @@ typedef struct my_lists_t
  *		allowing uniform prototype for function pointer struct
  *@arg: a string generated from getline containing arguements
  *@arg_v: array of strings generated from arg
- *@input: String input for the current command.
+ *@path: String input for the current command.
  *@arg_c: Argument count.
  *@l_count: error countER
  *@err_num: the error code for exit()s
