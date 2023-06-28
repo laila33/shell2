@@ -149,7 +149,7 @@ int repvars_fun(info_tt *info)
 					strdup_func1(convert_d(getpid(), 10, 0)));
 			continue;
 		}
-		node = start_node(info->env, &(info->env[n][1]), '=');
+		node = start_node(info->env, &(info->arg_v[n][1]), '=');
 		if (node)
 		{
 			repstring_fun(&(info->arg_v[n]),

@@ -55,15 +55,15 @@ char *strdup_func1(const char *s)
 int _putchar(char ch)
 {
 	static int j;
-	static char buffer[WRITE__SIZE];
+	static char buf[WRITE__SIZE];
 
 	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
-		write(1, buffer, j);
+		write(1, buf, j);
 		j = 0;
 	}
 	if (ch != BUF_FLUSH)
-		buffer[j++] = ch;
+		buf[j++] = ch;
 	return (1);
 }
 

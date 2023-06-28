@@ -34,7 +34,7 @@ ssize_t inputbuf_fun(info_tt *info, char **buf, size_t *l)
 			}
 			info->lcount_ch = 1;
 			delete_message(*buf);
-			bhistory_list(info, *buf, info->historycount++);
+			bhistoryl(info, *buf, info->historycount++);
 			{
 				*l = i;
 				info->cmd_buff = buf;

@@ -135,6 +135,8 @@ int env_fun(info_tt *);
 int setenv_fun(info_tt *);
 int unsetenv_fun(info_tt *);
 int popenv_list(info_tt *);
+int if_cmd(info_tt *, char *);
+char *f_path(info_tt *, char *, char *);
 
 char **getenviron_fun(info_tt *);
 int __unsetenv(info_tt *, char *);
@@ -203,9 +205,14 @@ int findbuilt_fun(info_tt *);
 void git_cmd(info_tt *);
 void f_cmd(info_tt *);
 
-size_t put_liststr(char **);
+/**size_t put_liststr(char **);*/
+size_t put_liststr(const my_list_t *);
 
-
+int history_r(info_tt *);
+int bhistoryl(info_tt *, char *, int);
+int history_rm(info_tt *);
+int history_w(info_tt *);
+char *find_history_file(info_tt *);
 
 
 

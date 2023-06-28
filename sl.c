@@ -18,7 +18,6 @@ int hsh(info_tt *info, char **ar)
 	{
 		clearinfo_fun(info);
 		if (interactive_fun(info))
-			_puts("$ ");
 			puts_func("$ ");
 		eputchar_func(BUF_FLUSH);
 		n = getinput_fun(info);
@@ -37,13 +36,13 @@ int hsh(info_tt *info, char **ar)
 	freeinfo_fun(info, 1);
 
 	if (!interactive_fun(info) && info->statuss)
-		exit_fun(info->statuss);
+		exit(info->statuss);
 
 	if (br == -2)
 	{
 		if (info->err_num == -1)
-			exit_fun(info->statuss);
-		exit_fun(info->err_num);
+			exit(info->statuss);
+		exit(info->err_num);
 	}
 	return (br);
 }

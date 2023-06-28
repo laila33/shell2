@@ -39,14 +39,14 @@ int if_cmd(info_tt *info, char *input)
  */
 char *d_char(char *inputs, int f_point, int e_point)
 {
-	static char buffer[1024];
+	static char buf[1024];
 	int i = 0, j = 0;
 
 	for (j = 0, i = f_point; i < e_point; i++)
 		if (inputs[i] != ':')
-			buffer[j++] = inputs[i];
-	buffer[j] = 0;
-	return (buffer);
+			buf[j++] = inputs[i];
+	buf[j] = 0;
+	return (buf);
 }
 
 

@@ -10,7 +10,7 @@
 
 int env_fun(info_tt *info)
 {
-	put_liststr(info->environ);
+	put_liststr(info->env);
 	return (0);
 }
 

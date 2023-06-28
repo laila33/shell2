@@ -61,20 +61,20 @@ int exit_fun(info_tt *info)
 
 int cd_fun(info_tt *info)
 {
-	char *s, *dir, buffer[1024];
+	char *s, *dr, buf[1024];
 	int chdir_ret;
 
-	s = getcwd(buffer, 1024);
+	s = getcwd(buf, 1024);
 	if (!s)
 		puts_func("Error: Unable to retrieve current directory.\n");
 	if (!info->arg_v[1])
 	{
-		dir = getenv_fun(info, "HOME=");
-		if (!dir)
+		dr = getenv_fun(info, "HOME=");
+		if (!dr)
 			chdir_ret =
-				chdir((dir = getenv_fun(info, "PWD=")) ? dir : "/");
+				chdir((dr = getenv_fun(info, "PWD=")) ? dr : "/");
 		else
-			chdir_ret = chdir(dir);
+			chdir_ret = chdir(dr);
 	}
 	else if (strcmp_func(info->arg_v[1], "-") == 0)
 	{
@@ -86,7 +86,7 @@ int cd_fun(info_tt *info)
 		}
 		puts_func(getenv_fun(info, "OLDPWD=")), _putchar('\n');
 		chdir_ret =
-			chdir((dir = getenv_fun(info, "OLDPWD=")) ? dir : "/");
+			chdir((dr = getenv_fun(info, "OLDPWD=")) ? dr : "/");
 	}
 	else
 		chdir_ret = chdir(info->arg_v[1]);
@@ -98,7 +98,7 @@ int cd_fun(info_tt *info)
 	else
 	{
 		__setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
-		__setenv(info, "PWD", getcwd(buffer, 1024));
+		__setenv(info, "PWD", getcwd(buf, 1024));
 	}
 	return (0);
 }

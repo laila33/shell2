@@ -28,15 +28,15 @@ void eputs_func(char *str)
 int eputchar_func(char ch)
 {
 	static int j;
-	static char buffer[WRITE__SIZE];
+	static char buf[WRITE__SIZE];
 
 	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
-		write(2, buffer, j);
+		write(2, buf, j);
 		j = 0;
 	}
 	if (ch != BUF_FLUSH)
-		buffer[j++] = ch;
+		buf[j++] = ch;
 	return (1);
 }
 

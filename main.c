@@ -11,7 +11,7 @@
 
 int main(int ao, char **ar)
 {
-	info_tt info[1] = { INFO__INIT };
+	info_tt info[] = { INFO__INIT };
 	int f = 2;
 
 	asm ("mov %1, %0\n\t"
@@ -31,16 +31,16 @@ int main(int ao, char **ar)
 				eputs_func(ar[0]);
 				eputs_func(": 0: Can't open ");
 				eputs_func(ar[1]);
-				Eput('\n');
-				Eput(BUF_FLUSH);
+				eputchar_func('\n');
+				eputchar_func(BUF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);
 		}
 		info->readf = f;
 	}
-	popenv_list(&info[0]);
-	history_r(*info);
-	hsh(&info, ar);
+	popenv_list(info);
+	history_r(info);
+	hsh(info, ar);
 	return (EXIT_SUCCESS);
 }

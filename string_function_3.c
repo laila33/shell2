@@ -15,7 +15,7 @@ char *strncpy_func2(char *s2, char *s1, int num)
 	x = 0;
 	while (s1[x] != '\0' && x < num - 1)
 	{
-		s2[y] = s1[y];
+		s2[x] = s1[x];
 		x++;
 	}
 	if (x < num)
