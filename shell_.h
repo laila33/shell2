@@ -35,6 +35,7 @@
 #define HIST_MAX	4096
 
 extern char **environ;
+extern char **env;
 
 
 /**
