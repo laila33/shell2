@@ -1,7 +1,7 @@
 #include "shell_.h"
 
 /**
- * mshell - main shell loop
+ * hsh - main shell loop
  *
  * @info: struct
  * @ar: argument
@@ -9,7 +9,7 @@
  * Return: 0 success else 1
 */
 
-int mshell(info_tt *info, char **ar)
+int hsh(info_tt *info, char **ar)
 {
 	ssize_t n = 0;
 	int br = 0;

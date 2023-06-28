@@ -198,7 +198,7 @@ int _putt(int, int);
 char *convert_d(long int, int, int);
 void delete_message(char *);
 
-int mshell(info_tt *, char **);
+int hsh(info_tt *, char **);
 int findbuilt_fun(info_tt *);
 void git_cmd(info_tt *);
 void f_cmd(info_tt *);
