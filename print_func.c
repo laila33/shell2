@@ -1,4 +1,9 @@
 #include "shell_.h"
+int convert_func(char *x);
+void put_error(info_tt *info, char *str);
+int _putt(int x, int fd);
+char *convert_d(long int number, int on, int ch);
+void delete_message(char *buf);
 
 /**
  * convert_func - convert string into intger
