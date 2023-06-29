@@ -1,4 +1,10 @@
 #include "shell_.h"
+char **getenviron_fun(info_tt *info);
+int __unsetenv(info_tt *info, char *v);
+int __setenv(info_tt *info, char *v, char *u);
+
+
+
 
 /**
  * getenviron_fun - returns string arr copy of our environ
