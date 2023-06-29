@@ -9,9 +9,6 @@
  * Return: 0 success else 1
 */
 
-/*int mshell(info_tt *info, char **a)
-int mshell(info_tt *info, char **ar)*/
-
 int hsh(info_tt *info, char **ar)
 
 {

@@ -40,7 +40,7 @@ void setinfo_fun(info_tt *info, char **at)
 		}
 		for (m = 0; info->arg_v && info->arg_v[m]; m++)
 			;
-		
+
 		info->arg_c = m;
 		repalias_fun(info);
 		repvars_fun(info);
@@ -51,7 +51,7 @@ void setinfo_fun(info_tt *info, char **at)
  * freeinfo_fun - free info_t
  *
  * @info: struct
- * @f: free all fields
+ * @fe: free all fields
 */
 
 void freeinfo_fun(info_tt *info, int fe)
