@@ -10,7 +10,7 @@
 
 int history_fun(info_tt *info)
 {
-	put_list(info->the_history);
+	print_node(info->the_history);
 	return (0);
 }
 

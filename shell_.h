@@ -176,7 +176,7 @@ char **strtow_func2(char *, char);
 
 size_t l_l(const my_list_t *);
 char **l_to_s(my_list_t *);
-size_t put_list(const my_list_t *);
+size_t print_node(const my_list_t *);
 my_list_t *start_node(my_list_t *, char *, char);
 ssize_t find_node_index(my_list_t *, my_list_t *);
 
@@ -187,7 +187,7 @@ void *find_str(void *, unsigned int, unsigned int);
 
 my_list_t *insert_node(my_list_t **, const char *, int);
 my_list_t *add_node_end(my_list_t **, const char *, int);
-size_t put_listtrconst my_list_t *);
+size_t put_listtrconst(my_list_t *);
 int delete_index(my_list_t **, unsigned int);
 void free_linked(my_list_t **);
 int free_function(void **);

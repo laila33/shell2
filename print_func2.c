@@ -32,7 +32,7 @@ int eputchar_func(char ch)
 
 	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
-		write(2, buffer, i);
+		write(2, buffer, j);
 		j = 0;
 	}
 	if (ch != BUF_FLUSH)
@@ -54,7 +54,7 @@ int putfd_func(char ch, int filed)
 
 	if (ch == BUF_FLUSH || j >= WRITE__SIZE)
 	{
-		write(filed, buffer, i);
+		write(filed, buffer, j);
 		j = 0;
 	}
 	if (ch != BUF_FLUSH)

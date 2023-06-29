@@ -37,7 +37,7 @@ void put_error(info_tt *info, char *str)
 {
 	eputs_func(info->filename);
 	eputs_func(": ");
-	decc(info->l_count, STDERR_FILENO);
+	_putt(info->l_count, STDERR_FILENO);
 	eputs_func(": ");
 	eputs_func(info->arg_v[0]);
 	eputs_func(": ");

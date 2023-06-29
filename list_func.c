@@ -52,11 +52,11 @@ my_list_t *insert_end_node(my_list_t **top, const char *s, int number)
 	new = malloc(sizeof(my_list_t));
 	if (!new)
 		return (NULL);
-	memset_func((void *)new_node, 0, sizeof(my_list_t));
+	memset_func((void *)new, 0, sizeof(my_list_t));
 	new->number = number;
 	if (s)
 	{
-		new->s = strdup_func(s);
+		new->s = strdup_func1(s);
 		if (!new->s)
 		{
 			free(new);
@@ -71,16 +71,16 @@ my_list_t *insert_end_node(my_list_t **top, const char *s, int number)
 	}
 	else
 		*top = new;
-	return (new_);
+	return (new);
 }
 
 /**
- * put_list - put only the s element of mr_list_t  list.
+ * print_node - print only the s element of mr_list_t  list.
  * @top: pointer to top node
  *
  * Return: length of list
  */
-size_t put_list(const my_list_t *top)
+size_t print_node(const my_list_t *top)
 {
 	size_t j = 0;
 

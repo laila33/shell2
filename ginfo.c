@@ -41,8 +41,8 @@ void setinfo_fun(info_tt *info, char **at)
 		for (n = 0; info->arg_v && info->arg_v[n]; n++)
 			;
 		info->arg_c = n;
-		repalias(info);
-		repvars(info);
+		repalias_fun(info);
+		repvars_fun(info);
 	}
 }
 
@@ -74,6 +74,6 @@ void freeinfo_fun(info_tt *info, int f)
 		free_function((void **)info->cmd_buff);
 		if (info->readf > 2)
 			close(info->readf);
-		_putcharr(BUF_FLUSH);
+		_putchar(BUF_FLUSH);
 	}
 }
