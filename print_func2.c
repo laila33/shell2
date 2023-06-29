@@ -1,4 +1,8 @@
 #include "shell_.h"
+void eputs_func(char *str);
+int eputchar_func(char ch);
+int putfd_func(char ch, int filed);
+int putsfd_d(char *s, int filed);
 
 /**
  *eputs_func - print input string.
