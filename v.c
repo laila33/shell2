@@ -1,4 +1,11 @@
 #include "shell_.h"
+int ischain_fun(info_tt *info, char *buf, size_t *p);
+void checkchain_fun(info_tt *info, char *buf, size_t *p, size_t s, size_t l);
+int repalias_fun(info_tt *info);
+int repstring_fun(char **oldd, char *neww);
+int repvars_fun(info_tt *info);
+
+
 
 /**
  * ischain_fun - test if char in buffer
