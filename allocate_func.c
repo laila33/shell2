@@ -1,4 +1,11 @@
 #include "shell_.h"
+char *memset_func(char *m, char num, unsigned int am);
+void free_str(char **x);
+void *find_str(void *ptr, unsigned int old_s, unsigned int new_s);
+
+
+
+
 
 /**
  **memset_func - fill memory with a number of bytes.
