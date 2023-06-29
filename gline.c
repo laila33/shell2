@@ -1,4 +1,10 @@
 #include "shell_.h"
+ssize_t inputbuf_fun(info_tt *info, char **buf, size_t *l);
+ssize_t getinput_fun(info_tt *info);
+void siginthandler_fun(__attribute__((unused))int snum);
+ssize_t readbuf_fun(info_tt *info, char *buf, size_t *sz);
+int getline_fun(info_tt *info, char **ptr, size_t *length);
+
 
 /**
  * inputbuf_fun - buffer chain command
