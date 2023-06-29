@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 #include "shell.h"
+=======
+#include "shell_.h"
+char **strtow_func(char *str, char *copy);
+
+char **strtow_func2(char *str, char copy);
+>>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  * **strtow_func - split string into words Repeat delimiters will be ignore.

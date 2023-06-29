@@ -1,4 +1,31 @@
+<<<<<<< HEAD
 #include "shell.h"
+=======
+#include "shell_.h"
+void eputs_func(char *str);
+int eputchar_func(char ch);
+int putfd_func(char ch, int filed);
+int putsfd_d(char *s, int filed);
+
+/**
+ *eputs_func - print input string.
+ * @str: the string to print.
+ *
+ * Return: (Nothing)
+ */
+void eputs_func(char *str)
+{
+	int j = 0;
+
+	if (!str)
+		return;
+	while (str[j] != '\0')
+	{
+		eputchar_func(str[j]);
+		j++;
+	}
+}
+>>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  * eputchar_func - write the character ch to stderr.

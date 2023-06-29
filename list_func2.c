@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 #include "shell.h"
+=======
+#include "shell_.h"
+size_t l_l(const my_list_t *top);
+char **l_to_s(my_list_t *top);
+size_t put_liststr(const my_list_t *top);
+my_list_t *start_node(my_list_t *c_node, char *x, char ch);
+ssize_t find_node_index(my_list_t *top, my_list_t *c_node);
+>>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  * l_l - define size of list.

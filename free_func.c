@@ -1,5 +1,7 @@
 #include "shell.h"
 
+int free_function(void **ptr);
+
 /**
  * free_function - free pointer and let address equel null.
  *

@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 #include "shell.h"
+=======
+#include "shell_.h"
+int if_cmd(info_tt *info, char *path);
+char *d_char(char *paths, int f_point, int e_point);
+char *f_path(info_tt *info, char *paths, char *cmd);
+
+
+
+
+>>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  * if_cmd - determines if a file is an executable command or not.

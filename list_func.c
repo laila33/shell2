@@ -1,5 +1,13 @@
 #include "shell.h"
 
+my_list_t *insert_node(my_list_t **top, const char *s, int number);
+my_list_t *insert_end_node(my_list_t **top, const char *s, int number);
+size_t print_node(const my_list_t *top);
+int delete_index(my_list_t **h, unsigned int i);
+void free_linked(my_list_t **top_ptr);
+
+
+
 /**
  * insert_node - add node to the start of the linked list.
  * @top: address of pointer to first node

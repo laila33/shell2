@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 #include "shell.h"
+=======
+#include "shell_.h"
+char *strcpy_func1(char *s2, char *s1);
+char *strdup_func1(const char *s);
+int _putchar(char ch);
+void puts_func(char *s);
+
+>>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  * *strcpy_func1 - Copies string.

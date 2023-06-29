@@ -1,5 +1,18 @@
 #include "shell.h"
 
+char *find_history_file(info_tt *info);
+int history_w(info_tt *info);
+int history_rm(info_tt *info);
+int bhistoryl(info_tt *info, char *buf, int l_count);
+int history_r(info_tt *info);
+
+
+
+
+
+
+
+
 /**
  * find_history_file - find the history file.
  *
