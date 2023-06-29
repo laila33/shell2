@@ -1,4 +1,7 @@
 #include "shell_.h"
+char **strtow_func(char *str, char *copy);
+
+char **strtow_func2(char *str, char copy);
 
 /**
  * **strtow_func - split string into words Repeat delimiters will be ignore.
