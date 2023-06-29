@@ -1,4 +1,9 @@
 #include "shell_.h"
+void clearinfo_fun(info_tt *info);
+void setinfo_fun(info_tt *info, char **at);
+void freeinfo_fun(info_tt *info, int fe);
+
+
 
 /**
  * clearinfo_fun - initializes info_t
