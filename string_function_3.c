@@ -1,4 +1,8 @@
-#include "shell_.h"
+#include "shell.h"
+
+char *strncpy_func2(char *s2, char *s1, int num);
+char *strncat_func2(char *s2, char *s1, int num);
+char *strchr_func2(char *a, char ch);
 
 
 char *strncpy_func2(char *s2, char *s1, int num);

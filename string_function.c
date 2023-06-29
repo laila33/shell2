@@ -3,6 +3,7 @@ int strlen_func(char *ss);
 int strcmp_func(char *src, char *dest);
 char *starts_with_func(const char *s1, const char *s2);
 char *strcat_func(char *ss, char *s);
+
 /**
  * strlen_func - return size of string.
  * @ss:string it's length to fund.

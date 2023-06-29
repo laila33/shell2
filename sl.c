@@ -1,4 +1,4 @@
-#include "shell_.h"
+#include "shell.h"
 
 int hsh(info_tt *info, char **ar);
 int findbuilt_fun(info_tt *info);
@@ -16,9 +16,6 @@ void f_cmd(info_tt *info);
  *
  * Return: 0 success else 1
 */
-
-/*int mshell(info_tt *info, char **a)
-int mshell(info_tt *info, char **ar)*/
 
 int hsh(info_tt *info, char **ar)
 

@@ -4,8 +4,6 @@ int exit_fun(info_tt *info);
 int cd_fun(info_tt *info);
 
 
-
-
 /**
  * help_fun - change current dir of the process
  *
@@ -105,8 +103,8 @@ int cd_fun(info_tt *info)
 	}
 	else
 	{
-		__setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
-		__setenv(info, "PWD", getcwd(buf, 1024));
+		_setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buf, 1024));
 	}
 	return (0);
 }

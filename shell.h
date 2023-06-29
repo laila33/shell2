@@ -110,116 +110,102 @@ typedef struct builtinn
 	int (*fun)(info_tt *);
 } builtintable;
 
-void eputs_func(char *);
-int eputchar_func(char);
-int putfd_func(char c, int fd);
-int putsfd_d(char *str, int fd);
+char *memset_func(char *, char, unsigned int);
+void free_str(char **);
+void *find_str(void *, unsigned int, unsigned int);
 
 int interactive_fun(info_tt *);
 int isdelim_fun(char, char *);
 int isalpha_fun(int);
 int atoi_fun(char *);
 
+int help_fun(info_tt *);
 int exit_fun(info_tt *);
 int cd_fun(info_tt *);
-int help_fun(info_tt *);
 
-char *strcpy_func1(char *, char *);
-char *strdup_func1(const char *);
-void puts_func(char *);
-int _putchar(char);
+int history_fun(info_tt *);
+int alias_fun(info_tt *);
 
-char *getenv_fun(info_tt *, const char *);
+int if_cmd(info_tt *, char *);
+char *d_char(char *, int, int);
+char *f_path(info_tt *, char *, char *);
+
 int env_fun(info_tt *);
+char *getenv_fun(info_tt *, const char *);
 int setenv_fun(info_tt *);
 int unsetenv_fun(info_tt *);
 int popenv_list(info_tt *);
-int if_cmd(info_tt *, char *);
-char *f_path(info_tt *, char *, char *);
 
-char **getenviron_fun(info_tt *);
-int __unsetenv(info_tt *, char *);
-int __setenv(info_tt *, char *, char *);
+int free_function(void **);
+
+char **getenviron_fun(const char *v);
+int __unsetenv(char **ar, char **fr);
+int __setenv(char **ar, char **fr);
 
 void clearinfo_fun(info_tt *);
 void setinfo_fun(info_tt *, char **);
 void freeinfo_fun(info_tt *, int);
 
 ssize_t getinput_fun(info_tt *);
-ssize_t readbuf_fun(info_tt *, char *, size_t *);
-ssize_t inputbuf_fun(info_tt *, char **, size_t *);
-int getline_fun(info_tt *, char **, size_t *);
 void siginthandler_fun(int);
+int getline_fun(info_tt *, char **, size_t *);
 
-int history_fun(info_tt *);
-int alias_fun(info_tt *);
-int unsetalias_fun(info_tt *, char *);
-int setalias_fun(info_tt *, char *);
-int printalias_fun(my_list_t *);
+char *find_history_file(info_tt *info);
+int history_w(info_tt *info);
+int history_rm(info_tt *info);
+int bhistoryl(info_tt *info, char *buf, int l_count);
+int history_r(info_tt *info);
 
-int ischain_fun(info_tt *, char *, size_t *);
-void checkchain_fun(info_tt *, char *, size_t *, size_t, size_t);
-int repalias_fun(info_tt *);
-int repvars_fun(info_tt *);
-int repstring_fun(char **, char *);
-
-int strlen_func(char *);
-int strcmp_func(char *, char *);
-char *starts_with_func(const char *, const char *);
-char *strcat_func(char *, char *);
-
-char *strncpy_func2(char *, char *, int);
-char *strncat_func2(char *, char *, int);
-char *strchr_func2(char *, char);
-
-char **strtow_func(char *, char *);
-char **strtow_func2(char *, char);
-
+my_list_t *insert_node(my_list_t **, const char *, int);
+my_list_t *insert_end_node(my_list_t **, const char *, int);
+size_t print_node(const my_list_t *);
+int delete_index(my_list_t **, unsigned int);
+void free_linked(my_list_t **);
 
 size_t l_l(const my_list_t *);
 char **l_to_s(my_list_t *);
-size_t print_node(const my_list_t *);
+size_t put_liststr(const my_list_t *);
 my_list_t *start_node(my_list_t *, char *, char);
 ssize_t find_node_index(my_list_t *, my_list_t *);
 
-char *memset_func(char *, char, unsigned int);
-void free_str(char **);
-void *find_str(void *, unsigned int, unsigned int);
-
-
-my_list_t *insert_node(my_list_t **, const char *, int);
-my_list_t *add_node_end(my_list_t **, const char *, int);
-size_t put_listtrconst(my_list_t *);
-int delete_index(my_list_t **, unsigned int);
-void free_linked(my_list_t **);
-int free_function(void **);
 int convert_func(char *);
 void put_error(info_tt *, char *);
 int _putt(int, int);
 char *convert_d(long int, int, int);
 void delete_message(char *);
 
+void eputs_func(char *);
+int eputchar_func(char);
+int putfd_func(char ch, int filed);
+int putsfd_d(char *s, int filed);
+
 int hsh(info_tt *, char **);
 int findbuilt_fun(info_tt *);
 void git_cmd(info_tt *);
 void f_cmd(info_tt *);
 
-/**size_t put_liststr(char **);*/
-size_t put_liststr(const my_list_t *);
+int strlen_func(char *);
+int strcmp_func(char *, char *);
+char *starts_with_func(const char *, const char *);
+char *strcat_func(char *, char *);
 
-int history_r(info_tt *);
-int bhistoryl(info_tt *, char *, int);
-int history_rm(info_tt *);
-int history_w(info_tt *);
-char *find_history_file(info_tt *);
+char *strcpy_func1(char *, char *);
+char *strdup_func1(const char *);
+int _putchar(char);
+void puts_func(char *);
 
+char *strncpy_func2(char *, char *, int);
+char *strncat_func2(char *, char *, int);
+char *strchr_func2(char *, char);
 
+int ischain_fun(info_tt *, char *, size_t *);
+void checkchain_fun(info_tt *, char *, size_t *, size_t, size_t);
+int repalias_fun(info_tt *);
+int repstring_fun(char **, char *);
+int repvars_fun(info_tt *);
 
+char **strtow_func(char *, char *);
+char **strtow_func2(char *, char);
 
-
-
-
-
-
-
+int main(int, char **);
 #endif

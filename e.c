@@ -5,8 +5,6 @@ int unsetenv_fun(info_tt *info);
 int popenv_list(info_tt *info);
 
 
-
-
 /**
  * env_fun - print current environment
  *
@@ -60,7 +58,7 @@ int setenv_fun(info_tt *info)
 		eputs_func("Invaild num of arguments\n");
 		return (1);
 	}
-	if (__setenv(info, info->arg_v[1], info->arg_v[2]))
+	if (_setenv(info, info->arg_v[1], info->arg_v[2]))
 		return (0);
 	return (1);
 }

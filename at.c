@@ -5,8 +5,6 @@ int isalpha_fun(int h);
 int atoi_fun(char *sg);
 
 
-
-
 /**
  * interactive_fun - see if shell in interactive mode
  *

@@ -3,6 +3,7 @@ void eputs_func(char *str);
 int eputchar_func(char ch);
 int putfd_func(char ch, int filed);
 int putsfd_d(char *s, int filed);
+
 /**
  *eputs_func - print input string.
  * @str: the string to print.
@@ -41,6 +42,25 @@ int eputchar_func(char ch)
 	if (ch != BUF_FLUSH)
 		buf[j++] = ch;
 	return (1);
+}
+
+/**
+ *eputs_func - print input string.
+ * @s: the string to print.
+ *
+ * Return: (Nothing)
+ */
+void eputs_func(char *s)
+{
+	int j = 0;
+
+	if (!s)
+		return;
+	while (s[j] != '\0')
+	{
+		eputchar_func(s[j]);
+		j++;
+	}
 }
 
 /**

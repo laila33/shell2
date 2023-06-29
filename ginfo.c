@@ -3,8 +3,6 @@ void clearinfo_fun(info_tt *info);
 void setinfo_fun(info_tt *info, char **at);
 void freeinfo_fun(info_tt *info, int fe);
 
-
-
 /**
  * clearinfo_fun - initializes info_t
  *
@@ -45,7 +43,7 @@ void setinfo_fun(info_tt *info, char **at)
 		}
 		for (m = 0; info->arg_v && info->arg_v[m]; m++)
 			;
-		
+
 		info->arg_c = m;
 		repalias_fun(info);
 		repvars_fun(info);
@@ -56,7 +54,7 @@ void setinfo_fun(info_tt *info, char **at)
  * freeinfo_fun - free info_t
  *
  * @info: struct
- * @f: free all fields
+ * @fe: free all fields
 */
 
 void freeinfo_fun(info_tt *info, int fe)
@@ -80,6 +78,6 @@ void freeinfo_fun(info_tt *info, int fe)
 		free_function((void **)info->cmd_buff);
 		if (info->readf > 2)
 			close(info->readf);
-		_putchar(BUF_FLUSH);
+		putchar(BUF_FLUSH);
 	}
 }

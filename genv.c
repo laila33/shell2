@@ -1,4 +1,7 @@
 #include "shell_.h"
+#include <stdlib.h>
+#include <unistd.h>
+
 char **getenviron_fun(info_tt *info);
 int __unsetenv(info_tt *info, char *v);
 int __setenv(info_tt *info, char *v, char *u);
@@ -6,97 +9,123 @@ int __setenv(info_tt *info, char *v, char *u);
 
 
 
+
 /**
  * getenviron_fun - returns string arr copy of our environ
  *
- * @info: struct
+ * @v: var
  *
  * Return: 0
 */
 
-char **getenviron_fun(info_tt *info)
+char **getenviron_fun(const char *v)
 {
-	if (!info->environ || info->env_ch)
+	int dex, l;
+
+	l = strlen_func(v);
+	for (dex = 0; environ[dex]; dex++)
 	{
-		info->environ = l_to_s(info->env);
-		info->env_ch = 0;
+		if (strcmp_func(v, environ[dex], l) == 0)
+			return (&environ[dex]);
 	}
-	return (info->environ);
+
+	return (NULL);
 }
 
 /**
  * __unsetenv - remove env variable
  *
- * @info: struct
- * @v: string env var
+ * @ar: struct
+ * @fr: string env var
  *
  * Return: 1 if delete else 0
 */
 
-int __unsetenv(info_tt *info, char *v)
+int __unsetenv(char **ar, char **fr)
 {
-	my_list_t *node = info->env;
-	size_t m = 0;
-	char *p;
+	char **env_v, **new_env;
+	size_t sz;
+	int dex, dex2;
 
-	if (!node || !v)
+	if (!ar[0])
+		return (create_error(ar, -1));
+	env_v = getenviron_fun(arg[0]);
+	if (!env_v)
 		return (0);
 
-	while (node)
+	for (sz = 0; environ[sz]; sz++)
+		;
+
+	new_env = malloc(sizeof(char *) * sz);
+	if (!new_env)
+		return (create_error(ar, -1));
+
+	for (dex = 0, dex2 = 0; environ[dex]; dex++)
 	{
-		p = starts_with_func(node->s, v);
-		if (p && *p == '=')
+		if (*env_v == environ[dex])
 		{
-			info->env_ch = delete_index(&(info->env), m);
-			m = 0;
-			node = info->env;
+			free(*env_v);
 			continue;
 		}
-		node = node->next;
-		m++;
+		new_env[dex2] = env[dex];
+		dex2++;
 	}
-	return (info->env_ch);
+	free(environ);
+	environ = new_env;
+	env[sz - 1] = NULL;
+
+	return (0);
 }
 
 /**
  * __setenv - initialize new env var
  *
- * @info: struct
- * @v: string env var
- * @u: env var value
+ * @ar: string env var
+ * @fr: env var value
  *
  * Return: 0
 */
 
-int __setenv(info_tt *info, char *v, char *u)
+int __setenv(char **ar, char **fr)
 {
-	char *p;
-	char *buf = NULL;
-	my_list_t *node;
+	char **env_v = NULL, **new_env, *new_lue;
+	size_t sz;
+	int dex;
 
-	if (!v || !u)
-		return (0);
-	buf = malloc(strlen_func(v) + strlen_func(u) + 2);
-	if (!buf)
-		return (1);
-	strcpy_func1(buf, v);
-	strcat_func(buf, "=");
-	strcat_func(buf, u);
-	node = info->env;
-	while (node)
+	if (!ar[0] || !ar[1])
+		return (create_error(ar, -1));
+
+	new_lue = malloc(strlen_func(ar[0]) + 1 + strlen_func(ar[1]) + 1);
+	if (!new_lue)
+		return (create_error(ar, -1));
+	strcpy_func1(new_lue, ar[0]);
+	strcat_func(new_lue, "=");
+	strcat_func(new_lue, ar[1]);
+
+	env_v = getenviron_fun(ar[0]);
+	if (env_v)
 	{
-		p = starts_with_func(node->s, v);
-		if (p && *p == '=')
-		{
-			free(node->s);
-			node->s = buf;
-			info->env_ch = 1;
-			return (0);
-		}
-		node = node->next;
+		free(*env_v);
+		*env_v = new_lue;
+		return (0);
 	}
-	insert_node(&(info->env), buf, 0);
-	free(buf);
-	info->env_ch = 1;
+	for (sz = 0; environ[sz]; sz++)
+		;
+
+	new_env = malloc(sizeof(char *) * (sz + 2));
+	if (!new_env)
+	{
+		free(new_lue);
+		return (create_error(ar, -1));
+	}
+
+	for (dex = 0; environ[dex]; dex++)
+		new_env[dex] = environ[dex];
+
+	free(environ);
+	environ = new_env;
+	environ[dex] = new_lue;
+	environ[dex + 1] = NULL;
+
 	return (0);
 }
