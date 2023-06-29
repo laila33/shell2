@@ -1,4 +1,11 @@
 #include "shell_.h"
+int env_fun(info_tt *info);
+int setenv_fun(info_tt *info);
+int unsetenv_fun(info_tt *info);
+int popenv_list(info_tt *info);
+
+
+
 
 /**
  * env_fun - print current environment
