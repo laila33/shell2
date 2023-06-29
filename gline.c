@@ -34,7 +34,7 @@ ssize_t inputbuf_fun(info_tt *info, char **buf, size_t *l)
 			}
 			info->lcount_ch = 1;
 			delete_message(*buf);
-			bhistory_list(info, *buf, info->historycount++);
+			bhistoryl(info, *buf, info->historycount++);
 			{
 				*l = i;
 				info->cmd_buff = buf;
@@ -101,8 +101,8 @@ ssize_t getinput_fun(info_tt *info)
 
 void siginthandler_fun(__attribute__((unused))int snum)
 {
-	_puts("\n");
-	_puts("$ ");
+	puts_func("\n");
+	puts_func("$ ");
 	_putchar(BUF_FLUSH);
 }
 
@@ -111,20 +111,20 @@ void siginthandler_fun(__attribute__((unused))int snum)
  *
  * @info: struct
  * @buf: buffer
- * @s: size
+ * @sz: size
  *
  * Return: x
 */
 
-ssize_t readbuf_fun(info_tt *info, char *buf, size_t *s)
+ssize_t readbuf_fun(info_tt *info, char *buf, size_t *sz)
 {
 	ssize_t x = 0;
 
-	if (*s)
+	if (*sz)
 		return (0);
 	x = read(info->readf, buf, READ__SIZE);
 	if (x >= 0)
-		*s = x;
+		*sz = x;
 	return (x);
 }
 

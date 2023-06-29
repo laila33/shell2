@@ -8,7 +8,7 @@
 
 void clearinfo_fun(info_tt *info)
 {
-	info->input = NULL;
+	info->path = NULL;
 	info->arg_v = NULL;
 	info->arg = NULL;
 	info->arg_c = 0;
@@ -23,7 +23,7 @@ void clearinfo_fun(info_tt *info)
 
 void setinfo_fun(info_tt *info, char **at)
 {
-	int n = 0;
+	int m = 0;
 
 	info->filename = at[0];
 	if (info->arg)
@@ -38,9 +38,13 @@ void setinfo_fun(info_tt *info, char **at)
 				info->arg_v[1] = NULL;
 			}
 		}
-		for (n = 0; info->arg_v && info->arg_v[n]; n++)
+		for (m = 0; info->arg_v && info->arg_v[m]; m++)
 			;
+<<<<<<< HEAD
 		info->arg_c = n;
+=======
+		info->arg_c = m;
+>>>>>>> 81d80d65c56e6a90b0ae7ca1450a097d47ae45ea
 		repalias_fun(info);
 		repvars_fun(info);
 	}
@@ -53,13 +57,13 @@ void setinfo_fun(info_tt *info, char **at)
  * @f: free all fields
 */
 
-void freeinfo_fun(info_tt *info, int f)
+void freeinfo_fun(info_tt *info, int fe)
 {
-	free(info->arg_v);
-	info->input = NULL;
+	free_str(info->arg_v);
+	info->path = NULL;
 	info->arg_v = NULL;
 
-	if (f)
+	if (fe)
 	{
 		if (!info->cmd_buff)
 			free(info->arg);

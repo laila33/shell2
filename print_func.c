@@ -11,7 +11,7 @@ int convert_func(char *x)
 	unsigned long int t = 0;
 
 	if (*x == '+')
-		x;
+		x++;
 	for (j = 0; x[j] != '\0'; j++)
 	{
 		if (x[j] >= '0' && x[j] <= '9')
@@ -121,18 +121,18 @@ char *convert_d(long int number, int on, int ch)
 
 /**
  * delete_message -  Replace first instance of '#' with '\0'
- * @buffer: Addressstring to modify IT.
+ * @buf: Addressstring to modify IT.
  *
  * Return:  0.
  */
-void delete_message(char *buffer)
+void delete_message(char *buf)
 {
 	int j;
 
-	for (j = 0; buffer[j] != '\0'; j++)
-		if (buffer[j] == '#' && (!j || buffer[j - 1] == ' '))
+	for (j = 0; buf[j] != '\0'; j++)
+		if (buf[j] == '#' && (!j || buf[j - 1] == ' '))
 		{
-			buffer[j] = '\0';
+			buf[j] = '\0';
 			break;
 		}
 }

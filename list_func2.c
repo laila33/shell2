@@ -67,9 +67,6 @@ size_t put_liststr(const my_list_t *top)
 
 	while (top)
 	{
-		puts_func(convert_d(top->number, 10, 0));
-		_putchar(':');
-		_putchar(' ');
 		puts_func(top->s ? top->s : "(nil)");
 		puts_func("\n");
 		top = top->next;

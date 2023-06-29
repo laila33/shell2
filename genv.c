@@ -30,7 +30,7 @@ char **getenviron_fun(info_tt *info)
 int __unsetenv(info_tt *info, char *v)
 {
 	my_list_t *node = info->env;
-	size_t n = 0;
+	size_t m = 0;
 	char *p;
 
 	if (!node || !v)
@@ -41,13 +41,13 @@ int __unsetenv(info_tt *info, char *v)
 		p = starts_with_func(node->s, v);
 		if (p && *p == '=')
 		{
-			info->env_ch = delete_index(&(info->env), n);
-			n = 0;
+			info->env_ch = delete_index(&(info->env), m);
+			m = 0;
 			node = info->env;
 			continue;
 		}
 		node = node->next;
-		n++;
+		m++;
 	}
 	return (info->env_ch);
 }
@@ -89,7 +89,7 @@ int __setenv(info_tt *info, char *v, char *u)
 		}
 		node = node->next;
 	}
-	insert_end_node(&(info->env), buf, 0);
+	insert_node(&(info->env), buf, 0);
 	free(buf);
 	info->env_ch = 1;
 	return (0);

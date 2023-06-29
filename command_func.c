@@ -5,16 +5,16 @@
  *
  * @info: the info struct.
  *
- * @input: path to the file
+ * @path: path to the file
  *
  * Return: 1 or 0.
  */
-int if_cmd(info_tt *info, char *input)
+int if_cmd(info_tt *info, char *path)
 {
 	struct stat st;
 
 	(void)info;
-	if (!input || stat(input, &st))
+	if (!path || stat(path, &st))
 		return (0);
 
 	if (st.st_mode & S_IFREG)
@@ -28,7 +28,7 @@ int if_cmd(info_tt *info, char *input)
 /**
  * d_char - duplicate character.
  *
- * @inputs: the PATH string.
+ * @paths: the PATH string.
  *
  * @f_point: the first index.
  *
@@ -37,16 +37,16 @@ int if_cmd(info_tt *info, char *input)
  * Return: pointer to new buffer.
  *
  */
-char *d_char(char *inputs, int f_point, int e_point)
+char *d_char(char *paths, int f_point, int e_point)
 {
-	static char buffer[1024];
+	static char buf[1024];
 	int i = 0, j = 0;
 
 	for (j = 0, i = f_point; i < e_point; i++)
-		if (inputs[i] != ':')
-			buffer[j++] = inputs[i];
-	buffer[j] = 0;
-	return (buffer);
+		if (paths[i] != ':')
+			buf[j++] = paths[i];
+	buf[j] = 0;
+	return (buf);
 }
 
 
@@ -57,7 +57,7 @@ char *d_char(char *inputs, int f_point, int e_point)
  *
  * @info: the info struct.
  *
- * @inputs: the input string.
+ * @paths: the input string.
  *
  * @cmd: the cmd to find.
  *
@@ -65,12 +65,12 @@ char *d_char(char *inputs, int f_point, int e_point)
  *
  */
 
-char *f_path(info_tt *info, char *inputs, char *cmd)
+char *f_path(info_tt *info, char *paths, char *cmd)
 {
 	int j = 0, cc = 0;
-	char *input;
+	char *path;
 
-	if (!inputs)
+	if (!paths)
 		return (NULL);
 	if ((strlen_func(cmd) > 2) && starts_with_func(cmd, "./"))
 	{
@@ -79,19 +79,19 @@ char *f_path(info_tt *info, char *inputs, char *cmd)
 	}
 	while (1)
 	{
-		if (!inputs[j] || inputs[j] == ':')
+		if (!paths[j] || paths[j] == ':')
 		{
-			input = d_char(inputs, cc, j);
-			if (!*input)
-				strcat_func(input, cmd);
+			path = d_char(paths, cc, j);
+			if (!*path)
+				strcat_func(path, cmd);
 			else
 			{
-				strcat_func(input, "/");
-				strcat_func(input, cmd);
+				strcat_func(path, "/");
+				strcat_func(path, cmd);
 			}
-			if (if_cmd(info, input))
-				return (input);
-			if (!inputs[j])
+			if (if_cmd(info, path))
+				return (path);
+			if (!paths[j])
 				break;
 			cc = j;
 		}

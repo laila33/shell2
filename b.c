@@ -12,7 +12,9 @@ int help_fun(info_tt *info)
 {
 	char **arg_arr = info->arg_v;
 
-	puts_func(" The help command is recognized,but the functionality is not yet available.\n");
+
+	puts_func("The help command is not yet available.\n");
+
 
 	if (0)
 		puts_func(*arg_arr);
@@ -30,7 +32,7 @@ int help_fun(info_tt *info)
 int exit_fun(info_tt *info)
 {
 	int exitcheck;
-i
+
 	if (info->arg_v[1])
 	{
 		exitcheck = convert_func(info->arg_v[1]);
@@ -61,32 +63,32 @@ i
 
 int cd_fun(info_tt *info)
 {
-	char *s, *dir, buffer[1024];
+	char *sg, *dr, buf[1024];
 	int chdir_ret;
 
-	s = getcwd(buffer, 1024);
-	if (!s)
-		_puts("Error: Unable to retrieve current directory.\n");
+	sg = getcwd(buf, 1024);
+	if (!sg)
+		puts_func("Error: Unable to retrieve current directory.\n");
 	if (!info->arg_v[1])
 	{
-		dir = getenv_fun(info, "HOME=");
-		if (!dir)
+		dr = getenv_fun(info, "HOME=");
+		if (!dr)
 			chdir_ret =
-				chdir((dir = getenv_fun(info, "PWD=")) ? dir : "/");
+				chdir((dr = getenv_fun(info, "PWD=")) ? dr : "/");
 		else
-			chdir_ret = chdir(dir);
+			chdir_ret = chdir(dr);
 	}
 	else if (strcmp_func(info->arg_v[1], "-") == 0)
 	{
 		if (!getenv_fun(info, "OLDPWD="))
 		{
-			_puts(s);
+			puts_func(sg);
 			_putchar('\n');
 			return (1);
 		}
-		_puts(getenv_fun(info, "OLDPWD=")), _putchar('\n');
+		puts_func(getenv_fun(info, "OLDPWD=")), _putchar('\n');
 		chdir_ret =
-			chdir((dir = getenv_fun(info, "OLDPWD=")) ? dir : "/");
+			chdir((dr = getenv_fun(info, "OLDPWD=")) ? dr : "/");
 	}
 	else
 		chdir_ret = chdir(info->arg_v[1]);
@@ -97,8 +99,8 @@ int cd_fun(info_tt *info)
 	}
 	else
 	{
-		setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
-		setenv(info, "PWD", getcwd(buffer, 1024));
+		__setenv(info, "OLDPWD", getenv_fun(info, "PWD="));
+		__setenv(info, "PWD", getcwd(buf, 1024));
 	}
 	return (0);
 }

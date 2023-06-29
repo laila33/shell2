@@ -20,7 +20,7 @@
 
 #define CMD__NORM	0
 #define CMD__OR		1
-#define CMD__AND		2
+#define CMD__AND	2
 #define CMD__CHAIN	3
 
 
@@ -55,7 +55,7 @@ typedef struct my_lists_t
  *		allowing uniform prototype for function pointer struct
  *@arg: a string generated from getline containing arguements
  *@arg_v: array of strings generated from arg
- *@input: String input for the current command.
+ *@path: String input for the current command.
  *@arg_c: Argument count.
  *@l_count: error countER
  *@err_num: the error code for exit()s
@@ -76,7 +76,7 @@ typedef struct passinfo
 {
 	char *arg;
 	char **arg_v;
-	char *input;
+	char *path;
 	int arg_c;
 	unsigned int l_count;
 	int err_num;
@@ -134,6 +134,8 @@ int env_fun(info_tt *);
 int setenv_fun(info_tt *);
 int unsetenv_fun(info_tt *);
 int popenv_list(info_tt *);
+int if_cmd(info_tt *, char *);
+char *f_path(info_tt *, char *, char *);
 
 char **getenviron_fun(info_tt *);
 int __unsetenv(info_tt *, char *);
@@ -197,14 +199,19 @@ int _putt(int, int);
 char *convert_d(long int, int, int);
 void delete_message(char *);
 
-int mshell(info_tt *, char **);
+int hsh(info_tt *, char **);
 int findbuilt_fun(info_tt *);
 void git_cmd(info_tt *);
 void f_cmd(info_tt *);
 
+/**size_t put_liststr(char **);*/
+size_t put_liststr(const my_list_t *);
 
-
-
+int history_r(info_tt *);
+int bhistoryl(info_tt *, char *, int);
+int history_rm(info_tt *);
+int history_w(info_tt *);
+char *find_history_file(info_tt *);
 
 
 

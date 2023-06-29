@@ -22,41 +22,41 @@ char *memset_func(char *m, char num, unsigned int am)
  */
 void free_str(char **x)
 {
-	char **m = x;
+	char **l = x;
 
 	if (!x)
 		return;
 	while (*x)
 		free(*x++);
-	free(m);
+	free(l);
 }
 
 /**
  * find_str - reallocates a sizee of memory
- * @x: pointer to previous malloc'ated block
- * @oldd: size of byte of previous block.
- * @neww: size of byte of a new block.
+ * @ptr: pointer to previous malloc'ated block
+ * @old_s: size of byte of previous block.
+ * @new_s: size of byte of a new block.
  *
  * Return: Pointer to BLOCJ IN MEMORY.
  */
-void *find_str(void *x, unsigned int oldd, unsigned int neww)
+void *find_str(void *ptr, unsigned int old_s, unsigned int new_s)
 {
-	char *a;
+	char *p;
 
-	if (!x)
-		return (malloc(neww));
-	if (!neww)
-		return (free(x), NULL);
-	if (neww == oldd)
-		return (x);
+	if (!ptr)
+		return (malloc(new_s));
+	if (!new_s)
+		return (free(ptr), NULL);
+	if (new_s == old_s)
+		return (ptr);
 
-	a = malloc(neww);
-	if (!a)
+	p = malloc(new_s);
+	if (!p)
 		return (NULL);
 
-	oldd = oldd < neww ? oldd : neww;
-	while (oldd--)
-		a[oldd] = ((char *)x)[oldd];
-	free(x);
-	return (a);
+	old_s = old_s < new_s ? old_s : new_s;
+	while (old_s--)
+		p[old_s] = ((char *)ptr)[old_s];
+	free(ptr);
+	return (p);
 }
