@@ -1,5 +1,13 @@
 #include "shell.h"
 
+int hsh(info_tt *info, char **ar);
+int findbuilt_fun(info_tt *info);
+void git_cmd(info_tt *info);
+void f_cmd(info_tt *info);
+
+
+
+
 /**
  * hsh - main shell loop
  *

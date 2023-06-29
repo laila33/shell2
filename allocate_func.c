@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-#include "shell.h"
-=======
 #include "shell_.h"
 char *memset_func(char *m, char num, unsigned int am);
 void free_str(char **x);
 void *find_str(void *ptr, unsigned int old_s, unsigned int new_s);
-
-
-
-
->>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  **memset_func - fill memory with a number of bytes.

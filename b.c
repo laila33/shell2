@@ -1,4 +1,8 @@
-#include "shell.h"
+#include "shell_.h"
+int help_fun(info_tt *info);
+int exit_fun(info_tt *info);
+int cd_fun(info_tt *info);
+
 
 /**
  * help_fun - change current dir of the process

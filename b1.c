@@ -1,4 +1,10 @@
-#include "shell.h"
+#include "shell_.h"
+int history_fun(info_tt *info);
+int unsetalias_fun(info_tt *info, char *s);
+int setalias_fun(info_tt *info, char *s);
+int printalias_fun(my_list_t *node);
+int alias_fun(info_tt *info);
+
 
 /**
  * history_fun - displays the history

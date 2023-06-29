@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-#include "shell.h"
-=======
+
 #include "shell_.h"
 int convert_func(char *x);
 void put_error(info_tt *info, char *str);
 int _putt(int x, int fd);
 char *convert_d(long int number, int on, int ch);
 void delete_message(char *buf);
->>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  * convert_func - convert string into intger

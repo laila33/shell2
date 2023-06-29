@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-#include "shell.h"
-=======
 #include "shell_.h"
 void eputs_func(char *str);
 int eputchar_func(char ch);
@@ -25,7 +22,6 @@ void eputs_func(char *str)
 		j++;
 	}
 }
->>>>>>> 0c6498174d79ac3f6e640b3c70a8d1c2bbc5cfed
 
 /**
  * eputchar_func - write the character ch to stderr.

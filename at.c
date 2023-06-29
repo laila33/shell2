@@ -1,4 +1,9 @@
-#include "shell.h"
+#include "shell_.h"
+int interactive_fun(info_tt *info);
+int isdelim_fun(char h, char *dm);
+int isalpha_fun(int h);
+int atoi_fun(char *sg);
+
 
 /**
  * interactive_fun - see if shell in interactive mode
