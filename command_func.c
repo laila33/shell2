@@ -1,4 +1,11 @@
 #include "shell_.h"
+int if_cmd(info_tt *info, char *path);
+char *d_char(char *paths, int f_point, int e_point);
+char *f_path(info_tt *info, char *paths, char *cmd);
+
+
+
+
 
 /**
  * if_cmd - determines if a file is an executable command or not.
