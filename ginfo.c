@@ -40,11 +40,8 @@ void setinfo_fun(info_tt *info, char **at)
 		}
 		for (m = 0; info->arg_v && info->arg_v[m]; m++)
 			;
-<<<<<<< HEAD
-		info->arg_c = n;
-=======
+		
 		info->arg_c = m;
->>>>>>> 81d80d65c56e6a90b0ae7ca1450a097d47ae45ea
 		repalias_fun(info);
 		repvars_fun(info);
 	}
