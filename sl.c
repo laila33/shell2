@@ -8,14 +8,12 @@
  *
  * Return: 0 success else 1
 */
-<<<<<<< HEAD
-int mshell(info_tt *info, char **a)
-int mshell(info_tt *info, char **ar)
 
-=======
+/*int mshell(info_tt *info, char **a)
+int mshell(info_tt *info, char **ar)*/
 
 int hsh(info_tt *info, char **ar)
->>>>>>> 81d80d65c56e6a90b0ae7ca1450a097d47ae45ea
+
 {
 	ssize_t n = 0;
 	int br = 0;
@@ -23,15 +21,8 @@ int hsh(info_tt *info, char **ar)
 	while (n != -1 && br != -2)
 	{
 		clearinfo_fun(info);
-<<<<<<< HEAD
-		if (interactive_fun(info));
-			_puts("$ ");
-			puts_func("$ ");
-
-=======
 		if (interactive_fun(info))
 			puts_func("$ ");
->>>>>>> 81d80d65c56e6a90b0ae7ca1450a097d47ae45ea
 		eputchar_func(BUF_FLUSH);
 		n = getinput_fun(info);
 		if (n != -1)
@@ -114,11 +105,6 @@ void git_cmd(info_tt *info)
 	}
 	for (i = 0, j = 0; info->arg[i]; i++)
 
-<<<<<<< HEAD
-		if (!isdelim_func(info->arg[i], " \t\n"))
-
-=======
->>>>>>> 81d80d65c56e6a90b0ae7ca1450a097d47ae45ea
 		if (!isdelim_fun(info->arg[i], " \t\n"))
 			j++;
 	if (!j)

@@ -52,11 +52,7 @@ my_list_t *insert_end_node(my_list_t **top, const char *s, int number)
 	new = malloc(sizeof(my_list_t));
 	if (!new)
 		return (NULL);
-<<<<<<< HEAD
-	memset_func((void *)new, 0, sizeof(my_list_t));
-=======
 	memset_func((void *)c_node, 0, sizeof(my_list_t));
->>>>>>> 81d80d65c56e6a90b0ae7ca1450a097d47ae45ea
 	new->number = number;
 	if (s)
 	{
