@@ -1,4 +1,4 @@
-#include "shell_.h"
+#include "shell.h"
 
 /**
  * convert_func - convert string into intger
@@ -27,22 +27,6 @@ int convert_func(char *x)
 	return (t);
 }
 
-/**
- * put_error - Print message with error.
- * @info: Parameter and  return info struct
- * @str: String containe error type
- * Return: 0 OR -1.
- */
-void put_error(info_tt *info, char *str)
-{
-	eputs_func(info->filename);
-	eputs_func(": ");
-	_putt(info->l_count, STDERR_FILENO);
-	eputs_func(": ");
-	eputs_func(info->arg_v[0]);
-	eputs_func(": ");
-	eputs_func(str);
-}
 
 /**
  * _putt -print decimal  number on base 10
@@ -81,6 +65,23 @@ int _putt(int x, int fd)
 	cntr++;
 
 	return (cntr);
+}
+
+/**
+ * put_error - Print message with error.
+ * @info: Parameter and  return info struct
+ * @es: String containe error type
+ * Return: 0 OR -1.
+ */
+void put_error(info_tt *info, char *es)
+{
+	eputs_func(info->filename);
+	eputs_func(": ");
+	_putt(info->l_count, STDERR_FILENO);
+	eputs_func(": ");
+	eputs_func(info->arg_v[0]);
+	eputs_func(": ");
+	eputs_func(es);
 }
 
 /**

@@ -1,4 +1,4 @@
-#include "shell_.h"
+#include "shell.h"
 
 /**
  * l_l - define size of list.
@@ -26,7 +26,7 @@ size_t l_l(const my_list_t *top)
  */
 char **l_to_s(my_list_t *top)
 {
-	my_list_t *c_node = top;
+	my_list_t *node = top;
 	size_t x = l_l(top), y;
 	char **ss;
 	char *s;
@@ -36,9 +36,9 @@ char **l_to_s(my_list_t *top)
 	ss = malloc(sizeof(char *) * (x + 1));
 	if (!ss)
 		return (NULL);
-	for (x = 0; c_node; c_node = c_node->next, x++)
+	for (x = 0; node; node = node->next, x++)
 	{
-		s = malloc(strlen_func(c_node->s) + 1);
+		s = malloc(strlen_func(node->s) + 1);
 		if (!s)
 		{
 			for (y = 0; y < x; y++)
@@ -47,7 +47,7 @@ char **l_to_s(my_list_t *top)
 			return (NULL);
 		}
 
-		s = strcpy_func1(s, c_node->s);
+		s = strcpy_func1(s, node->s);
 		ss[x] = s;
 	}
 	ss[x] = NULL;
@@ -77,22 +77,22 @@ size_t put_liststr(const my_list_t *top)
 
 /**
  * start_node - Return node it's string start with x.
- * @c_node: pointer to top of list
+ * @node: pointer to top of list
  * @x: string to USE
  * @ch: the next char after x to match
  *
  * Return: MatchED node , null
  */
-my_list_t *start_node(my_list_t *c_node, char *x, char ch)
+my_list_t *start_node(my_list_t *node, char *x, char ch)
 {
-	char *a = NULL;
+	char *p = NULL;
 
-	while (c_node)
+	while (node)
 	{
-		a = starts_with_func(c_node->s, x);
-		if (a && ((ch == -1) || (*a == ch)))
-			return (c_node);
-		c_node = c_node->next;
+		p = starts_with_func(node->s, x);
+		if (p && ((ch == -1) || (*p == ch)))
+			return (node);
+		node = node->next;
 	}
 	return (NULL);
 }
@@ -100,17 +100,17 @@ my_list_t *start_node(my_list_t *c_node, char *x, char ch)
 /**
  * find_node_index - find index of node
  * @top: pointer to head
- * @c_node: pointer to tany node
+ * @node: pointer to tany node
  *
  * Return: Index of node , -1.
  */
-ssize_t find_node_index(my_list_t *top, my_list_t *c_node)
+ssize_t find_node_index(my_list_t *top, my_list_t *node)
 {
 	size_t j = 0;
 
 	while (top)
 	{
-		if (top == c_node)
+		if (top == node)
 			return (j);
 		top = top->next;
 		j++;

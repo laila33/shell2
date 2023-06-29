@@ -1,4 +1,4 @@
-#include "shell_.h"
+#include "shell.h"
 
 /**
  * insert_node - add node to the start of the linked list.
@@ -43,16 +43,16 @@ my_list_t *insert_node(my_list_t **top, const char *s, int number)
  */
 my_list_t *insert_end_node(my_list_t **top, const char *s, int number)
 {
-	my_list_t *new, *c_node;
+	my_list_t *new, *node;
 
 	if (!top)
 		return (NULL);
 
-	c_node = *top;
+	node = *top;
 	new = malloc(sizeof(my_list_t));
 	if (!new)
 		return (NULL);
-	memset_func((void *)c_node, 0, sizeof(my_list_t));
+	memset_func((void *)node, 0, sizeof(my_list_t));
 	new->number = number;
 	if (s)
 	{
@@ -63,11 +63,11 @@ my_list_t *insert_end_node(my_list_t **top, const char *s, int number)
 			return (NULL);
 		}
 	}
-	if (c_node)
+	if (node)
 	{
-		while (c_node->next)
-			c_node = c_node->next;
-		c_node->next = new;
+		while (node->next)
+			node = node->next;
+		node->next = new;
 	}
 	else
 		*top = new;
@@ -103,7 +103,7 @@ size_t print_node(const my_list_t *top)
  */
 int delete_index(my_list_t **h, unsigned int i)
 {
-	my_list_t *c_node, *b_node;
+	my_list_t *node, *b_node;
 	unsigned int j = 0;
 
 	if (!h || !*h)
@@ -111,25 +111,25 @@ int delete_index(my_list_t **h, unsigned int i)
 
 	if (!i)
 	{
-		c_node = *h;
+		node = *h;
 		*h = (*h)->next;
-		free(c_node->s);
-		free(c_node);
+		free(node->s);
+		free(node);
 		return (1);
 	}
-	c_node = *h;
-	while (c_node)
+	node = *h;
+	while (node)
 	{
 		if (j == i)
 		{
-			b_node->next = c_node->next;
-			free(c_node->s);
-			free(c_node);
+			b_node->next = node->next;
+			free(node->s);
+			free(node);
 			return (1);
 		}
 		j++;
-		b_node = c_node;
-		c_node = c_node->next;
+		b_node = node;
+		node = node->next;
 	}
 	return (0);
 }
@@ -142,18 +142,18 @@ int delete_index(my_list_t **h, unsigned int i)
  */
 void free_linked(my_list_t **top_ptr)
 {
-	my_list_t *c_node, *next_node, *h;
+	my_list_t *node, *next_node, *h;
 
 	if (!top_ptr || !*top_ptr)
 		return;
 	h = *top_ptr;
-	c_node = h;
-	while (c_node)
+	node = h;
+	while (node)
 	{
-		next_node = c_node->next;
-		free(c_node->s);
-		free(c_node);
-		c_node = next_node;
+		next_node = node->next;
+		free(node->s);
+		free(node);
+		node = next_node;
 	}
 	*top_ptr = NULL;
 }

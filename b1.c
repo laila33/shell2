@@ -1,4 +1,4 @@
-#include "shell_.h"
+#include "shell.h"
 
 /**
  * history_fun - displays the history
@@ -78,8 +78,8 @@ int printalias_fun(my_list_t *node)
 	{
 		p = strchr_func2(node->s, '=');
 		for (l = node->s; l <= p; l++)
-			_putchar(*l);
-		_putchar('\'');
+			putchar(*l);
+		putchar('\'');
 		puts_func(p + 1);
 		puts_func("'\n");
 		return (0);

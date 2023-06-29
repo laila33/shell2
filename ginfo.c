@@ -1,4 +1,4 @@
-#include "shell_.h"
+#include "shell.h"
 
 /**
  * clearinfo_fun - initializes info_t
@@ -75,6 +75,6 @@ void freeinfo_fun(info_tt *info, int fe)
 		free_function((void **)info->cmd_buff);
 		if (info->readf > 2)
 			close(info->readf);
-		_putchar(BUF_FLUSH);
+		putchar(BUF_FLUSH);
 	}
 }

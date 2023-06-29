@@ -1,23 +1,4 @@
-#include "shell_.h"
-
-/**
- *eputs_func - print input string.
- * @str: the string to print.
- *
- * Return: (Nothing)
- */
-void eputs_func(char *str)
-{
-	int j = 0;
-
-	if (!str)
-		return;
-	while (str[j] != '\0')
-	{
-		eputchar_func(str[j]);
-		j++;
-	}
-}
+#include "shell.h"
 
 /**
  * eputchar_func - write the character ch to stderr.
@@ -38,6 +19,25 @@ int eputchar_func(char ch)
 	if (ch != BUF_FLUSH)
 		buf[j++] = ch;
 	return (1);
+}
+
+/**
+ *eputs_func - print input string.
+ * @s: the string to print.
+ *
+ * Return: (Nothing)
+ */
+void eputs_func(char *s)
+{
+	int j = 0;
+
+	if (!s)
+		return;
+	while (s[j] != '\0')
+	{
+		eputchar_func(s[j]);
+		j++;
+	}
 }
 
 /**
